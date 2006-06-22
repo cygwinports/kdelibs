@@ -1,0 +1,8 @@
+category: KDE
+requires: cygwin jasper libX11_6 libXrender1 libart_lgpl2 libbz2_1 libidn11 libjpeg62 liblua50 libpcre0 libtiff5 libxml2 libxslt qt3 
+external-source: kdelibs
+sdesc: "KDE libraries (runtime)"
+ldesc: "This package includes libraries that are central to the
+development and execution of a KDE program, as well as
+internationalization files for these libraries, misc HTML documentation,
+theme modules, and regression tests."
