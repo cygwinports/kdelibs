@@ -1,5 +1,5 @@
 category: KDE
-requires: cygwin jasper libX11_6 libXrender1 libaspell15 libart_lgpl2 libbz2_1 libhspell1 libidn11 libjpeg62 libopenexr2 lua50 libpcre0 libtiff5 libxml2 libxslt openssl qt3 
+requires: cygwin jasper libX11_6 libXrender1 libaspell15 libart_lgpl2 libbz2_1 libhspell1 libidn11 libjpeg62 libopenexr2 lua50 libpcre0 libtiff5 libxml2 libxslt openssl qt3 kdelibs
 external-source: kdelibs
 sdesc: "KDE libraries (runtime)"
 ldesc: "This package includes libraries that are central to the
