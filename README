@@ -6,20 +6,20 @@ these libraries, misc HTML documentation, theme modules, and regression
 tests.
 
 Runtime requirements:
-  cygwin-1.5.21-1
+  cygwin-1.5.21-2
   jasper-1.701.0-1
-  libX11_6-1.0.1-1
+  libX11_6-1.0.2-1
   libXrender1-0.9.1-1
   libart_lgpl2-2.3.17-1
   libaspell15-0.50.3-1
   libbz2_1-1.0.3-1
   libhspell1-1.0-2
-  libidn11-0.6.2-1
+  libidn11-0.6.5-2
   libjpeg62-6b-11
   liblua50-5.0.2-1
   libopenexr2-1.2.2-1
-  libpcre0-6.6-1
-  libtiff5-3.7.3-1
+  libpcre0-6.7-1
+  libtiff5-3.8.2-2
   libxml2-2.6.26-1
   libxslt-1.1.17-1
   openssl-0.9.8b-1
@@ -27,12 +27,12 @@ Runtime requirements:
 
 Build requirements:
 (besides corresponding devel packages)
-  cygwin-1.5.21-1
+  cygwin-1.5.21-2
   autoconf2.5-2.59-2
   automake1.9-1.9.6-1
-  binutils-20050610-1
+  binutils-20060709-1
   cygport-0.2.5-1
-  gawk-3.1.5-1
+  gawk-3.1.5-2
   gcc-core-3.4.4-1
   gcc-g++-3.4.4-1
   libtool1.5-1.5.22-1
@@ -44,23 +44,23 @@ Canonical website:
   http://www.kde.org/
 
 Canonical download:
-  ftp://ftp.kde.org/pub/kde/stable/3.5.4/src/
+  ftp://ftp.kde.org/pub/kde/stable/3.5.5/src/
 
 -------------------------------------------
 
 Build instructions:
-  unpack kdelibs-3.5.4-X-src.tar.bz2
+  unpack kdelibs-3.5.5-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./kdelibs-3.5.4-X.cygport all
+  cygport ./kdelibs-3.5.5-X.cygport all
 
 This will create:
-  /usr/src/kdelibs-3.5.4-X-src.tar.bz2
-  /usr/src/kdelibs-3.5.4-X.tar.bz2
-  /usr/src/kdelibs-devel-3.5.4-X.tar.bz2
-  /usr/src/kdelibs-doc-3.5.4-X.tar.bz2
-  /usr/src/kdelibs4-3.5.4-X.tar.bz2
+  /usr/src/kdelibs-3.5.5-X-src.tar.bz2
+  /usr/src/kdelibs-3.5.5-X.tar.bz2
+  /usr/src/kdelibs-devel-3.5.5-X.tar.bz2
+  /usr/src/kdelibs-doc-3.5.5-X.tar.bz2
+  /usr/src/kdelibs4-3.5.5-X.tar.bz2
 
 -------------------------------------------
 
@@ -226,13 +226,13 @@ Files included in the kdelibs package:
   /usr/share/config/language.codes
   /usr/share/config/ui/kprintpreviewui.rc
   /usr/share/config/ui/ui_standards.rc
-  /usr/share/doc/Cygwin/kdelibs-3.5.4.README
-  /usr/share/doc/kdelibs-3.5.4/AUTHORS
-  /usr/share/doc/kdelibs-3.5.4/COPYING
-  /usr/share/doc/kdelibs-3.5.4/COPYING.LIB
-  /usr/share/doc/kdelibs-3.5.4/INSTALL
-  /usr/share/doc/kdelibs-3.5.4/README
-  /usr/share/doc/kdelibs-3.5.4/TODO
+  /usr/share/doc/Cygwin/kdelibs-3.5.5.README
+  /usr/share/doc/kdelibs-3.5.5/AUTHORS
+  /usr/share/doc/kdelibs-3.5.5/COPYING
+  /usr/share/doc/kdelibs-3.5.5/COPYING.LIB
+  /usr/share/doc/kdelibs-3.5.5/INSTALL
+  /usr/share/doc/kdelibs-3.5.5/README
+  /usr/share/doc/kdelibs-3.5.5/TODO
   /usr/share/emoticons/Default/*
   /usr/share/icons/crystalsvg/*/*/*
   /usr/share/icons/default.kde
@@ -1332,6 +1332,9 @@ Files included in the documentation package:
 ------------------
 
 Port Notes:
+
+----- version 3.5.5-1 -----
+Version bump.
 
 ----- version 3.5.4-1 -----
 Version bump.
