@@ -68,6 +68,7 @@ This will create:
 Files included in the kdelibs package:
 
   /etc/xdg/menus/applications.menu
+  /usr/bin/artsmessage.exe
   /usr/bin/checkXML
   /usr/bin/cygkdeinit_dcopserver.dll
   /usr/bin/cygkdeinit_kaddprinterwizard.dll
@@ -79,6 +80,7 @@ Files included in the kdelibs package:
   /usr/bin/cygkdeinit_kio_http_cache_cleaner.dll
   /usr/bin/cygkdeinit_kio_uiserver.dll
   /usr/bin/cygkdeinit_klauncher.dll
+  /usr/bin/cygkdeinit_kmcop.dll
   /usr/bin/dcop.exe
   /usr/bin/dcopclient.exe
   /usr/bin/dcopfind.exe
@@ -121,6 +123,7 @@ Files included in the kdelibs package:
   /usr/bin/kioslave.exe
   /usr/bin/klauncher.exe
   /usr/bin/kmailservice.exe
+  /usr/bin/kmcop.exe
   /usr/bin/kpac_dhcp_helper.exe
   /usr/bin/ksendbugmail.exe
   /usr/bin/kshell.exe
@@ -155,6 +158,8 @@ Files included in the kdelibs package:
   /usr/lib/libkdeinit_kio_uiserver.la
   /usr/lib/libkdeinit_klauncher.dll.a
   /usr/lib/libkdeinit_klauncher.la
+  /usr/lib/libkdeinit_kmcop.dll.a
+  /usr/lib/libkdeinit_kmcop.la
   /usr/share/applications/kde/kresources.desktop
   /usr/share/apps/LICENSES/ARTISTIC
   /usr/share/apps/LICENSES/BSD
@@ -273,6 +278,7 @@ Files included in the kdelibs package:
   /usr/share/services/kio_uiserver.desktop
   /usr/share/services/kjavaappletviewer.desktop
   /usr/share/services/kmailservice.protocol
+  /usr/share/services/kmcop.desktop
   /usr/share/services/kmultipart.desktop
   /usr/share/services/knotify.desktop
   /usr/share/services/kresources/kabc/dir.desktop
@@ -347,6 +353,7 @@ Files included in the kdelibs package:
 Files included in the kdelibs4 runtime package:
 
   /usr/bin/cygDCOP-4.dll
+  /usr/bin/cygartskde-1.dll
   /usr/bin/cygkabc-1.dll
   /usr/bin/cygkabc_dir-1.dll
   /usr/bin/cygkabc_file-1.dll
@@ -442,6 +449,8 @@ Files included in the kdelibs4 runtime package:
   /usr/lib/kde3/kdeprint_rlpr.la
   /usr/lib/kde3/kdeprint_tool_escputil.dll
   /usr/lib/kde3/kdeprint_tool_escputil.la
+  /usr/lib/kde3/kfileaudiopreview.dll
+  /usr/lib/kde3/kfileaudiopreview.la
   /usr/lib/kde3/kgzipfilter.dll
   /usr/lib/kde3/kgzipfilter.la
   /usr/lib/kde3/khtmlimagepart.dll
@@ -492,6 +501,8 @@ Files included in the kdelibs4 runtime package:
   /usr/lib/kde3/kjavaappletviewer.la
   /usr/lib/kde3/klauncher.dll
   /usr/lib/kde3/klauncher.la
+  /usr/lib/kde3/kmcop.dll
+  /usr/lib/kde3/kmcop.la
   /usr/lib/kde3/knotify.dll
   /usr/lib/kde3/knotify.la
   /usr/lib/kde3/kspell_aspell.dll
@@ -535,6 +546,16 @@ Files included in the kdelibs4 runtime package:
 
 Files included in the development package:
 
+  /usr/include/kde/arts/artskde.h
+  /usr/include/kde/arts/kartsdispatcher.h
+  /usr/include/kde/arts/kartsfloatwatch.h
+  /usr/include/kde/arts/kartsserver.h
+  /usr/include/kde/arts/kaudiomanagerplay.h
+  /usr/include/kde/arts/kaudioplaystream.h
+  /usr/include/kde/arts/kaudiorecordstream.h
+  /usr/include/kde/arts/kplayobject.h
+  /usr/include/kde/arts/kplayobjectfactory.h
+  /usr/include/kde/arts/kvideowidget.h
   /usr/include/kde/dcopclient.h
   /usr/include/kde/dcopobject.h
   /usr/include/kde/dcopref.h
@@ -1222,6 +1243,8 @@ Files included in the development package:
   /usr/include/kde/scriptmanager.h
   /usr/lib/libDCOP.dll.a
   /usr/lib/libDCOP.la
+  /usr/lib/libartskde.dll.a
+  /usr/lib/libartskde.la
   /usr/lib/libkabc.dll.a
   /usr/lib/libkabc.la
   /usr/lib/libkabc_dir.dll.a
