@@ -8,7 +8,6 @@ tests.
 Runtime requirements:
   cygwin-1.5.24-2
   arts-1.5.7-1
-  gamin-0.1.9-1
   libICE6-1.0.4-1
   libSM6-1.0.3-1
   libX11_6-1.1.3-1
@@ -55,28 +54,29 @@ Canonical website:
   http://www.kde.org/
 
 Canonical download:
-  ftp://ftp.kde.org/pub/kde/stable/3.5.7/src/
+  ftp://ftp.kde.org/pub/kde/stable/3.5.8/src/
 
 -------------------------------------------
 
 Build instructions:
-  unpack kdelibs-3.5.7-X-src.tar.bz2
+  unpack kdelibs-3.5.8-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./kdelibs-3.5.7-X.cygport all
+  cygport ./kdelibs-3.5.8-X.cygport all
 
 This will create:
-  /usr/src/kdelibs-3.5.7-X-src.tar.bz2
-  /usr/src/kdelibs-3.5.7-X.tar.bz2
-  /usr/src/kdelibs-devel-3.5.7-X.tar.bz2
-  /usr/src/kdelibs-doc-3.5.7-X.tar.bz2
-  /usr/src/kdelibs4-3.5.7-X.tar.bz2
+  /usr/src/kdelibs-3.5.8-X-src.tar.bz2
+  /usr/src/kdelibs-3.5.8-X.tar.bz2
+  /usr/src/kdelibs-devel-3.5.8-X.tar.bz2
+  /usr/src/kdelibs-doc-3.5.8-X.tar.bz2
+  /usr/src/kdelibs4-3.5.8-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the kdelibs package:
+Files included in the packages:
 
+(kdelibs)
   /etc/xdg/menus/applications.menu
   /usr/bin/artsmessage.exe
   /usr/bin/checkXML
@@ -232,13 +232,13 @@ Files included in the kdelibs package:
   /usr/share/config/language.codes
   /usr/share/config/ui/kprintpreviewui.rc
   /usr/share/config/ui/ui_standards.rc
-  /usr/share/doc/Cygwin/kdelibs-3.5.7.README
-  /usr/share/doc/kdelibs-3.5.7/AUTHORS
-  /usr/share/doc/kdelibs-3.5.7/COPYING
-  /usr/share/doc/kdelibs-3.5.7/COPYING.LIB
-  /usr/share/doc/kdelibs-3.5.7/INSTALL
-  /usr/share/doc/kdelibs-3.5.7/README
-  /usr/share/doc/kdelibs-3.5.7/TODO
+  /usr/share/doc/Cygwin/kdelibs-3.5.8.README
+  /usr/share/doc/kdelibs-3.5.8/AUTHORS
+  /usr/share/doc/kdelibs-3.5.8/COPYING
+  /usr/share/doc/kdelibs-3.5.8/COPYING.LIB
+  /usr/share/doc/kdelibs-3.5.8/INSTALL
+  /usr/share/doc/kdelibs-3.5.8/README
+  /usr/share/doc/kdelibs-3.5.8/TODO
   /usr/share/emoticons/Default/*
   /usr/share/icons/crystalsvg/*/*/*
   /usr/share/icons/default.kde
@@ -350,8 +350,7 @@ Files included in the kdelibs package:
   /usr/share/servicetypes/renamedlgplugin.desktop
   /usr/share/servicetypes/scriptinterface.desktop
 
-Files included in the kdelibs4 runtime package:
-
+(kdelibs4)
   /usr/bin/cygDCOP-4.dll
   /usr/bin/cygartskde-1.dll
   /usr/bin/cygkabc-1.dll
@@ -544,8 +543,7 @@ Files included in the kdelibs4 runtime package:
   /usr/lib/kde3/plugins/styles/plastik.dll
   /usr/lib/kde3/plugins/styles/plastik.la
 
-Files included in the development package:
-
+(kdelibs-devel)
   /usr/include/kde/arts/artskde.h
   /usr/include/kde/arts/kartsdispatcher.h
   /usr/include/kde/arts/kartsfloatwatch.h
@@ -1323,8 +1321,7 @@ Files included in the development package:
   /usr/lib/libvcard.dll.a
   /usr/lib/libvcard.la
 
-Files included in the documentation package:
-
+(kdelibs-doc)
   /usr/share/doc/HTML/en/common/*
   /usr/share/doc/HTML/en/kdelibs-apidocs/dcop/*
   /usr/share/doc/HTML/en/kdelibs-apidocs/dnssd/*
@@ -1360,7 +1357,10 @@ Files included in the documentation package:
 
 Port Notes:
 
------ version 3.5.7-1 -----
+----- version 3.5.8-2 -----
+Rebuilt without FAM support due to excessive CPU usage.
+
+----- version 3.5.8-1 -----
 Version bump.
 Enabled FAM and Kerberos V support.
 
