@@ -1,0 +1,62 @@
+inherit kde3
+
+# the kdeinit modules can be listed with this command:
+# /bin/ls -1 /usr/bin/cygkdeinit_*.dll | sed \
+# -e 's:/usr/bin/cygkdeinit_:\-\-exclude\=\"/usr/lib/kde3/:' \
+# -e 's:\.dll:\.\*\" \\:'
+
+PKG_NAMES="${PN} ${PN}4 ${PN}-devel ${PN}-doc"
+PKG_HINTS="setup runtime devel doc"
+PKG_CONTENTS[0]="--exclude=cyg*-?.dll --exclude=HTML \
+                 etc/ usr/bin/ usr/lib/libkdeinit_* usr/share/"
+PKG_CONTENTS[1]='--exclude=cygkdeinit_*.dll usr/bin/*.dll usr/lib/kde3/'
+PKG_CONTENTS[2]='--exclude=libkdeinit_* usr/include/ usr/lib/lib*'
+PKG_CONTENTS[3]='usr/share/doc/HTML/'
+
+src_compile() {
+	local kded
+
+	cd ${S}
+	kde3_autoreconf
+
+	cd ${B}
+	kde3_compile \
+		--disable-cups \
+		--disable-dnotify --disable-inotify \
+		--disable-dnssd \
+		--disable-fast-malloc \
+		--disable-libfam \
+		--disable-mitshm \
+		--enable-pcre \
+		--without-alsa \
+		--with-aspell --with-hspell \
+		--with-gssapi \
+		--with-jasper --with-libart --with-openexr --with-tiff \
+		--with-libidn \
+		--without-libthai \
+		--with-lua-includes=/usr/include/lua50 \
+		--with-rgbfile=/usr/share/X11/rgb.txt
+
+	for kded in kdeui/kdetrayproxy kio/kpasswdserver kio/misc/kpac \
+                kio/misc/kssld kio/misc/kwalletd
+	do
+		cygmake -C ${B}/${kded}
+	done
+}
+
+src_install() {
+	local kded
+
+	cd ${B}
+	kde3_install
+
+	for kded in kdeui/kdetrayproxy kio/kpasswdserver kio/misc/kpac \
+                kio/misc/kssld kio/misc/kwalletd
+	do
+		cd ${B}/${kded}
+		kde3_install
+	done
+
+	# This is the exception, needed occasionally for LIB_KDED
+	sed -e 's/link=yes/link=no/' -i ${D}/usr/lib/libkdeinit_kded.la
+}
