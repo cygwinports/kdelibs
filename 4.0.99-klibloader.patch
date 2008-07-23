@@ -1,0 +1,74 @@
+--- origsrc/kdelibs-4.0.99/kdecore/tests/klibloadertest.cpp	2008-05-21 06:09:07.000000000 -0500
++++ src/kdelibs-4.0.99/kdecore/tests/klibloadertest.cpp	2008-07-21 20:44:36.015625000 -0500
+@@ -53,7 +53,7 @@
+     const QString library = KLibLoader::findLibrary( s_kgenericFactoryModule );
+     QVERIFY( !library.isEmpty() );
+     const QString libraryPath = QFileInfo( library ).canonicalFilePath();
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     const QString expectedPath = QFileInfo( QDir::currentPath() + "/../../lib/" + s_kgenericFactoryModule + ".dll" ).canonicalFilePath();
+ #else
+     const QString expectedPath = QFileInfo( QDir::currentPath() + "/../../lib/" + s_kgenericFactoryModule + ".so" ).canonicalFilePath();
+--- origsrc/kdelibs-4.0.99/kdecore/util/klibloader.cpp	2008-05-21 06:09:15.000000000 -0500
++++ src/kdelibs-4.0.99/kdecore/util/klibloader.cpp	2008-07-21 21:11:45.125000000 -0500
+@@ -61,8 +61,9 @@
+ 
+ extern QString findLibrary(const QString &name, const KComponentData &cData);
+ 
+-#ifdef Q_OS_WIN
+-// removes "lib" prefix, if present
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
++// on Windows, removes "lib" prefix, if present
++// on Cygwin, replaces "lib" prefix, if present, with "cyg"
+ QString fixLibPrefix(const QString& libname)
+ {
+     int pos = libname.lastIndexOf( '/' );
+@@ -72,11 +73,19 @@
+         QString path = libname.left( pos );
+         if( !file.startsWith( "lib" ) )
+             return libname;
++#ifdef Q_OS_CYGWIN
++        return path + QLatin1String("/cyg") + file.mid( 3 );
++#else
+         return path + '/' + file.mid( 3 );
++#endif
+     }
+     if( !libname.startsWith( "lib" ) )
+         return libname;
++#ifdef Q_OS_CYGWIN
++    return QLatin1String("cyg") + libname.mid( 3 );
++#else
+     return libname.mid( 3 );
++#endif
+ }
+ #endif
+ 
+--- origsrc/kdelibs-4.0.99/kdecore/util/kpluginloader.cpp	2008-05-21 06:09:15.000000000 -0500
++++ src/kdelibs-4.0.99/kdecore/util/kpluginloader.cpp	2008-07-21 20:57:10.296875000 -0500
+@@ -54,7 +54,7 @@
+ 
+ inline QString makeLibName( const QString &libname )
+ {
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     if (!libname.endsWith(".dll"))
+         return libname + ".dll";
+     return libname;
+@@ -73,7 +73,7 @@
+ #endif
+ }
+ 
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+ extern QString fixLibPrefix(const QString& libname);
+ #endif
+ 
+@@ -91,7 +91,7 @@
+     if (QDir::isRelativePath(libname)) {
+         libfile = cData.dirs()->findResource("module", libname);
+         if (libfile.isEmpty()) {
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+             libname = fixLibPrefix(libname);
+ #else
+             if (!hasPrefix)
