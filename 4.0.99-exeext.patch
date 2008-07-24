@@ -1,0 +1,39 @@
+diff -urN origsrc/kdelibs-4.0.99/kdecore/kernel/kstandarddirs.cpp src/kdelibs-4.0.99/kdecore/kernel/kstandarddirs.cpp
+--- origsrc/kdelibs-4.0.99/kdecore/kernel/kstandarddirs.cpp	2008-07-09 08:28:22.000000000 -0500
++++ src/kdelibs-4.0.99/kdecore/kernel/kstandarddirs.cpp	2008-07-23 13:20:25.796875000 -0500
+@@ -430,7 +430,7 @@
+ #endif
+ 
+     QString filename(_filename);
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     if(strcmp(type, "exe") == 0) {
+       if(!filename.endsWith(QLatin1String(".exe")))
+         filename += QLatin1String(".exe");
+@@ -524,7 +524,7 @@
+ #endif
+ 
+     QString filename(_filename);
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     if(strcmp(type, "exe") == 0) {
+       if(!filename.endsWith(QLatin1String(".exe")))
+         filename += QLatin1String(".exe");
+@@ -1137,7 +1137,7 @@
+ {
+     //kDebug(180) << "findExe(" << appname << ", pstr, " << ignoreExecBit << ") called";
+ 
+-#ifdef Q_WS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     QString real_appname = appname + ".exe";
+ #else
+     QString real_appname = appname;
+@@ -1195,7 +1195,7 @@
+ int KStandardDirs::findAllExe( QStringList& list, const QString& appname,
+                                const QString& pstr, SearchOptions options )
+ {
+-#ifdef Q_WS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     QString real_appname = appname + ".exe";
+ #else
+     QString real_appname = appname;

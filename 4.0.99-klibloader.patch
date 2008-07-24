@@ -43,6 +43,55 @@
  }
  #endif
  
+--- origsrc/kdelibs-4.0.99/kdecore/util/klibrary.cpp	2008-05-21 06:09:15.000000000 -0500
++++ src/kdelibs-4.0.99/kdecore/util/klibrary.cpp	2008-07-22 22:10:55.000000000 -0500
+@@ -35,7 +35,7 @@
+ QString findLibrary(const QString &name, const KComponentData &cData)
+ {
+     QString libname = findLibraryInternal(name, cData);
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+     // we don't have 'lib' prefix on windows -> remove it and try again
+     if( libname.isEmpty() )
+     {
+@@ -47,12 +47,20 @@
+       {
+         file = libname.mid( pos + 1 );
+         path = libname.left( pos );
++#ifdef Q_OS_CYGWIN
++        libname = path + QLatin1String("/cyg") + file.mid( 3 );
++#else
+         libname = path + '/' + file.mid( 3 );
++#endif
+       }
+       else
+       {
+         file = libname;
++#ifdef Q_OS_CYGWIN
++        libname = QLatin1String("cyg") + file.mid( 3 );
++#else
+         libname = file.mid( 3 );
++#endif
+       }
+       if( !file.startsWith( "lib" ) )
+           return file;
+@@ -115,11 +123,15 @@
+     t_func func = reinterpret_cast<t_func>(lib->resolveFunction( symname ));
+     if ( !func )
+     {
+-#ifdef Q_OS_WIN
++#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
+         // a backup for cases when developer has set lib prefix for a plugin name (she should not...)
+         if (!factoryname.startsWith("lib"))
++#ifdef Q_OS_CYGWIN
++            return kde3Factory(lib, QByteArray("cyg")+symname.mid(5 /*"init_"*/));
++#else
+             return kde3Factory(lib, QByteArray("lib")+symname.mid(5 /*"init_"*/));
+ #endif
++#endif
+         kDebug(150) << "The library" << lib->fileName() << "does not offer an"
+                     << symname << "function.";
+         return 0;
 --- origsrc/kdelibs-4.0.99/kdecore/util/kpluginloader.cpp	2008-05-21 06:09:15.000000000 -0500
 +++ src/kdelibs-4.0.99/kdecore/util/kpluginloader.cpp	2008-07-21 20:57:10.296875000 -0500
 @@ -54,7 +54,7 @@
