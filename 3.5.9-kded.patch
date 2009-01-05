@@ -1,0 +1,39 @@
+--- origsrc/kdelibs-3.5.9/kdeui/Makefile.am	2007-10-08 04:52:12.000000000 -0500
++++ src/kdelibs-3.5.9/kdeui/Makefile.am	2008-02-20 08:54:09.234375000 -0600
+@@ -18,7 +18,9 @@
+ #    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ #    Boston, MA 02110-1301, USA.
+ 
+-SUBDIRS = . kdetrayproxy tests about
++# kdetrayproxy depends on kded, which isn't built yet
++SUBDIRS = . tests about
++DIST_SUBDIRS = . kdetrayproxy tests about
+ 
+ INCLUDES= -I$(top_srcdir)/kdefx -I$(top_srcdir)/interfaces $(all_includes)
+ 
+--- origsrc/kdelibs-3.5.9/kio/Makefile.am	2005-10-10 10:05:44.000000000 -0500
++++ src/kdelibs-3.5.9/kio/Makefile.am	2008-02-20 08:54:09.437500000 -0600
+@@ -20,7 +20,9 @@
+ 
+ INCLUDES=  -I$(srcdir)/.. $(all_includes) $(SSL_INCLUDES)
+ 
+-SUBDIRS = kssl kio bookmarks kfile . kpasswdserver misc pics tests kioexec httpfilter
++# kpasswdserver depends on kded, which isn't built yet
++SUBDIRS = kssl kio bookmarks kfile . misc pics tests kioexec httpfilter
++DIST_SUBDIRS = kssl kio bookmarks kfile kpasswdserver misc pics tests kioexec httpfilter
+ 
+ lib_LTLIBRARIES = libkio.la
+ 
+--- origsrc/kdelibs-3.5.9/kio/misc/Makefile.am	2005-10-10 10:05:43.000000000 -0500
++++ src/kdelibs-3.5.9/kio/misc/Makefile.am	2008-02-20 08:54:09.546875000 -0600
+@@ -20,7 +20,9 @@
+ 
+ INCLUDES=  -I$(srcdir)/.. -I$(top_srcdir) -I$(srcdir)/../kssl -I../kssl $(all_includes) $(SSL_INCLUDES)
+ 
+-SUBDIRS = . ksendbugmail kpac kdesasl kssld kfile kwalletd kntlm
++# kpac, kssld, and kwalletd depend on kded, which isn't built yet
++SUBDIRS = . ksendbugmail kdesasl kfile kntlm
++DIST_SUBDIRS = ksendbugmail kpac kdesasl kssld kfile kwalletd kntlm
+ 
+ lib_LTLIBRARIES =
+ kdeinit_LTLIBRARIES = kio_uiserver.la

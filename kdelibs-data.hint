@@ -1,7 +1,6 @@
 category: KDE
-requires: cygwin arts kdelibs4 qt3
 external-source: kdelibs
-sdesc: "KDE libraries (support applications)"
+sdesc: "KDE libraries (runtime data)"
 ldesc: "This package includes libraries that are central to the
 development and execution of a KDE program, as well as
 internationalization files for these libraries, misc HTML documentation,

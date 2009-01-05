@@ -1,17 +1,25 @@
 inherit kde3
 
-# the kdeinit modules can be listed with this command:
-# /bin/ls -1 /usr/bin/cygkdeinit_*.dll | sed \
-# -e 's:/usr/bin/cygkdeinit_:\-\-exclude\=\"/usr/lib/kde3/:' \
-# -e 's:\.dll:\.\*\" \\:'
+PATCH_URI="
+	3.5.9-no-undefined.patch
+	3.5.9-kded.patch
+	3.5.9-exeext.patch
+	3.5.9-hasmntopt.patch
+	3.5.9-ltdl-dllexport.patch
+	3.5.9-misc.patch
+	3.5.9-openssl.patch
+"
 
-PKG_NAMES="${PN} ${PN}4 ${PN}-devel ${PN}-doc"
-PKG_HINTS="setup runtime devel doc"
-PKG_CONTENTS[0]="--exclude=cyg*-?.dll --exclude=HTML \
-                 etc/ usr/bin/ usr/lib/libkdeinit_* usr/share/"
-PKG_CONTENTS[1]='--exclude=cygkdeinit_*.dll usr/bin/*.dll usr/lib/kde3/'
-PKG_CONTENTS[2]='--exclude=libkdeinit_* usr/include/ usr/lib/lib*'
-PKG_CONTENTS[3]='usr/share/doc/HTML/'
+PKG_NAMES="${PN} ${PN}4 ${PN}-data ${PN}-devel"
+kdelibs4_CONTENTS="--exclude=checkXML --exclude=dcopidl* --exclude=kconfig_compiler.exe
+                   --exclude=ksvgtopng.exe --exclude=kunittestmodrunner.exe
+                   --exclude=makekdewidgets.exe --exclude=preparetips
+                   usr/bin/ usr/lib/kde3/"
+kdelibs_data_CONTENTS="etc/ usr/share/"
+kdelibs_devel_CONTENTS="usr/bin/checkXML usr/bin/dcopidl*
+                        usr/bin/kconfig_compiler.exe usr/bin/ksvgtopng.exe
+                        usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
+                        usr/bin/preparetips usr/include/ usr/lib/lib*"
 
 src_compile() {
 	local kded
@@ -25,8 +33,8 @@ src_compile() {
 		--disable-dnotify --disable-inotify \
 		--disable-dnssd \
 		--disable-fast-malloc \
-		--disable-libfam \
-		--disable-mitshm \
+		--enable-libfam \
+		--enable-mitshm \
 		--enable-pcre \
 		--without-alsa \
 		--with-aspell --with-hspell \
@@ -34,7 +42,7 @@ src_compile() {
 		--with-jasper --with-libart --with-openexr --with-tiff \
 		--with-libidn \
 		--without-libthai \
-		--with-lua-includes=/usr/include/lua50 \
+		--without-lua \
 		--with-rgbfile=/usr/share/X11/rgb.txt
 
 	for kded in kdeui/kdetrayproxy kio/kpasswdserver kio/misc/kpac \

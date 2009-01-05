@@ -1,0 +1,15 @@
+Libtool convenience libs are built with DLL_EXPORT on Cygwin, but since 
+the rest of libkdecore does not use dllexport decorations, only the ltdl 
+symbols are exported in the latter.
+
+--- origsrc/kdelibs-3.5.10/libltdl/ltdl.c	2008-08-19 15:28:12.000000000 -0500
++++ src/kdelibs-3.5.10/libltdl/ltdl.c	2008-11-19 09:58:03.242989700 -0600
+@@ -76,7 +76,7 @@
+ /* --- WINDOWS SUPPORT --- */
+ 
+ 
+-#ifdef DLL_EXPORT
++#if 0
+ #  define LT_GLOBAL_DATA	__declspec(dllexport)
+ #else
+ #  define LT_GLOBAL_DATA

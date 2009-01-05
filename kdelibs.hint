@@ -1,7 +1,5 @@
 category: KDE
-requires: cygwin arts-devel libX11-devel libXrender-devel libart_lgpl2 libidn-devel qt3-devel
-external-source: kdelibs
-sdesc: "KDE libraries (development)"
+sdesc: "KDE libraries (sources)"
 ldesc: "This package includes libraries that are central to the
 development and execution of a KDE program, as well as
 internationalization files for these libraries, misc HTML documentation,

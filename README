@@ -6,45 +6,44 @@ these libraries, misc HTML documentation, theme modules, and regression
 tests.
 
 Runtime requirements:
-  cygwin-1.5.25-7
-  arts-1.5.9-1
-  libICE6-1.0.4-1
-  libSM6-1.0.3-1
-  libX11_6-1.1.3-1
-  libXext6-1.0.3-1
-  libXrender1-0.9.4-1
-  libart_lgpl2-2.3.20-1
+  cygwin-1.5.25-15
+  libart_lgpl_2_2-2.3.20-2
+  libarts1-1.5.10-1
   libaspell15-0.60.5-1
-  libbz2_1-1.0.3-2
-  libgssapi2-1.0.1-1
+  libbz2_1-1.0.5-2
+  libfam0-0.1.10-2
+  libgssapi2-1.1-1
   libhspell1-1.0-2
-  libidn11-1.3-1
+  libICE6-1.0.4-1
+  libidn11-1.8-1
   libilmbase6-1.0.1-1
-  libjasper1-1.900.1-2
+  libjasper1-1.900.1-3
   libjpeg62-6b-12
   libopenexr6-1.6.1-1
-  libpcre0-7.6-1
+  libpcre0-7.8-1
+  libqt3-3.3.8b-1
+  libSM6-1.0.3-1
   libtiff5-3.8.2-3
-  libxml2-2.6.30-1
-  libxslt-1.1.22-1
-  lua50-5.0.2-1
-  minires-1.01-1
-  openssl-0.9.8g-1
-  qt3-3.3.8-4
-  rgb-1.0.1-1
+  libX11_6-1.1.3-1
+  libXext6-1.0.3-1
+  libxml2-2.7.2-1
+  libXrender1-0.9.4-2
+  libxslt-1.1.24-2
+  minires-1.02-1
+  openssl-0.9.8i-1
+  rgb-1.0.3-1
   zlib-1.2.3-2
 
 Build requirements:
 (besides corresponding devel packages)
-  autoconf2.5-2.61-1
-  automake1.10-1.10-1
-  binutils-20060817-1
-  cygport-0.3.8-1
-  doxygen-1.5.1-1
+  autoconf2.5-2.63-1
+  automake1.10-1.10.1-2
+  binutils-20080624-2
+  cygport-0.4.4-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
   gcc-g++-3.4.4-3
-  libtool1.5-1.5.23a-2
+  libtool-2.2.6a-1
   make-3.81-1
   perl-5.8.8-4
   sed-4.1.5-2
@@ -53,303 +52,29 @@ Canonical website:
   http://www.kde.org/
 
 Canonical download:
-  ftp://ftp.kde.org/pub/kde/stable/3.5.9/src/
+  ftp://ftp.kde.org/pub/kde/stable/3.5.10/src/
 
 -------------------------------------------
 
 Build instructions:
-  unpack kdelibs-3.5.9-X-src.tar.bz2
+  unpack kdelibs-3.5.10-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./kdelibs-3.5.9-X.cygport all
+  cygport ./kdelibs-3.5.10-X.cygport all
 
 This will create:
-  /usr/src/kdelibs-3.5.9-X-src.tar.bz2
-  /usr/src/kdelibs-3.5.9-X.tar.bz2
-  /usr/src/kdelibs-devel-3.5.9-X.tar.bz2
-  /usr/src/kdelibs-doc-3.5.9-X.tar.bz2
-  /usr/src/kdelibs4-3.5.9-X.tar.bz2
+  /usr/src/kdelibs-3.5.10-X-src.tar.bz2
+  /usr/src/kdelibs-data-3.5.10-X.tar.bz2
+  /usr/src/kdelibs-devel-3.5.10-X.tar.bz2
+  /usr/src/kdelibs4-3.5.10-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the packages:
 
-(kdelibs)
-  /etc/xdg/menus/applications.menu
-  /usr/bin/artsmessage.exe
-  /usr/bin/checkXML
-  /usr/bin/cygkdeinit_dcopserver.dll
-  /usr/bin/cygkdeinit_kaddprinterwizard.dll
-  /usr/bin/cygkdeinit_kbuildsycoca.dll
-  /usr/bin/cygkdeinit_kcmshell.dll
-  /usr/bin/cygkdeinit_kconf_update.dll
-  /usr/bin/cygkdeinit_kcookiejar.dll
-  /usr/bin/cygkdeinit_kded.dll
-  /usr/bin/cygkdeinit_kio_http_cache_cleaner.dll
-  /usr/bin/cygkdeinit_kio_uiserver.dll
-  /usr/bin/cygkdeinit_klauncher.dll
-  /usr/bin/cygkdeinit_kmcop.dll
-  /usr/bin/dcop.exe
-  /usr/bin/dcopclient.exe
-  /usr/bin/dcopfind.exe
-  /usr/bin/dcopidl.exe
-  /usr/bin/dcopidl2cpp.exe
-  /usr/bin/dcopidlng
-  /usr/bin/dcopobject.exe
-  /usr/bin/dcopquit.exe
-  /usr/bin/dcopref.exe
-  /usr/bin/dcopserver.exe
-  /usr/bin/dcopserver_shutdown.exe
-  /usr/bin/dcopstart.exe
-  /usr/bin/filesharelist
-  /usr/bin/fileshareset
-  /usr/bin/imagetops
-  /usr/bin/kab2kabc.exe
-  /usr/bin/kaddprinterwizard.exe
-  /usr/bin/kbuildsycoca.exe
-  /usr/bin/kcmshell.exe
-  /usr/bin/kconf_update.exe
-  /usr/bin/kconfig_compiler.exe
-  /usr/bin/kcookiejar.exe
-  /usr/bin/kde-config.exe
-  /usr/bin/kde-menu.exe
-  /usr/bin/kded.exe
-  /usr/bin/kdeinit.exe
-  /usr/bin/kdeinit_shutdown.exe
-  /usr/bin/kdeinit_wrapper.exe
-  /usr/bin/kdesu_stub.exe
-  /usr/bin/kdontchangethehostname.exe
-  /usr/bin/kdostartupconfig.exe
-  /usr/bin/kfile.exe
-  /usr/bin/kfmexec.exe
-  /usr/bin/kgrantpty.exe
-  /usr/bin/khotnewstuff.exe
-  /usr/bin/kinstalltheme.exe
-  /usr/bin/kio_http_cache_cleaner.exe
-  /usr/bin/kio_uiserver.exe
-  /usr/bin/kioexec.exe
-  /usr/bin/kioslave.exe
-  /usr/bin/klauncher.exe
-  /usr/bin/kmailservice.exe
-  /usr/bin/kmcop.exe
-  /usr/bin/kpac_dhcp_helper.exe
-  /usr/bin/ksendbugmail.exe
-  /usr/bin/kshell.exe
-  /usr/bin/kstartupconfig.exe
-  /usr/bin/ksvgtopng.exe
-  /usr/bin/ktelnetservice.exe
-  /usr/bin/ktradertest.exe
-  /usr/bin/kunittestmodrunner.exe
-  /usr/bin/kwrapper.exe
-  /usr/bin/lnusertemp.exe
-  /usr/bin/make_driver_db_lpr.exe
-  /usr/bin/makekdewidgets.exe
-  /usr/bin/meinproc.exe
-  /usr/bin/preparetips
-  /usr/lib/libkdeinit_dcopserver.la
-  /usr/lib/libkdeinit_kaddprinterwizard.la
-  /usr/lib/libkdeinit_kbuildsycoca.la
-  /usr/lib/libkdeinit_kcmshell.la
-  /usr/lib/libkdeinit_kconf_update.la
-  /usr/lib/libkdeinit_kcookiejar.la
-  /usr/lib/libkdeinit_kded.dll.a
-  /usr/lib/libkdeinit_kded.la
-  /usr/lib/libkdeinit_kio_http_cache_cleaner.la
-  /usr/lib/libkdeinit_kio_uiserver.la
-  /usr/lib/libkdeinit_klauncher.la
-  /usr/lib/libkdeinit_kmcop.la
-  /usr/share/applications/kde/kresources.desktop
-  /usr/share/apps/LICENSES/ARTISTIC
-  /usr/share/apps/LICENSES/BSD
-  /usr/share/apps/LICENSES/GPL_V2
-  /usr/share/apps/LICENSES/LGPL_V2
-  /usr/share/apps/LICENSES/QPL_V1.0
-  /usr/share/apps/dcopidlng/*
-  /usr/share/apps/kabc/countrytransl.map
-  /usr/share/apps/kabc/formats/binary.desktop
-  /usr/share/apps/katepart/*
-  /usr/share/apps/kcertpart/kcertpart.rc
-  /usr/share/apps/kcm_componentchooser/kcm_instantmessenger.desktop
-  /usr/share/apps/kcm_componentchooser/kcm_ktexteditor.desktop
-  /usr/share/apps/kconf_update/kcookiescfg.upd
-  /usr/share/apps/kconf_update/kded.upd
-  /usr/share/apps/kconf_update/kdeprintrc.upd
-  /usr/share/apps/kconf_update/kio_help.upd
-  /usr/share/apps/kconf_update/kioslave.upd
-  /usr/share/apps/kconf_update/move_kio_help_cache.sh
-  /usr/share/apps/kconf_update/proxytype.pl
-  /usr/share/apps/kconf_update/useragent.pl
-  /usr/share/apps/kdeprint/*
-  /usr/share/apps/kdeui/*/*
-  /usr/share/apps/kdewidgets/*/*
-  /usr/share/apps/khtml/css/html4.css
-  /usr/share/apps/khtml/css/quirks.css
-  /usr/share/apps/khtml/domain_info
-  /usr/share/apps/khtml/icons/crystalsvg/128x128/actions/bug.png
-  /usr/share/apps/khtml/icons/crystalsvg/16x16/actions/bug.png
-  /usr/share/apps/khtml/icons/crystalsvg/16x16/actions/images_display.png
-  /usr/share/apps/khtml/icons/crystalsvg/16x16/actions/wallet_open.png
-  /usr/share/apps/khtml/icons/crystalsvg/22x22/actions/bug.png
-  /usr/share/apps/khtml/icons/crystalsvg/22x22/actions/images_display.png
-  /usr/share/apps/khtml/icons/crystalsvg/32x32/actions/bug.png
-  /usr/share/apps/khtml/icons/crystalsvg/32x32/actions/images_display.png
-  /usr/share/apps/khtml/icons/crystalsvg/48x48/actions/bug.png
-  /usr/share/apps/khtml/icons/crystalsvg/64x64/actions/bug.png
-  /usr/share/apps/khtml/khtml.rc
-  /usr/share/apps/khtml/khtml_browser.rc
-  /usr/share/apps/khtml/khtml_popupmenu.rc
-  /usr/share/apps/kio_uiserver/icons/crystalsvg/16x16/apps/kio_uiserver.png
-  /usr/share/apps/kjava/icons/crystalsvg/16x16/actions/java.png
-  /usr/share/apps/kjava/kjava.jar
-  /usr/share/apps/kjava/kjava.policy
-  /usr/share/apps/kjava/pluginsinfo
-  /usr/share/apps/knewstuff/types
-  /usr/share/apps/knotify/eventsrc
-  /usr/share/apps/ksgmltools2/*/*
-  /usr/share/apps/kssl/ca-bundle.crt
-  /usr/share/apps/kstyle/*/*/*
-  /usr/share/apps/ktexteditor_docwordcompletion/docwordcompletionui.rc
-  /usr/share/apps/ktexteditor_insertfile/ktexteditor_insertfileui.rc
-  /usr/share/apps/ktexteditor_isearch/ktexteditor_isearchui.rc
-  /usr/share/apps/ktexteditor_kdatatool/ktexteditor_kdatatoolui.rc
-  /usr/share/apps/proxyscout/eventsrc
-  /usr/share/autostart/kab2kabc.desktop
-  /usr/share/config/colors/40.colors
-  /usr/share/config/colors/Rainbow.colors
-  /usr/share/config/colors/Royal.colors
-  /usr/share/config/colors/Web.colors
-  /usr/share/config/ipv6blacklist
-  /usr/share/config/katefiletyperc
-  /usr/share/config/katesyntaxhighlightingrc
-  /usr/share/config/kdebug.areas
-  /usr/share/config/kdebugrc
-  /usr/share/config/kdeprintrc
-  /usr/share/config/khotnewstuffrc
-  /usr/share/config/ksslcalist
-  /usr/share/config/kthemestylerc
-  /usr/share/config/language.codes
-  /usr/share/config/ui/kprintpreviewui.rc
-  /usr/share/config/ui/ui_standards.rc
-  /usr/share/doc/Cygwin/kdelibs-3.5.9.README
-  /usr/share/doc/kdelibs-3.5.9/AUTHORS
-  /usr/share/doc/kdelibs-3.5.9/COPYING
-  /usr/share/doc/kdelibs-3.5.9/COPYING.LIB
-  /usr/share/doc/kdelibs-3.5.9/INSTALL
-  /usr/share/doc/kdelibs-3.5.9/README
-  /usr/share/doc/kdelibs-3.5.9/TODO
-  /usr/share/emoticons/Default/*
-  /usr/share/icons/crystalsvg/*/*/*
-  /usr/share/icons/default.kde
-  /usr/share/icons/hicolor/index.theme
-  /usr/share/locale/all_languages
-  /usr/share/mimelnk/*/*
-  /usr/share/services/bmp.kimgio
-  /usr/share/services/data.protocol
-  /usr/share/services/dds.kimgio
-  /usr/share/services/eps.kimgio
-  /usr/share/services/exr.kimgio
-  /usr/share/services/file.protocol
-  /usr/share/services/ftp.protocol
-  /usr/share/services/ghelp.protocol
-  /usr/share/services/gif.kimgio
-  /usr/share/services/hdr.kimgio
-  /usr/share/services/help.protocol
-  /usr/share/services/http.protocol
-  /usr/share/services/http_cache_cleaner.desktop
-  /usr/share/services/https.protocol
-  /usr/share/services/ico.kimgio
-  /usr/share/services/jp2.kimgio
-  /usr/share/services/jpeg.kimgio
-  /usr/share/services/katepart.desktop
-  /usr/share/services/kbzip2filter.desktop
-  /usr/share/services/kcertpart.desktop
-  /usr/share/services/kded/kcookiejar.desktop
-  /usr/share/services/kded/kdeprintd.desktop
-  /usr/share/services/kded/kdetrayproxy.desktop
-  /usr/share/services/kded/kpasswdserver.desktop
-  /usr/share/services/kded/kssld.desktop
-  /usr/share/services/kded/kwalletd.desktop
-  /usr/share/services/kded/proxyscout.desktop
-  /usr/share/services/kgzipfilter.desktop
-  /usr/share/services/khtml.desktop
-  /usr/share/services/khtmlimage.desktop
-  /usr/share/services/kio_uiserver.desktop
-  /usr/share/services/kjavaappletviewer.desktop
-  /usr/share/services/kmailservice.protocol
-  /usr/share/services/kmcop.desktop
-  /usr/share/services/kmultipart.desktop
-  /usr/share/services/knotify.desktop
-  /usr/share/services/kresources/kabc/dir.desktop
-  /usr/share/services/kresources/kabc/file.desktop
-  /usr/share/services/kresources/kabc/ldapkio.desktop
-  /usr/share/services/kresources/kabc/net.desktop
-  /usr/share/services/kresources/kabc_manager.desktop
-  /usr/share/services/kspell_aspell.desktop
-  /usr/share/services/kspell_hspell.desktop
-  /usr/share/services/kspell_ispell.desktop
-  /usr/share/services/ktexteditor_docwordcompletion.desktop
-  /usr/share/services/ktexteditor_insertfile.desktop
-  /usr/share/services/ktexteditor_isearch.desktop
-  /usr/share/services/ktexteditor_kdatatool.desktop
-  /usr/share/services/metainfo.protocol
-  /usr/share/services/mms.protocol
-  /usr/share/services/mmst.protocol
-  /usr/share/services/mmsu.protocol
-  /usr/share/services/mng.kimgio
-  /usr/share/services/pbm.kimgio
-  /usr/share/services/pcx.kimgio
-  /usr/share/services/pgm.kimgio
-  /usr/share/services/png.kimgio
-  /usr/share/services/pnm.protocol
-  /usr/share/services/ppm.kimgio
-  /usr/share/services/psd.kimgio
-  /usr/share/services/rgb.kimgio
-  /usr/share/services/rlogin.protocol
-  /usr/share/services/rtsp.protocol
-  /usr/share/services/rtspt.protocol
-  /usr/share/services/rtspu.protocol
-  /usr/share/services/shellscript.desktop
-  /usr/share/services/ssh.protocol
-  /usr/share/services/telnet.protocol
-  /usr/share/services/tga.kimgio
-  /usr/share/services/tiff.kimgio
-  /usr/share/services/webdav.protocol
-  /usr/share/services/webdavs.protocol
-  /usr/share/services/xbm.kimgio
-  /usr/share/services/xcf.kimgio
-  /usr/share/services/xpm.kimgio
-  /usr/share/services/xv.kimgio
-  /usr/share/servicetypes/application.desktop
-  /usr/share/servicetypes/browserview.desktop
-  /usr/share/servicetypes/dcopinstantmessenger.desktop
-  /usr/share/servicetypes/dcoptexttospeech.desktop
-  /usr/share/servicetypes/kbytesedit.desktop
-  /usr/share/servicetypes/kcmodule.desktop
-  /usr/share/servicetypes/kcomprfilter.desktop
-  /usr/share/servicetypes/kdatatool.desktop
-  /usr/share/servicetypes/kdedmodule.desktop
-  /usr/share/servicetypes/kfileplugin.desktop
-  /usr/share/servicetypes/kmediaplayer.desktop
-  /usr/share/servicetypes/kmediaplayerengine.desktop
-  /usr/share/servicetypes/kpart.desktop
-  /usr/share/servicetypes/kplugininfo.desktop
-  /usr/share/servicetypes/kpropsdlgplugin.desktop
-  /usr/share/servicetypes/kregexpeditor.desktop
-  /usr/share/servicetypes/kresources_manager.desktop
-  /usr/share/servicetypes/kresources_plugin.desktop
-  /usr/share/servicetypes/krop.desktop
-  /usr/share/servicetypes/krwp.desktop
-  /usr/share/servicetypes/kscan.desktop
-  /usr/share/servicetypes/kspellclient.desktop
-  /usr/share/servicetypes/ktexteditor.desktop
-  /usr/share/servicetypes/ktexteditoreditor.desktop
-  /usr/share/servicetypes/ktexteditorplugin.desktop
-  /usr/share/servicetypes/kurifilterplugin.desktop
-  /usr/share/servicetypes/renamedlgplugin.desktop
-  /usr/share/servicetypes/scriptinterface.desktop
-
 (kdelibs4)
+  /usr/bin/artsmessage.exe
   /usr/bin/cygDCOP-4.dll
   /usr/bin/cygartskde-1.dll
   /usr/bin/cygkabc-1.dll
@@ -361,6 +86,17 @@ Files included in the packages:
   /usr/bin/cygkdecore-4.dll
   /usr/bin/cygkdefakes-4.dll
   /usr/bin/cygkdefx-4.dll
+  /usr/bin/cygkdeinit_dcopserver.dll
+  /usr/bin/cygkdeinit_kaddprinterwizard.dll
+  /usr/bin/cygkdeinit_kbuildsycoca.dll
+  /usr/bin/cygkdeinit_kcmshell.dll
+  /usr/bin/cygkdeinit_kconf_update.dll
+  /usr/bin/cygkdeinit_kcookiejar.dll
+  /usr/bin/cygkdeinit_kded.dll
+  /usr/bin/cygkdeinit_kio_http_cache_cleaner.dll
+  /usr/bin/cygkdeinit_kio_uiserver.dll
+  /usr/bin/cygkdeinit_klauncher.dll
+  /usr/bin/cygkdeinit_kmcop.dll
   /usr/bin/cygkdeprint-4.dll
   /usr/bin/cygkdeprint_management-4.dll
   /usr/bin/cygkdesasl-1.dll
@@ -389,6 +125,55 @@ Files included in the packages:
   /usr/bin/cygkwalletbackend-1.dll
   /usr/bin/cygkwalletclient-1.dll
   /usr/bin/cygvcard-0.dll
+  /usr/bin/dcop.exe
+  /usr/bin/dcopclient.exe
+  /usr/bin/dcopfind.exe
+  /usr/bin/dcopobject.exe
+  /usr/bin/dcopquit.exe
+  /usr/bin/dcopref.exe
+  /usr/bin/dcopserver.exe
+  /usr/bin/dcopserver_shutdown.exe
+  /usr/bin/dcopstart.exe
+  /usr/bin/filesharelist
+  /usr/bin/fileshareset
+  /usr/bin/imagetops
+  /usr/bin/kab2kabc.exe
+  /usr/bin/kaddprinterwizard.exe
+  /usr/bin/kbuildsycoca.exe
+  /usr/bin/kcmshell.exe
+  /usr/bin/kconf_update.exe
+  /usr/bin/kcookiejar.exe
+  /usr/bin/kde-config.exe
+  /usr/bin/kde-menu.exe
+  /usr/bin/kded.exe
+  /usr/bin/kdeinit.exe
+  /usr/bin/kdeinit_shutdown.exe
+  /usr/bin/kdeinit_wrapper.exe
+  /usr/bin/kdesu_stub.exe
+  /usr/bin/kdontchangethehostname.exe
+  /usr/bin/kdostartupconfig.exe
+  /usr/bin/kfile.exe
+  /usr/bin/kfmexec.exe
+  /usr/bin/kgrantpty.exe
+  /usr/bin/khotnewstuff.exe
+  /usr/bin/kinstalltheme.exe
+  /usr/bin/kio_http_cache_cleaner.exe
+  /usr/bin/kio_uiserver.exe
+  /usr/bin/kioexec.exe
+  /usr/bin/kioslave.exe
+  /usr/bin/klauncher.exe
+  /usr/bin/kmailservice.exe
+  /usr/bin/kmcop.exe
+  /usr/bin/kpac_dhcp_helper.exe
+  /usr/bin/ksendbugmail.exe
+  /usr/bin/kshell.exe
+  /usr/bin/kstartupconfig.exe
+  /usr/bin/ktelnetservice.exe
+  /usr/bin/ktradertest.exe
+  /usr/bin/kwrapper.exe
+  /usr/bin/lnusertemp.exe
+  /usr/bin/make_driver_db_lpr.exe
+  /usr/bin/meinproc.exe
   /usr/lib/kde3/cygkatepart.dll
   /usr/lib/kde3/cygkcertpart.dll
   /usr/lib/kde3/cygkdeprint_management_module.dll
@@ -542,7 +327,207 @@ Files included in the packages:
   /usr/lib/kde3/plugins/styles/plastik.dll
   /usr/lib/kde3/plugins/styles/plastik.la
 
+(kdelibs-data)
+  /etc/xdg/menus/applications.menu
+  /usr/share/applications/kde/kresources.desktop
+  /usr/share/apps/LICENSES/ARTISTIC
+  /usr/share/apps/LICENSES/BSD
+  /usr/share/apps/LICENSES/GPL_V2
+  /usr/share/apps/LICENSES/LGPL_V2
+  /usr/share/apps/LICENSES/QPL_V1.0
+  /usr/share/apps/dcopidlng/*
+  /usr/share/apps/kabc/countrytransl.map
+  /usr/share/apps/kabc/formats/binary.desktop
+  /usr/share/apps/katepart/*
+  /usr/share/apps/kcertpart/kcertpart.rc
+  /usr/share/apps/kcm_componentchooser/kcm_instantmessenger.desktop
+  /usr/share/apps/kcm_componentchooser/kcm_ktexteditor.desktop
+  /usr/share/apps/kconf_update/kcookiescfg.upd
+  /usr/share/apps/kconf_update/kded.upd
+  /usr/share/apps/kconf_update/kdeprintrc.upd
+  /usr/share/apps/kconf_update/kio_help.upd
+  /usr/share/apps/kconf_update/kioslave.upd
+  /usr/share/apps/kconf_update/move_kio_help_cache.sh
+  /usr/share/apps/kconf_update/proxytype.pl
+  /usr/share/apps/kconf_update/useragent.pl
+  /usr/share/apps/kdeprint/*
+  /usr/share/apps/kdeui/*/*
+  /usr/share/apps/kdewidgets/*/*
+  /usr/share/apps/khtml/css/html4.css
+  /usr/share/apps/khtml/css/quirks.css
+  /usr/share/apps/khtml/domain_info
+  /usr/share/apps/khtml/icons/crystalsvg/128x128/actions/bug.png
+  /usr/share/apps/khtml/icons/crystalsvg/16x16/actions/bug.png
+  /usr/share/apps/khtml/icons/crystalsvg/16x16/actions/images_display.png
+  /usr/share/apps/khtml/icons/crystalsvg/16x16/actions/wallet_open.png
+  /usr/share/apps/khtml/icons/crystalsvg/22x22/actions/bug.png
+  /usr/share/apps/khtml/icons/crystalsvg/22x22/actions/images_display.png
+  /usr/share/apps/khtml/icons/crystalsvg/32x32/actions/bug.png
+  /usr/share/apps/khtml/icons/crystalsvg/32x32/actions/images_display.png
+  /usr/share/apps/khtml/icons/crystalsvg/48x48/actions/bug.png
+  /usr/share/apps/khtml/icons/crystalsvg/64x64/actions/bug.png
+  /usr/share/apps/khtml/khtml.rc
+  /usr/share/apps/khtml/khtml_browser.rc
+  /usr/share/apps/khtml/khtml_popupmenu.rc
+  /usr/share/apps/kio_uiserver/icons/crystalsvg/16x16/apps/kio_uiserver.png
+  /usr/share/apps/kjava/icons/crystalsvg/16x16/actions/java.png
+  /usr/share/apps/kjava/kjava.jar
+  /usr/share/apps/kjava/kjava.policy
+  /usr/share/apps/kjava/pluginsinfo
+  /usr/share/apps/knewstuff/types
+  /usr/share/apps/knotify/eventsrc
+  /usr/share/apps/ksgmltools2/*/*
+  /usr/share/apps/kssl/ca-bundle.crt
+  /usr/share/apps/kstyle/*/*/*
+  /usr/share/apps/ktexteditor_docwordcompletion/docwordcompletionui.rc
+  /usr/share/apps/ktexteditor_insertfile/ktexteditor_insertfileui.rc
+  /usr/share/apps/ktexteditor_isearch/ktexteditor_isearchui.rc
+  /usr/share/apps/ktexteditor_kdatatool/ktexteditor_kdatatoolui.rc
+  /usr/share/apps/proxyscout/eventsrc
+  /usr/share/autostart/kab2kabc.desktop
+  /usr/share/config/colors/40.colors
+  /usr/share/config/colors/Rainbow.colors
+  /usr/share/config/colors/Royal.colors
+  /usr/share/config/colors/Web.colors
+  /usr/share/config/ipv6blacklist
+  /usr/share/config/katefiletyperc
+  /usr/share/config/katesyntaxhighlightingrc
+  /usr/share/config/kdebug.areas
+  /usr/share/config/kdebugrc
+  /usr/share/config/kdeprintrc
+  /usr/share/config/khotnewstuffrc
+  /usr/share/config/ksslcalist
+  /usr/share/config/kthemestylerc
+  /usr/share/config/language.codes
+  /usr/share/config/ui/kprintpreviewui.rc
+  /usr/share/config/ui/ui_standards.rc
+  /usr/share/doc/kdelibs-3.5.10/AUTHORS
+  /usr/share/doc/kdelibs-3.5.10/COPYING
+  /usr/share/doc/kdelibs-3.5.10/COPYING.LIB
+  /usr/share/doc/kdelibs-3.5.10/INSTALL
+  /usr/share/doc/kdelibs-3.5.10/README
+  /usr/share/doc/kdelibs-3.5.10/TODO
+  /usr/share/emoticons/Default/*
+  /usr/share/icons/crystalsvg/*/*/*
+  /usr/share/icons/default.kde
+  /usr/share/icons/hicolor/index.theme
+  /usr/share/locale/all_languages
+  /usr/share/mimelnk/*/*
+  /usr/share/services/bmp.kimgio
+  /usr/share/services/data.protocol
+  /usr/share/services/dds.kimgio
+  /usr/share/services/eps.kimgio
+  /usr/share/services/exr.kimgio
+  /usr/share/services/file.protocol
+  /usr/share/services/ftp.protocol
+  /usr/share/services/ghelp.protocol
+  /usr/share/services/gif.kimgio
+  /usr/share/services/hdr.kimgio
+  /usr/share/services/help.protocol
+  /usr/share/services/http.protocol
+  /usr/share/services/http_cache_cleaner.desktop
+  /usr/share/services/https.protocol
+  /usr/share/services/ico.kimgio
+  /usr/share/services/jp2.kimgio
+  /usr/share/services/jpeg.kimgio
+  /usr/share/services/katepart.desktop
+  /usr/share/services/kbzip2filter.desktop
+  /usr/share/services/kcertpart.desktop
+  /usr/share/services/kded/kcookiejar.desktop
+  /usr/share/services/kded/kdeprintd.desktop
+  /usr/share/services/kded/kdetrayproxy.desktop
+  /usr/share/services/kded/kpasswdserver.desktop
+  /usr/share/services/kded/kssld.desktop
+  /usr/share/services/kded/kwalletd.desktop
+  /usr/share/services/kded/proxyscout.desktop
+  /usr/share/services/kgzipfilter.desktop
+  /usr/share/services/khtml.desktop
+  /usr/share/services/khtmlimage.desktop
+  /usr/share/services/kio_uiserver.desktop
+  /usr/share/services/kjavaappletviewer.desktop
+  /usr/share/services/kmailservice.protocol
+  /usr/share/services/kmcop.desktop
+  /usr/share/services/kmultipart.desktop
+  /usr/share/services/knotify.desktop
+  /usr/share/services/kresources/kabc/dir.desktop
+  /usr/share/services/kresources/kabc/file.desktop
+  /usr/share/services/kresources/kabc/ldapkio.desktop
+  /usr/share/services/kresources/kabc/net.desktop
+  /usr/share/services/kresources/kabc_manager.desktop
+  /usr/share/services/kspell_aspell.desktop
+  /usr/share/services/kspell_hspell.desktop
+  /usr/share/services/kspell_ispell.desktop
+  /usr/share/services/ktexteditor_docwordcompletion.desktop
+  /usr/share/services/ktexteditor_insertfile.desktop
+  /usr/share/services/ktexteditor_isearch.desktop
+  /usr/share/services/ktexteditor_kdatatool.desktop
+  /usr/share/services/metainfo.protocol
+  /usr/share/services/mms.protocol
+  /usr/share/services/mmst.protocol
+  /usr/share/services/mmsu.protocol
+  /usr/share/services/mng.kimgio
+  /usr/share/services/pbm.kimgio
+  /usr/share/services/pcx.kimgio
+  /usr/share/services/pgm.kimgio
+  /usr/share/services/png.kimgio
+  /usr/share/services/pnm.protocol
+  /usr/share/services/ppm.kimgio
+  /usr/share/services/psd.kimgio
+  /usr/share/services/rgb.kimgio
+  /usr/share/services/rlogin.protocol
+  /usr/share/services/rtsp.protocol
+  /usr/share/services/rtspt.protocol
+  /usr/share/services/rtspu.protocol
+  /usr/share/services/shellscript.desktop
+  /usr/share/services/ssh.protocol
+  /usr/share/services/telnet.protocol
+  /usr/share/services/tga.kimgio
+  /usr/share/services/tiff.kimgio
+  /usr/share/services/webdav.protocol
+  /usr/share/services/webdavs.protocol
+  /usr/share/services/xbm.kimgio
+  /usr/share/services/xcf.kimgio
+  /usr/share/services/xpm.kimgio
+  /usr/share/services/xv.kimgio
+  /usr/share/servicetypes/application.desktop
+  /usr/share/servicetypes/browserview.desktop
+  /usr/share/servicetypes/dcopinstantmessenger.desktop
+  /usr/share/servicetypes/dcoptexttospeech.desktop
+  /usr/share/servicetypes/kbytesedit.desktop
+  /usr/share/servicetypes/kcmodule.desktop
+  /usr/share/servicetypes/kcomprfilter.desktop
+  /usr/share/servicetypes/kdatatool.desktop
+  /usr/share/servicetypes/kdedmodule.desktop
+  /usr/share/servicetypes/kfileplugin.desktop
+  /usr/share/servicetypes/kmediaplayer.desktop
+  /usr/share/servicetypes/kmediaplayerengine.desktop
+  /usr/share/servicetypes/kpart.desktop
+  /usr/share/servicetypes/kplugininfo.desktop
+  /usr/share/servicetypes/kpropsdlgplugin.desktop
+  /usr/share/servicetypes/kregexpeditor.desktop
+  /usr/share/servicetypes/kresources_manager.desktop
+  /usr/share/servicetypes/kresources_plugin.desktop
+  /usr/share/servicetypes/krop.desktop
+  /usr/share/servicetypes/krwp.desktop
+  /usr/share/servicetypes/kscan.desktop
+  /usr/share/servicetypes/kspellclient.desktop
+  /usr/share/servicetypes/ktexteditor.desktop
+  /usr/share/servicetypes/ktexteditoreditor.desktop
+  /usr/share/servicetypes/ktexteditorplugin.desktop
+  /usr/share/servicetypes/kurifilterplugin.desktop
+  /usr/share/servicetypes/renamedlgplugin.desktop
+  /usr/share/servicetypes/scriptinterface.desktop
+
 (kdelibs-devel)
+  /usr/bin/checkXML
+  /usr/bin/dcopidl.exe
+  /usr/bin/dcopidl2cpp.exe
+  /usr/bin/dcopidlng
+  /usr/bin/kconfig_compiler.exe
+  /usr/bin/ksvgtopng.exe
+  /usr/bin/kunittestmodrunner.exe
+  /usr/bin/makekdewidgets.exe
+  /usr/bin/preparetips
   /usr/include/kde/arts/artskde.h
   /usr/include/kde/arts/kartsdispatcher.h
   /usr/include/kde/arts/kartsfloatwatch.h
@@ -1261,6 +1246,18 @@ Files included in the packages:
   /usr/lib/libkdefakes_nonpic.a
   /usr/lib/libkdefx.dll.a
   /usr/lib/libkdefx.la
+  /usr/lib/libkdeinit_dcopserver.la
+  /usr/lib/libkdeinit_kaddprinterwizard.la
+  /usr/lib/libkdeinit_kbuildsycoca.la
+  /usr/lib/libkdeinit_kcmshell.la
+  /usr/lib/libkdeinit_kconf_update.la
+  /usr/lib/libkdeinit_kcookiejar.la
+  /usr/lib/libkdeinit_kded.dll.a
+  /usr/lib/libkdeinit_kded.la
+  /usr/lib/libkdeinit_kio_http_cache_cleaner.la
+  /usr/lib/libkdeinit_kio_uiserver.la
+  /usr/lib/libkdeinit_klauncher.la
+  /usr/lib/libkdeinit_kmcop.la
   /usr/lib/libkdeprint.dll.a
   /usr/lib/libkdeprint.la
   /usr/lib/libkdeprint_management.dll.a
@@ -1320,41 +1317,12 @@ Files included in the packages:
   /usr/lib/libvcard.dll.a
   /usr/lib/libvcard.la
 
-(kdelibs-doc)
-  /usr/share/doc/HTML/en/common/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/dcop/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/dnssd/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/interfaces/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kabc/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kate/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kcmshell/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kdecore/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kded/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kdefx/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kdeprint/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kdesu/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kdeui/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kdoctools/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/khtml/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kimgio/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kinit/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kio/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kioslave/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kjs/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kmdi/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/knewstuff/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kparts/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kresources/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kspell2/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kunittest/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kutils/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/kwallet/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/libkmid/*
-  /usr/share/doc/HTML/en/kdelibs-apidocs/libkscreensaver/*
-
 ------------------
 
 Port Notes:
+
+----- version 3.5.10-1 -----
+Version bump.
 
 ----- version 3.5.9-1 -----
 Version bump.

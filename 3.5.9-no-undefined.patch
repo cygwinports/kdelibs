@@ -1,0 +1,321 @@
+--- origsrc/kdelibs-3.5.10/arts/kde/Makefile.am	2005-09-10 03:26:36.000000000 -0500
++++ src/kdelibs-3.5.10/arts/kde/Makefile.am	2008-11-19 11:24:24.600444700 -0600
+@@ -8,7 +8,7 @@
+                         kartsserver.cpp kdatarequest_impl.cpp kaudioconverter.cc \
+                         kvideowidget.cpp kplayobjectcreator.cc \
+                         kaudiomanagerplay.cpp
+-libartskde_la_LIBADD = $(LIB_KIO) -lqtmcop -lsoundserver_idl
++libartskde_la_LIBADD = $(LIB_KIO) -lqtmcop -lsoundserver_idl -lartsflow
+ libartskde_la_LDFLAGS = $(all_libraries) -no-undefined -version-info 3:0:2
+ libartskde_la_METASOURCES = AUTO
+ libartskde_la_COMPILE_FIRST = artskde.h
+--- origsrc/kdelibs-3.5.9/arts/kde/mcop-dcop/Makefile.am	2005-09-10 03:26:36.000000000 -0500
++++ src/kdelibs-3.5.9/arts/kde/mcop-dcop/Makefile.am	2008-02-20 08:54:08.500000000 -0600
+@@ -7,7 +7,7 @@
+ 
+ kmcop_la_SOURCES = mcopdcopobject.cpp kmcop.cpp kmcop.skel
+ kmcop_la_LIBADD	= ../libartskde.la
+-kmcop_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kmcop_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kmcop_la_METASOURCES = AUTO
+ 
+ noinst_HEADERS = kmcop.h
+--- origsrc/kdelibs-3.5.9/arts/knotify/Makefile.am	2007-01-15 05:34:07.000000000 -0600
++++ src/kdelibs-3.5.9/arts/knotify/Makefile.am	2008-02-20 08:54:08.500000000 -0600
+@@ -9,7 +9,7 @@
+ if include_ARTS
+ knotify_la_LIBADD	= -lsoundserver_idl -lqtmcop $(LIB_KDEUI) $(top_builddir)/arts/kde/libartskde.la
+ endif
+-knotify_la_LDFLAGS = $(all_libraries) -module -avoid-version
++knotify_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ knotify_la_METASOURCES = AUTO
+ 
+ check_PROGRAMS		= knotifytest
+--- origsrc/kdelibs-3.5.9/dcop/Makefile.am	2005-09-10 03:27:23.000000000 -0500
++++ src/kdelibs-3.5.9/dcop/Makefile.am	2008-02-20 08:54:08.562500000 -0600
+@@ -44,7 +44,7 @@
+ libDCOP_la_SOURCES = dcopstub.cpp dcopref.cpp dcopobject.cpp dcopclient.cpp
+ 
+ kdeinit_LTLIBRARIES = dcopserver.la
+-dcopserver_la_LDFLAGS = -module -avoid-version $(all_libraries)
++dcopserver_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
+ dcopserver_la_SOURCES = dcopserver.cpp dcopsignals.cpp
+ dcopserver_la_LIBADD  = libDCOP.la
+ 
+--- origsrc/kdelibs-3.5.9/dnssd/Makefile.am	2005-09-10 03:27:49.000000000 -0500
++++ src/kdelibs-3.5.9/dnssd/Makefile.am	2008-02-20 08:54:08.562500000 -0600
+@@ -15,7 +15,7 @@
+ dnssdinclude_HEADERS = domainbrowser.h query.h remoteservice.h \
+ 	publicservice.h servicebase.h servicebrowser.h settings.h
+ libkdnssd_la_LIBADD = ../kdecore/libkdecore.la $(LIB_DNSSD)
+-libkdnssd_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
++libkdnssd_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0 -no-undefined
+ 
+ #kde_kcfg_DATA = kcm_kdnssd.kcfg
+ 
+--- origsrc/kdelibs-3.5.9/interfaces/ktexteditor/Makefile.am	2005-09-10 03:26:30.000000000 -0500
++++ src/kdelibs-3.5.9/interfaces/ktexteditor/Makefile.am	2008-02-20 08:54:08.656250000 -0600
+@@ -22,7 +22,7 @@
+     texthintinterface.cpp editinterfaceext.cpp variableinterface.cpp templateinterface.cpp
+ 
+ 
+-libktexteditor_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
++libktexteditor_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -no-undefined
+ libktexteditor_la_LIBADD = $(LIB_KPARTS) $(top_builddir)/dcop/libDCOP.la $(top_builddir)/kabc/libkabc.la
+ 
+ ktexteditorinclude_HEADERS = document.h view.h editor.h plugin.h editinterface.h undointerface.h \
+                              selectioninterface.h cursorinterface.h \
+--- origsrc/kdelibs-3.5.9/kabc/vcard/Makefile.am	2005-09-10 03:27:00.000000000 -0500
++++ src/kdelibs-3.5.9/kabc/vcard/Makefile.am	2008-02-20 08:54:08.781250000 -0600
+@@ -7,7 +7,7 @@
+ lib_LTLIBRARIES = libvcard.la
+ 
+ libvcard_la_SOURCES = vCard-all.cpp
+-libvcard_la_LDFLAGS = $(all_libraries)
++libvcard_la_LDFLAGS = $(all_libraries) -no-undefined
+ libvcard_la_LIBADD = $(LIB_KDECORE)
+ 
+ check_PROGRAMS = testwrite testread
+ 
+--- origsrc/kdelibs-3.5.9/kcmshell/Makefile.am	2005-10-10 10:05:27.000000000 -0500
++++ src/kdelibs-3.5.9/kcmshell/Makefile.am	2008-02-20 08:54:08.953125000 -0600
+@@ -26,8 +26,8 @@
+ kdeinit_LTLIBRARIES = kcmshell.la
+ 
+ kcmshell_la_SOURCES = main.cpp main.skel
+-kcmshell_la_LIBADD = ../kutils/libkutils.la
+-kcmshell_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kcmshell_la_LIBADD = ../kutils/libkutils.la $(LIB_KIO) $(LIB_KDEUI) $(LIB_KDECORE) $(LIB_DCOP) $(LIB_QT)
++kcmshell_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ 
+ noinst_HEADERS = main.h
+ 
+--- origsrc/kdelibs-3.5.9/kconf_update/Makefile.am	2005-10-10 10:05:27.000000000 -0500
++++ src/kdelibs-3.5.9/kconf_update/Makefile.am	2008-02-20 08:54:08.968750000 -0600
+@@ -24,7 +24,7 @@
+ 
+ kconf_update_la_SOURCES = kconf_update.cpp
+ kconf_update_la_LIBADD = $(LIB_KDECORE)
+-kconf_update_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kconf_update_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ 
+ METASOURCES = AUTO
+ 
+--- origsrc/kdelibs-3.5.9/kdecore/Makefile.am	2006-10-01 12:33:38.000000000 -0500
++++ src/kdelibs-3.5.9/kdecore/Makefile.am	2008-02-20 08:54:09.000000000 -0600
+@@ -62,7 +62,7 @@
+ 	kdemacros.h kde_file.h ktimezones.h
+ 
+ libkdefakes_la_SOURCES = fakes.c vsnprintf.c
+-libkdefakes_la_LDFLAGS = -version-info 6:0:2
++libkdefakes_la_LDFLAGS = -version-info 6:0:2 -no-undefined
+ libkdefakes_la_LIBADD  = $(LIBSOCKET)
+ 
+ libkdefakes_nonpic_a_SOURCES = fakes_nonpic.c vsnprintf_nonpic.c
+--- origsrc/kdelibs-3.5.9/kded/Makefile.am	2005-10-10 10:06:29.000000000 -0500
++++ src/kdelibs-3.5.9/kded/Makefile.am	2008-02-20 08:54:09.046875000 -0600
+@@ -22,11 +22,11 @@
+ lib_LTLIBRARIES =
+ kdeinit_LTLIBRARIES = kded.la kbuildsycoca.la
+ 
+-kded_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_la_LIBADD = $(LIB_KIO)
+ kded_la_SOURCES = kded.cpp kdedmodule.cpp
+ 
+-kbuildsycoca_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kbuildsycoca_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kbuildsycoca_la_LIBADD = $(LIB_KIO)
+ kbuildsycoca_la_SOURCES = kbuildsycoca.cpp kbuildservicetypefactory.cpp \
+ 				kbuildservicefactory.cpp \
+--- origsrc/kdelibs-3.5.9/kdeprint/Makefile.am	2005-09-10 03:27:43.000000000 -0500
++++ src/kdelibs-3.5.9/kdeprint/Makefile.am	2008-02-20 08:54:09.046875000 -0600
+@@ -12,7 +12,7 @@
+ 
+ kded_kdeprintd_la_SOURCES = kdeprintd.skel kdeprintd.cpp kprintprocess.cpp
+ kded_kdeprintd_la_LIBADD = $(LIB_KIO) $(LIB_KDED)
+-kded_kdeprintd_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_kdeprintd_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ #kded_kdeprintd_la_METASOURCES = AUTO
+ 
+ lib_LTLIBRARIES = libkdeprint.la
+--- origsrc/kdelibs-3.5.9/kdeprint/cups/cupsdconf2/Makefile.am	2005-09-10 03:27:41.000000000 -0500
++++ src/kdelibs-3.5.9/kdeprint/cups/cupsdconf2/Makefile.am	2008-02-20 08:54:09.109375000 -0600
+@@ -14,7 +14,7 @@
+ 			  locationdialog.cpp addressdialog.cpp cups-util.c \
+ 			  qdirmultilineedit.cpp sizewidget.cpp main.cpp
+ cupsdconf_la_METASOURCES = AUTO
+-cupsdconf_la_LDFLAGS = -avoid-version -module $(all_libraries) $(KDE_RPATH)
++cupsdconf_la_LDFLAGS = -module $(all_libraries) $(KDE_PLUGIN)
+ cupsdconf_la_LIBADD = $(LIB_KIO) $(LIB_CUPS)
+ 
+ noinst_HEADERS = cupsdconf.h cupsdpage.h cupsddialog.h cupsdcomment.h cupsdsplash.h \
+--- origsrc/kdelibs-3.5.9/kdeprint/management/Makefile.am	2005-09-10 03:27:42.000000000 -0500
++++ src/kdelibs-3.5.9/kdeprint/management/Makefile.am	2008-02-20 08:54:09.171875000 -0600
+@@ -8,7 +8,7 @@
+ 
+ kaddprinterwizard_la_SOURCES = kaddprinterwizard.cpp
+ kaddprinterwizard_la_LIBADD = libkdeprint_management.la
+-kaddprinterwizard_la_LDFLAGS = -module -avoid-version $(all_libraries) $(KDE_RPATH)
++kaddprinterwizard_la_LDFLAGS = -module $(all_libraries) $(KDE_PLUGIN)
+ 
+ libkdeprint_management_la_SOURCES = \
+ 	kmdbcreator.cpp kmdriverdb.cpp kmdriverdbwidget.cpp \
+--- origsrc/kdelibs-3.5.9/kdeui/kdetrayproxy/Makefile.am	2005-09-10 03:27:45.000000000 -0500
++++ src/kdelibs-3.5.9/kdeui/kdetrayproxy/Makefile.am	2008-02-20 08:54:09.250000000 -0600
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES= -I$(top_srcdir)/kded $(all_includes)
+ kded_kdetrayproxy_la_SOURCES = kdetrayproxy.cpp module.cpp module.skel
+-kded_kdetrayproxy_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_kdetrayproxy_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_kdetrayproxy_la_LIBADD = $(LIB_KDECORE) $(LIB_KDED)
+ 
+ METASOURCES = AUTO
+--- origsrc/kdelibs-3.5.9/khtml/java/dummy/Makefile.am	2005-09-10 03:27:16.000000000 -0500
++++ src/kdelibs-3.5.9/khtml/java/dummy/Makefile.am	2008-02-20 08:54:09.343750000 -0600
+@@ -9,5 +9,5 @@
+ 	echo "}" >> $@
+ 	echo "#endif" >> $@
+ 
+-libkjava_la_LDFLAGS = -version-info 1:0
++libkjava_la_LDFLAGS = -version-info 1:0 -no-undefined
+ 
+--- origsrc/kdelibs-3.5.9/kinit/Makefile.am	2007-10-08 04:52:03.000000000 -0500
++++ src/kdelibs-3.5.9/kinit/Makefile.am	2008-02-20 08:54:09.390625000 -0600
+@@ -55,7 +55,7 @@
+ kwrapper_SOURCES = kwrapper.c
+ kwrapper_LDADD = $(LIBSOCKET)
+ 
+-klauncher_la_LDFLAGS = $(all_libraries) -module -avoid-version
++klauncher_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ klauncher_la_LIBADD = $(LIB_KIO)
+ klauncher_la_SOURCES = klauncher.cpp klauncher_main.cpp autostart.cpp
+ 
+--- origsrc/kdelibs-3.5.9/kio/kpasswdserver/Makefile.am	2005-09-10 03:26:48.000000000 -0500
++++ src/kdelibs-3.5.9/kio/kpasswdserver/Makefile.am	2008-02-20 08:54:09.453125000 -0600
+@@ -9,7 +9,7 @@
+ 
+ kded_kpasswdserver_la_SOURCES = kpasswdserver.cpp kpasswdserver.skel 
+ kded_kpasswdserver_la_METASOURCES = AUTO
+-kded_kpasswdserver_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_kpasswdserver_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_kpasswdserver_la_LIBADD = $(top_builddir)/kwallet/client/libkwalletclient.la $(LIB_KIO) $(LIB_KDED)
+ 
+ include $(top_srcdir)/admin/Doxyfile.am
+--- origsrc/kdelibs-3.5.9/kio/misc/Makefile.am	2005-10-10 10:05:43.000000000 -0500
++++ src/kdelibs-3.5.9/kio/misc/Makefile.am	2008-02-20 08:54:09.546875000 -0600
+@@ -30,7 +30,7 @@
+ 
+ kio_uiserver_la_SOURCES = uiserver.cpp uiserver.skel observer.stub
+ kio_uiserver_la_LIBADD = $(LIB_KIO)
+-kio_uiserver_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kio_uiserver_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ 
+ METASOURCES = AUTO
+ 
+--- origsrc/kdelibs-3.5.9/kio/misc/kpac/Makefile.am	2005-09-10 03:26:47.000000000 -0500
++++ src/kdelibs-3.5.9/kio/misc/kpac/Makefile.am	2008-02-20 08:54:09.609375000 -0600
+@@ -9,7 +9,7 @@
+ 
+ kded_proxyscout_la_SOURCES = proxyscout.skel proxyscout.cpp script.cpp \
+                              downloader.cpp discovery.cpp
+-kded_proxyscout_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_proxyscout_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_proxyscout_la_LIBADD = $(LIB_KIO) $(top_builddir)/kjs/libkjs.la $(LIB_KDED)
+ 
+ kpac_dhcp_helper_SOURCES = kpac_dhcp_helper.c
+--- origsrc/kdelibs-3.5.9/kio/misc/kssld/Makefile.am	2005-10-10 10:05:43.000000000 -0500
++++ src/kdelibs-3.5.9/kio/misc/kssld/Makefile.am	2008-02-20 08:54:09.625000000 -0600
+@@ -20,7 +20,7 @@
+ 
+ kde_module_LTLIBRARIES = kded_kssld.la
+ 
+-kded_kssld_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_kssld_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_kssld_la_LIBADD = $(LIB_KIO) $(LIB_KDED)
+ kded_kssld_la_SOURCES = kssld.cpp kssld.skel
+ 
+--- origsrc/kdelibs-3.5.9/kio/misc/kwalletd/Makefile.am	2005-10-10 10:05:43.000000000 -0500
++++ src/kdelibs-3.5.9/kio/misc/kwalletd/Makefile.am	2008-02-20 08:54:09.625000000 -0600
+@@ -20,7 +20,7 @@
+ 
+ kde_module_LTLIBRARIES = kded_kwalletd.la
+ 
+-kded_kwalletd_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_kwalletd_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_kwalletd_la_LIBADD = $(LIB_KIO) ../../../kwallet/backend/libkwalletbackend.la ../../../kwallet/client/libkwalletclient.la $(LIB_KDED)
+ kded_kwalletd_la_SOURCES = kwalletd.cpp kwalletd.skel ktimeout.cpp kwalletwizard.ui kbetterthankdialogbase.ui
+ 
+--- origsrc/kdelibs-3.5.9/kioslave/http/Makefile.am	2005-10-10 10:05:36.000000000 -0500
++++ src/kdelibs-3.5.9/kioslave/http/Makefile.am	2008-02-20 08:54:09.781250000 -0600
+@@ -20,7 +20,7 @@
+ 
+ kio_http_cache_cleaner_la_SOURCES = http_cache_cleaner.cpp
+ kio_http_cache_cleaner_la_LIBADD  = $(LIB_KIO)
+-kio_http_cache_cleaner_la_LDFLAGS = -module -avoid-version
++kio_http_cache_cleaner_la_LDFLAGS = -module $(KDE_PLUGIN)
+ 
+ noinst_HEADERS = http.h
+ 
+--- origsrc/kdelibs-3.5.9/kioslave/http/kcookiejar/Makefile.am	2005-09-10 03:26:41.000000000 -0500
++++ src/kdelibs-3.5.9/kioslave/http/kcookiejar/Makefile.am	2008-02-20 08:54:09.781250000 -0600
+@@ -12,12 +12,12 @@
+ 
+ kcookiejar_la_SOURCES = main.cpp
+ METASOURCES = AUTO
+-kcookiejar_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kcookiejar_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kcookiejar_la_LIBADD = $(LIB_KDECORE)
+ 
+ kded_kcookiejar_la_SOURCES = kcookiejar.cpp kcookieserver.cpp \
+ 			kcookieserver.skel kcookiewin.cpp 
+-kded_kcookiejar_la_LDFLAGS = $(all_libraries) -module -avoid-version
++kded_kcookiejar_la_LDFLAGS = $(all_libraries) -module $(KDE_PLUGIN)
+ kded_kcookiejar_la_LIBADD = $(LIB_KIO) $(LIB_KDED)
+ 
+ kded_DATA = kcookiejar.desktop
+--- origsrc/kdelibs-3.5.9/kmdi/Makefile.am	2005-09-10 03:26:31.000000000 -0500
++++ src/kdelibs-3.5.9/kmdi/Makefile.am	2008-02-20 08:54:09.859375000 -0600
+@@ -3,7 +3,7 @@
+ INCLUDES = -I$(top_srcdir)/kmdi/res -I$(top_srcdir)/kutils -I$(top_srcdir) -I$(top_srcdir)/kmdi $(all_includes)
+ 
+ lib_LTLIBRARIES = libkmdi.la
+-libkmdi_la_LDFLAGS = $(all_libraries) -version-info 1:0
++libkmdi_la_LDFLAGS = $(all_libraries) -version-info 1:0 -no-undefined
+ libkmdi_la_LIBADD  = $(LIB_KPARTS) $(top_builddir)/kutils/libkutils.la
+ 
+ libkmdi_la_SOURCES = kmdichildarea.cpp kmdichildfrm.cpp kmdichildfrmcaption.cpp \
+--- origsrc/kdelibs-3.5.9/kmdi/kmdi/Makefile.am	2005-09-10 03:26:30.000000000 -0500
++++ src/kdelibs-3.5.9/kmdi/kmdi/Makefile.am	2008-02-20 08:54:09.859375000 -0600
+@@ -1,7 +1,7 @@
+ INCLUDES = -I$(top_srcdir)/kutils -I$(top_srcdir) -I$(top_srcdir)/kmdi $(all_includes)
+ 
+ lib_LTLIBRARIES = libkmdi2.la
+-libkmdi2_la_LDFLAGS = $(all_libraries) -version-info 1:0
++libkmdi2_la_LDFLAGS = $(all_libraries) -version-info 1:0 -no-undefined
+ libkmdi2_la_LIBADD  = $(LIB_KPARTS) $(top_builddir)/kutils/libkutils.la
+ 
+ libkmdi2_la_SOURCES = mainwindow.cpp dockcontainer.cpp toolviewaccessor.cpp guiclient.cpp tabwidget.cpp
+--- origsrc/kdelibs-3.5.9/knewstuff/Makefile.am	2005-09-10 03:27:02.000000000 -0500
++++ src/kdelibs-3.5.9/knewstuff/Makefile.am	2008-02-20 08:54:09.875000000 -0600
+@@ -4,7 +4,7 @@
+ 
+ lib_LTLIBRARIES = libknewstuff.la
+ 
+-libknewstuff_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
++libknewstuff_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0 -no-undefined
+ libknewstuff_la_LIBADD  = $(LIB_KIO)
+ libknewstuff_la_SOURCES = engine.cpp entry.cpp downloaddialog.cpp \
+   uploaddialog.cpp providerdialog.cpp provider.cpp knewstuff.cpp \
+--- origsrc/kdelibs-3.5.9/kunittest/Makefile.am	2005-10-10 10:05:27.000000000 -0500
++++ src/kdelibs-3.5.9/kunittest/Makefile.am	2008-02-20 08:54:10.187500000 -0600
+@@ -3,7 +3,7 @@
+ 
+ lib_LTLIBRARIES = libkunittest.la
+ libkunittest_la_SOURCES = runner.cpp tester.cpp
+-libkunittest_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0:0
++libkunittest_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0:0 -no-undefined
+ libkunittest_la_LIBADD = $(LIB_KDECORE)
+ 
+ libkunittestinclude_HEADERS = runner.h tester.h module.h
