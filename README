@@ -326,9 +326,6 @@ Files included in the packages:
   /usr/lib/kde3/plugins/styles/light.la
   /usr/lib/kde3/plugins/styles/plastik.dll
   /usr/lib/kde3/plugins/styles/plastik.la
-
-(kdelibs-data)
-  /etc/xdg/menus/applications.menu
   /usr/share/applications/kde/kresources.desktop
   /usr/share/apps/LICENSES/ARTISTIC
   /usr/share/apps/LICENSES/BSD
@@ -401,17 +398,8 @@ Files included in the packages:
   /usr/share/config/language.codes
   /usr/share/config/ui/kprintpreviewui.rc
   /usr/share/config/ui/ui_standards.rc
-  /usr/share/doc/kdelibs-3.5.10/AUTHORS
-  /usr/share/doc/kdelibs-3.5.10/COPYING
-  /usr/share/doc/kdelibs-3.5.10/COPYING.LIB
-  /usr/share/doc/kdelibs-3.5.10/INSTALL
-  /usr/share/doc/kdelibs-3.5.10/README
-  /usr/share/doc/kdelibs-3.5.10/TODO
-  /usr/share/emoticons/Default/*
   /usr/share/icons/crystalsvg/*/*/*
   /usr/share/icons/default.kde
-  /usr/share/icons/hicolor/index.theme
-  /usr/share/locale/all_languages
   /usr/share/mimelnk/*/*
   /usr/share/services/bmp.kimgio
   /usr/share/services/data.protocol
@@ -517,6 +505,17 @@ Files included in the packages:
   /usr/share/servicetypes/kurifilterplugin.desktop
   /usr/share/servicetypes/renamedlgplugin.desktop
   /usr/share/servicetypes/scriptinterface.desktop
+
+(kdelibs-data)
+  /etc/xdg/menus/applications.menu
+  /usr/share/locale/all_languages
+  /usr/share/doc/kdelibs-3.5.10/AUTHORS
+  /usr/share/doc/kdelibs-3.5.10/COPYING
+  /usr/share/doc/kdelibs-3.5.10/COPYING.LIB
+  /usr/share/doc/kdelibs-3.5.10/INSTALL
+  /usr/share/doc/kdelibs-3.5.10/README
+  /usr/share/doc/kdelibs-3.5.10/TODO
+  /usr/share/emoticons/Default/*
 
 (kdelibs-devel)
   /usr/bin/checkXML
