@@ -1,16 +1,6 @@
---- origsrc/kdelibs-4.0.99/cmake/modules/FindAutomoc4.cmake	2008-07-09 06:04:04.000000000 -0500
-+++ src/kdelibs-4.0.99/cmake/modules/FindAutomoc4.cmake	2008-07-20 21:42:30.046875000 -0500
-@@ -34,6 +34,7 @@
-                    ${_env_CMAKE_LIBRARY_PATH} ${CMAKE_LIBRARY_PATH} ${CMAKE_SYSTEM_LIBRARY_PATH}
-                    ${CMAKE_INSTALL_PREFIX}
-              NO_DEFAULT_PATH )
-+   find_program(AUTOMOC4_EXECUTABLE NAMES automoc4)
- endif("${KDESupport_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
- 
- 
---- origsrc/kdelibs-4.0.99/cmake/modules/FindKDE4Internal.cmake	2008-07-08 04:54:11.000000000 -0500
-+++ src/kdelibs-4.0.99/cmake/modules/FindKDE4Internal.cmake	2008-07-21 20:04:57.984375000 -0500
-@@ -292,10 +292,10 @@
+--- origsrc/kdelibs-4.1.4/cmake/modules/FindKDE4Internal.cmake	2009-01-06 17:32:45.000000000 -0600
++++ src/kdelibs-4.1.4/cmake/modules/FindKDE4Internal.cmake	2009-01-14 21:29:09.796500000 -0600
+@@ -333,10 +333,10 @@ if (_kdeBootStrapping)
        set(KDE4_MAKEKDEWIDGETS_EXECUTABLE ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets )
     else (WIN32)
        set(LIBRARY_OUTPUT_PATH            ${CMAKE_BINARY_DIR}/lib )
@@ -24,22 +14,16 @@
     endif (WIN32)
  
     set(KDE4_LIB_DIR ${LIBRARY_OUTPUT_PATH}/${CMAKE_CFG_INTDIR})
-@@ -576,18 +576,18 @@
-    _set_fancy(SHARE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/share"           "Base directory for files which go to share/")
-    _set_fancy(BIN_INSTALL_DIR      "${EXEC_INSTALL_PREFIX}/bin"              "The install dir for executables (default ${EXEC_INSTALL_PREFIX}/bin)")
+@@ -634,16 +634,16 @@ else (WIN32)
     _set_fancy(SBIN_INSTALL_DIR     "${EXEC_INSTALL_PREFIX}/sbin"             "The install dir for system executables (default ${EXEC_INSTALL_PREFIX}/sbin)")
--   _set_fancy(LIB_INSTALL_DIR      "${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX}" "The subdirectory relative to the install prefix where libraries will be installed (default is ${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX})")
--   _set_fancy(LIBEXEC_INSTALL_DIR  "${LIB_INSTALL_DIR}/kde4/libexec"         "The subdirectory relative to the install prefix where libraries will be installed (default is ${LIB_INSTALL_DIR}/kde4/libexec)")
+    _set_fancy(LIB_INSTALL_DIR      "${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX}" "The subdirectory relative to the install prefix where libraries will be installed (default is ${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX})")
+    _set_fancy(LIBEXEC_INSTALL_DIR  "${LIB_INSTALL_DIR}/kde4/libexec"         "The subdirectory relative to the install prefix where libraries will be installed (default is ${LIB_INSTALL_DIR}/kde4/libexec)")
 -   _set_fancy(INCLUDE_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/include"         "The subdirectory to the header prefix")
--
--   _set_fancy(PLUGIN_INSTALL_DIR       "${LIB_INSTALL_DIR}/kde4"                "The subdirectory relative to the install prefix where plugins will be installed (default is ${LIB_INSTALL_DIR}/kde4)")
++   _set_fancy(INCLUDE_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/include/kde4"    "The subdirectory to the header prefix")
+ 
+    _set_fancy(PLUGIN_INSTALL_DIR       "${LIB_INSTALL_DIR}/kde4"                "The subdirectory relative to the install prefix where plugins will be installed (default is ${LIB_INSTALL_DIR}/kde4)")
 -   _set_fancy(CONFIG_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/config"         "The config file install dir")
 -   _set_fancy(DATA_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/apps"           "The parent directory where applications can install their data")
-+   _set_fancy(LIB_INSTALL_DIR      "${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX}/kde4/lib" "The subdirectory relative to the install prefix where libraries will be installed (default is ${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX})")
-+   _set_fancy(LIBEXEC_INSTALL_DIR  "${EXEC_INSTALL_PREFIX}/lib/kde4/libexec" "The subdirectory relative to the install prefix where libraries will be installed (default is ${LIB_INSTALL_DIR}/kde4/libexec)")
-+   _set_fancy(INCLUDE_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/include/kde4"    "The subdirectory to the header prefix")
-+
-+   _set_fancy(PLUGIN_INSTALL_DIR       "${EXEC_INSTALL_PREFIX}/lib/kde4"        "The subdirectory relative to the install prefix where plugins will be installed (default is ${LIB_INSTALL_DIR}/kde4)")
 +   _set_fancy(CONFIG_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/kde4/config"    "The config file install dir")
 +   _set_fancy(DATA_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/kde4/apps"      "The parent directory where applications can install their data")
     _set_fancy(HTML_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/doc/HTML"       "The HTML install dir for documentation")
@@ -52,7 +36,7 @@
     _set_fancy(SERVICES_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/kde4/services"  "The install dir for service (desktop, protocol, ...) files")
     _set_fancy(SERVICETYPES_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/kde4/servicetypes" "The install dir for servicestypes desktop files")
     _set_fancy(SOUND_INSTALL_DIR        "${SHARE_INSTALL_PREFIX}/sounds"         "The install dir for sound files")
-@@ -595,13 +595,13 @@
+@@ -651,13 +651,13 @@ else (WIN32)
     _set_fancy(WALLPAPER_INSTALL_DIR    "${SHARE_INSTALL_PREFIX}/wallpapers"     "The install dir for wallpapers")
     _set_fancy(DEMO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/demos"          "The install dir for demos")
     _set_fancy(KCONF_UPDATE_INSTALL_DIR "${DATA_INSTALL_DIR}/kconf_update"       "The kconf_update install dir")
@@ -68,9 +52,21 @@
     _set_fancy(MAN_INSTALL_DIR          "${SHARE_INSTALL_PREFIX}/man"            "The kde man install dir (default ${SHARE_INSTALL_PREFIX}/man/)")
     _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The kde info install dir (default ${SHARE_INSTALL_PREFIX}/info)")
     _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The kde dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")
---- origsrc/kdelibs-4.0.99/cmake/modules/KDE4Macros.cmake	2008-07-08 04:54:11.000000000 -0500
-+++ src/kdelibs-4.0.99/cmake/modules/KDE4Macros.cmake	2008-07-21 15:18:28.625000000 -0500
-@@ -494,6 +494,8 @@
+--- origsrc/kdelibs-4.1.4/cmake/modules/KDE4Defaults.cmake	2009-01-06 17:32:45.000000000 -0600
++++ src/kdelibs-4.1.4/cmake/modules/KDE4Defaults.cmake	2009-01-16 00:46:49.509875000 -0600
+@@ -39,7 +39,7 @@ set(KDE_NON_GENERIC_LIB_SOVERSION "5")
+ # all searchable directories has to be defined by the PATH environment var
+ # to reduce the number of required pathes executables are placed into
+ # the build bin dir 
+-if (WIN32)
++if (WIN32 OR CYGWIN)
+  set (EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+ # set (LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+-endif(WIN32) 
++endif(WIN32 OR CYGWIN) 
+--- origsrc/kdelibs-4.1.4/cmake/modules/KDE4Macros.cmake	2009-01-06 17:32:45.000000000 -0600
++++ src/kdelibs-4.1.4/cmake/modules/KDE4Macros.cmake	2009-01-16 00:40:35.275500000 -0600
+@@ -494,6 +494,8 @@ macro (KDE4_HANDLE_RPATH_FOR_EXECUTABLE 
  
        if (APPLE)
           set(_library_path_variable "DYLD_LIBRARY_PATH")
@@ -79,9 +75,25 @@
        else (APPLE)
           set(_library_path_variable "LD_LIBRARY_PATH")
        endif (APPLE)
---- origsrc/kdelibs-4.0.99/kross/qts/CMakeLists.txt	2008-05-21 06:07:14.000000000 -0500
-+++ src/kdelibs-4.0.99/kross/qts/CMakeLists.txt	2008-07-22 01:12:10.390625000 -0500
-@@ -4,7 +4,6 @@
+@@ -566,13 +568,13 @@ macro (KDE4_ADD_PLUGIN _target_NAME _wit
+ 
+    kde4_handle_rpath_for_library(${_target_NAME})
+ 
+-   if (WIN32)
++   if (WIN32 OR CYGWIN)
+       # for shared libraries/plugins a -DMAKE_target_LIB is required
+       string(TOUPPER ${_target_NAME} _symbol)
+       string(REGEX REPLACE "[^_A-Za-z0-9]" "_" _symbol ${_symbol})
+       set(_symbol "MAKE_${_symbol}_LIB")
+       set_target_properties(${_target_NAME} PROPERTIES DEFINE_SYMBOL ${_symbol})
+-   endif (WIN32)
++   endif (WIN32 OR CYGWIN)
+ 
+ endmacro (KDE4_ADD_PLUGIN _target_NAME _with_PREFIX)
+ 
+--- origsrc/kdelibs-4.1.4/kross/qts/CMakeLists.txt	2009-01-06 17:34:28.000000000 -0600
++++ src/kdelibs-4.1.4/kross/qts/CMakeLists.txt	2009-01-14 21:29:09.859000000 -0600
+@@ -4,7 +4,6 @@ include_directories(${CMAKE_SOURCE_DIR} 
  set(krossqtsplugin_LIB_SRCS plugin.cpp)
  kde4_add_library(krossqtsplugin SHARED ${krossqtsplugin_LIB_SRCS})
  target_link_libraries(krossqtsplugin ${QT_QTUITOOLS_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} krosscore ${QT_QTSCRIPT_LIBRARY})

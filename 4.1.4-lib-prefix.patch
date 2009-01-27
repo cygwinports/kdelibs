@@ -1,0 +1,29 @@
+--- origsrc/kdelibs-4.1.4/kio/kfile/kfiledialog.cpp	2009-01-06 17:35:45.000000000 -0600
++++ src/kdelibs-4.1.4/kio/kfile/kfiledialog.cpp	2009-01-23 14:05:01.138250000 -0600
+@@ -123,14 +123,14 @@ static KAbstractFileModule* fileModule()
+ {
+     if (!s_module) {
+         // TODO fix memleak -- qApp post routine for deleting the module ?
+-        KPluginLoader loader("libkfilemodule");
++        KPluginLoader loader("kfilemodule");
+         KPluginFactory *factory = loader.factory();
+         if (!factory) {
+-            kWarning() << "KFileDialog wasn't able to find libkfilemodule: " << loader.errorString();
++            kWarning() << "KFileDialog wasn't able to find kfilemodule: " << loader.errorString();
+         } else {
+             s_module = factory->create<KAbstractFileModule>();
+             if (!s_module) {
+-                kWarning() << "An error occurred while loading libkfilemodule";
++                kWarning() << "An error occurred while loading kfilemodule";
+             }
+         }
+     }
+@@ -217,7 +217,7 @@ KFileDialog::KFileDialog( const KUrl& st
+                                         // otherwise the sizes for the components are not obeyed (ereslibre)
+     }
+ 
+-    // Dlopen the file widget from libkfilemodule
++    // Dlopen the file widget from kfilemodule
+     QWidget* fileQWidget = fileModule()->createFileWidget(startDir, this);
+     d->w = ::qobject_cast<KAbstractFileWidget *>(fileQWidget);
+ 
