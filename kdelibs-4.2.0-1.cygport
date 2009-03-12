@@ -1,14 +1,14 @@
 inherit kde4
 
 PATCH_URI="
-	4.1.4-cmake.patch
-	4.0.99-exeext.patch
+	4.2.0-cmake.patch
 	4.1.4-kde_export.patch
 	4.0.99-klibloader.patch
 	4.1.4-lib-prefix.patch
 	4.0.99-openssl.patch
 	4.0.99-socklen_t.patch
-	4.1.4-misc.patch
+	4.2.0-misc.patch
+	4.1.4-avoid-drkonqi.patch
 "
 
 PKG_NAMES="${PN} ${PN}5 ${PN}-data ${PN}-devel"

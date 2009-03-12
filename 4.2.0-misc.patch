@@ -1,13 +1,13 @@
---- origsrc/kdelibs-4.1.4/kio/kio/slaveinterface_p.h	2009-01-06 17:35:41.000000000 -0600
-+++ src/kdelibs-4.1.4/kio/kio/slaveinterface_p.h	2009-01-15 21:08:53.338438900 -0600
+--- origsrc/kdelibs-4.2.0/kio/kio/slaveinterface_p.h	2009-01-06 17:35:41.000000000 -0600
++++ src/kdelibs-4.2.0/kio/kio/slaveinterface_p.h	2009-01-15 21:08:53.338438900 -0600
 @@ -21,6 +21,7 @@
  
  #include "global.h"
  #include "connection.h"
 +#include <sys/time.h>
- #include <QTimer>
+ #include <QtCore/QTimer>
+ #include <QtNetwork/QHostInfo>
  
- static const unsigned int max_nums = 8;
 --- origsrc/kdelibs-4.1.4/kpty/kpty.cpp	2009-01-06 17:35:57.000000000 -0600
 +++ src/kdelibs-4.1.4/kpty/kpty.cpp	2009-01-15 17:28:14.447813900 -0600
 @@ -483,7 +483,7 @@ void KPty::login(const char *user, const
@@ -50,19 +50,3 @@
  #define KMAXINT ((int)(~0U >> 1))
  
  /////////////////////////////////////////////////////
---- origsrc/kdelibs-4.1.4/nepomuk/core/resourcefiltermodel.cpp	2009-01-06 17:35:20.000000000 -0600
-+++ src/kdelibs-4.1.4/nepomuk/core/resourcefiltermodel.cpp	2009-01-15 19:54:38.713438900 -0600
-@@ -47,11 +47,13 @@ uint Soprano::qHash( const Soprano::Node
-     return qHash( node.toString() );
- }
- 
-+#if 0
- // @deprecated: just for keeping binary compatibility
- uint qHash( const Soprano::Node& node )
- {
-     return Soprano::qHash( node );
- }
-+#endif
- 
- class Nepomuk::ResourceFilterModel::Private
- {
