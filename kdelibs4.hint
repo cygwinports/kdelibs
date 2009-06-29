@@ -1,5 +1,5 @@
 category: KDE
-requires: cygwin kdelibs-data kde-icons-crystalsvg libarts1 libaspell15 libart_lgpl_2_2 libbz2_1 libfam0 libgssapi2 libhspell1 libidn11 libilmbase6 libjasper1 libjpeg62 libopenexr6 libpcre0 libtiff5 libxml2 libxslt libX11_6 libXext6 libXrender1 minires openssl qt3 rgb zlib
+requires: kdelibs-data kde-icons-crystalsvg libarts1 libaspell15 libart_lgpl_2_2 libbz2_1 libfam0 libgssapi2 libhspell1 libidn11 libilmbase6 libjasper1 libjpeg62 libopenexr6 libpcre0 libtiff5 libxml2 libxslt libX11_6 libXext6 libXrender1 minires openssl qt3 rgb zlib
 external-source: kdelibs
 sdesc: "KDE libraries (runtime)"
 ldesc: "This package includes libraries that are central to the
