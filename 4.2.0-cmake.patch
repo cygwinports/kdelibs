@@ -52,18 +52,6 @@
     _set_fancy(MAN_INSTALL_DIR          "${SHARE_INSTALL_PREFIX}/man"            "The kde man install dir (default ${SHARE_INSTALL_PREFIX}/man/)")
     _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The kde info install dir (default ${SHARE_INSTALL_PREFIX}/info)")
     _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The kde dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")
---- origsrc/kdelibs-4.1.4/cmake/modules/KDE4Defaults.cmake	2009-01-06 17:32:45.000000000 -0600
-+++ src/kdelibs-4.1.4/cmake/modules/KDE4Defaults.cmake	2009-01-16 00:46:49.509875000 -0600
-@@ -39,7 +39,7 @@ set(KDE_NON_GENERIC_LIB_SOVERSION "5")
- # all searchable directories has to be defined by the PATH environment var
- # to reduce the number of required pathes executables are placed into
- # the build bin dir 
--if (WIN32)
-+if (WIN32 OR CYGWIN)
-  set (EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
- # set (LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
--endif(WIN32) 
-+endif(WIN32 OR CYGWIN) 
 --- origsrc/kdelibs-4.1.4/cmake/modules/KDE4Macros.cmake	2009-01-06 17:32:45.000000000 -0600
 +++ src/kdelibs-4.1.4/cmake/modules/KDE4Macros.cmake	2009-01-16 00:40:35.275500000 -0600
 @@ -494,6 +494,8 @@ macro (KDE4_HANDLE_RPATH_FOR_EXECUTABLE 
@@ -75,22 +63,6 @@
        else (APPLE)
           set(_library_path_variable "LD_LIBRARY_PATH")
        endif (APPLE)
-@@ -566,13 +568,13 @@ macro (KDE4_ADD_PLUGIN _target_NAME _wit
- 
-    kde4_handle_rpath_for_library(${_target_NAME})
- 
--   if (WIN32)
-+   if (WIN32 OR CYGWIN)
-       # for shared libraries/plugins a -DMAKE_target_LIB is required
-       string(TOUPPER ${_target_NAME} _symbol)
-       string(REGEX REPLACE "[^_A-Za-z0-9]" "_" _symbol ${_symbol})
-       set(_symbol "MAKE_${_symbol}_LIB")
-       set_target_properties(${_target_NAME} PROPERTIES DEFINE_SYMBOL ${_symbol})
--   endif (WIN32)
-+   endif (WIN32 OR CYGWIN)
- 
- endmacro (KDE4_ADD_PLUGIN _target_NAME _with_PREFIX)
- 
 --- origsrc/kdelibs-4.1.4/kross/qts/CMakeLists.txt	2009-01-06 17:34:28.000000000 -0600
 +++ src/kdelibs-4.1.4/kross/qts/CMakeLists.txt	2009-01-14 21:29:09.859000000 -0600
 @@ -4,7 +4,6 @@ include_directories(${CMAKE_SOURCE_DIR} 
@@ -101,3 +73,14 @@
  
  install(TARGETS krossqtsplugin DESTINATION ${PLUGIN_INSTALL_DIR}/plugins/script)
  
+--- origsrc/kdelibs-4.2.4/cmake/modules/SIPMacros.cmake	2009-01-01 10:28:01.000000000 -0600
++++ src/kdelibs-4.2.4/cmake/modules/SIPMacros.cmake	2009-07-01 17:12:02.006660000 -0500
+@@ -103,7 +103,7 @@ MACRO(ADD_SIP_PYTHON_MODULE MODULE_NAME 
+         DEPENDS ${_abs_module_sip} ${SIP_EXTRA_FILES_DEPEND}
+     )
+     
+-    ADD_LIBRARY(${_logical_name} SHARED ${_sip_output_files} )
++    ADD_LIBRARY(${_logical_name} MODULE ${_sip_output_files} )
+     TARGET_LINK_LIBRARIES(${_logical_name} ${PYTHON_LIBRARY})
+     TARGET_LINK_LIBRARIES(${_logical_name} ${EXTRA_LINK_LIBRARIES})
+     SET_TARGET_PROPERTIES(${_logical_name} PROPERTIES PREFIX "" OUTPUT_NAME ${_child_module_name})

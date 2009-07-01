@@ -1,0 +1,11 @@
+--- origsrc/kdelibs-4.2.4/kio/kfile/kpropertiesdialog.cpp	2009-05-28 14:22:21.000000000 -0500
++++ src/kdelibs-4.2.4/kio/kfile/kpropertiesdialog.cpp	2009-06-03 10:18:10.800034800 -0500
+@@ -1766,7 +1766,7 @@ KFilePermissionsPropsPlugin::KFilePermis
+   if (user != 0L)
+     strUser = user->pw_name;
+ 
+-#ifdef Q_OS_UNIX
++#if defined(Q_OS_UNIX) && !defined(Q_OS_CYGWIN)
+     // pick the groups to which the user belongs
+     int groupCount = 0;
+ #ifdef Q_OS_MAC

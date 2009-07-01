@@ -1,0 +1,70 @@
+inherit kde4
+
+PATCH_URI="
+	mirror://portage/kde-base/${PN}/files/4.2.4-fixPopupForPlasmaboard.patch
+	mirror://portage/kde-base/${PN}/files/4.2.4-CVE-2009-1690.patch
+	4.2.0-cmake.patch
+	4.0.99-klibloader.patch
+	4.2.4-lib-prefix.patch
+	4.0.99-openssl.patch
+	4.0.99-socklen_t.patch
+	4.2.0-misc.patch
+	4.2.4-getgrouplist.patch
+	4.2.4-klocale.patch
+	4.2.4-xdg-menu-prefix.patch
+"
+
+PKG_NAMES="${PN} libkdecore5 libkdecore-data libkdecore-devel" # libkdecore-doc"
+libkdecore5_CONTENTS="--exclude=checkXML --exclude=kconfig_compiler.exe
+                      --exclude=kunittestmodrunner.exe --exclude=makekdewidgets.exe
+                      --exclude=preparetips etc/xdg/ usr/bin/ usr/lib/kde4/
+                      usr/share/dbus-1/ usr/share/kde4/ usr/share/man/man8/"
+libkdecore_data_CONTENTS="--exclude=kdelibs-apidocs
+                          etc/postinstall/ usr/share/doc/HTML/ usr/share/icons/
+                          usr/share/locale/ usr/share/man/man7/ usr/share/mime/"
+libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
+                           usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
+                           usr/bin/preparetips usr/include/ usr/lib/lib*
+                           usr/share/man/man1/"
+#libkdecore_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
+
+CYGCMAKE_ARGS="
+	-DKDE_DEFAULT_HOME=.kde4
+	-DWITH_ACL=NO
+	-DWITH_ASPELL=YES
+	-DWITH_BZip2=YES
+	-DWITH_ENCHANT=YES
+	-DWITH_FAM=YES
+	-DWITH_GSSAPI=NO
+	-DWITH_HSPELL=NO
+	-DWITH_Jasper=YES
+	-DWITH_Libintl=YES
+	-DWITH_OpenEXR=YES
+	-DWITH_OpenGL=YES
+	-DWITH_OpenSSL=YES
+	-DWITH_Soprano=YES
+"
+
+DIFF_EXCLUDES="CMakeCache.txt cmake.check_cache"
+
+src_compile() {
+	cd ${B}
+	kde4_compile
+
+#	cd ${B}/doc
+#	QTDOCDIR=${QT4_DATADIR}/doc/html ${S}/doc/api/doxygen.sh ${S}
+}
+
+src_install() {
+	cd ${B}
+	kde4_install
+
+	# fix collisions with gnome-menus, kdelibs-3.x
+	# requires 4.2.4-xdg-menu-prefix.patch
+	mv ${D}/etc/xdg/menus/{,kde4-}applications.menu
+
+#	inform "Installing API documentation, may take some time..."
+#	dodir /usr/share/doc/HTML/en/
+#	cp -r doc/kdelibs-${PV}-apidocs ${D}/usr/share/doc/HTML/en/kdelibs-apidocs
+#	inform "Done."
+}

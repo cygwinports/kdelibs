@@ -6,46 +6,46 @@ these libraries, misc HTML documentation, theme modules, and regression
 tests.
 
 Runtime requirements:
-  cygwin-1.5.25-15
-  libart_lgpl_2_2-2.3.20-2
-  libarts1-1.5.10-1
+  cygwin-1.7.0-48
+  iceauth
+  libart_lgpl_2_2-2.3.20-10
+  libarts1-1.5.10-10
   libaspell15-0.60.5-1
-  libbz2_1-1.0.5-2
-  libfam0-0.1.10-2
-  libgssapi2-1.1-1
-  libhspell1-1.0-2
-  libICE6-1.0.4-1
-  libidn11-1.8-1
-  libilmbase6-1.0.1-1
-  libjasper1-1.900.1-3
-  libjpeg62-6b-12
-  libopenexr6-1.6.1-1
-  libpcre0-7.8-1
-  libqt3-3.3.8b-1
-  libSM6-1.0.3-1
-  libtiff5-3.8.2-3
-  libX11_6-1.1.3-1
-  libXext6-1.0.3-1
-  libxml2-2.7.2-1
-  libXrender1-0.9.4-2
-  libxslt-1.1.24-2
-  minires-1.02-1
-  openssl-0.9.8i-1
+  libbz2_1-1.0.5-10
+  libgcc1-4.3.2-2
+  libfam0-0.1.10-10
+  libICE6-1.0.4-10
+  libidn11-1.9-1
+  libilmbase6-1.0.1-10
+  libjasper1-1.900.1-1
+  libjpeg62-6b-20
+  libopenexr6-1.6.1-10
+  libpcre0-7.9-1
+  libqt3-3.3.8b-11
+  libSM6-1.1.0-10
+  libstdc++6-4.3.2-2
+  libtiff5-3.8.2-10
+  libX11_6-1.2-10
+  libXext6-1.0.5-10
+  libxml2-2.7.3-10
+  libXrender1-0.9.4-10
+  libxslt-1.1.24-10
+  openssl-0.9.8k-2
   rgb-1.0.3-1
-  zlib-1.2.3-2
+  zlib0-1.2.3-10
 
 Build requirements:
 (besides corresponding devel packages)
-  autoconf2.5-2.63-1
-  automake1.10-1.10.1-2
+  autoconf2.5-2.63-10
+  automake1.10-1.10.1-10
   binutils-20080624-2
-  cygport-0.4.4-1
-  gawk-3.1.6-1
-  gcc-core-3.4.4-3
-  gcc-g++-3.4.4-3
-  libtool-2.2.6a-1
-  make-3.81-1
-  perl-5.8.8-4
+  cygport-0.9.6-1
+  gawk-3.1.6-2
+  gcc4-core-4.3.2-2
+  gcc4-g++-4.3.2-2
+  libtool-2.2.7a-12
+  make-3.81-2
+  perl-5.10.0-5
   sed-4.1.5-2
 
 Canonical website:
@@ -142,6 +142,7 @@ Files included in the packages:
   /usr/bin/kbuildsycoca.exe
   /usr/bin/kcmshell.exe
   /usr/bin/kconf_update.exe
+  /usr/bin/kconf_update.exe.manifest
   /usr/bin/kcookiejar.exe
   /usr/bin/kde-config.exe
   /usr/bin/kde-menu.exe
@@ -151,12 +152,12 @@ Files included in the packages:
   /usr/bin/kdeinit_wrapper.exe
   /usr/bin/kdesu_stub.exe
   /usr/bin/kdontchangethehostname.exe
-  /usr/bin/kdostartupconfig.exe
   /usr/bin/kfile.exe
   /usr/bin/kfmexec.exe
   /usr/bin/kgrantpty.exe
   /usr/bin/khotnewstuff.exe
   /usr/bin/kinstalltheme.exe
+  /usr/bin/kinstalltheme.exe.manifest
   /usr/bin/kio_http_cache_cleaner.exe
   /usr/bin/kio_uiserver.exe
   /usr/bin/kioexec.exe
@@ -167,9 +168,7 @@ Files included in the packages:
   /usr/bin/kpac_dhcp_helper.exe
   /usr/bin/ksendbugmail.exe
   /usr/bin/kshell.exe
-  /usr/bin/kstartupconfig.exe
   /usr/bin/ktelnetservice.exe
-  /usr/bin/ktradertest.exe
   /usr/bin/kwrapper.exe
   /usr/bin/lnusertemp.exe
   /usr/bin/make_driver_db_lpr.exe
@@ -507,14 +506,13 @@ Files included in the packages:
   /usr/share/servicetypes/scriptinterface.desktop
 
 (kdelibs-data)
-  /etc/xdg/menus/applications.menu
+  /etc/xdg/menus/kde-applications.menu
   /usr/share/locale/all_languages
-  /usr/share/doc/kdelibs-3.5.10/AUTHORS
-  /usr/share/doc/kdelibs-3.5.10/COPYING
-  /usr/share/doc/kdelibs-3.5.10/COPYING.LIB
-  /usr/share/doc/kdelibs-3.5.10/INSTALL
-  /usr/share/doc/kdelibs-3.5.10/README
-  /usr/share/doc/kdelibs-3.5.10/TODO
+  /usr/share/doc/kdelibs/AUTHORS
+  /usr/share/doc/kdelibs/COPYING
+  /usr/share/doc/kdelibs/COPYING.LIB
+  /usr/share/doc/kdelibs/README
+  /usr/share/doc/kdelibs/TODO
   /usr/share/emoticons/Default/*
 
 (kdelibs-devel)
@@ -1320,36 +1318,8 @@ Files included in the packages:
 
 Port Notes:
 
------ version 3.5.10-1 -----
-Version bump.
-
------ version 3.5.9-1 -----
-Version bump.
-
------ version 3.5.8-2 -----
-Rebuilt without FAM support due to excessive CPU usage.
-
------ version 3.5.8-1 -----
-Version bump.
-Enabled FAM and Kerberos V support.
-
------ version 3.5.7-1 -----
-Version bump.
-
------ version 3.5.6-1 -----
-Version bump.
-
------ version 3.5.5-1 -----
-Version bump.
-
------ version 3.5.4-1 -----
-Version bump.
-
------ version 3.5.3-1 -----
-Version bump.
-
------ version 3.4.3-1 -----
-Initial release for Cygwin.
+----- version 3.5.10-10 -----
+Initial release for Cygwin 1.7.
 
 
 Cygwin port maintained by:

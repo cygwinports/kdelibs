@@ -1,0 +1,13 @@
+Cygwin specific; requires corresponding mv during src_install()
+
+--- origsrc/kdelibs-4.2.4/kded/kbuildsycoca.cpp	2009-02-26 08:18:32.000000000 -0600
++++ src/kdelibs-4.2.4/kded/kbuildsycoca.cpp	2009-06-04 10:33:32.648558800 -0500
+@@ -307,7 +307,7 @@ bool KBuildSycoca::build()
+      connect(g_vfolder, SIGNAL(newService(const QString &, KService::Ptr *)),
+              this, SLOT(slotCreateEntry(const QString &, KService::Ptr *)));
+ 
+-     VFolderMenu::SubMenu *kdeMenu = g_vfolder->parseMenu("applications.menu", true);
++     VFolderMenu::SubMenu *kdeMenu = g_vfolder->parseMenu("kde4-applications.menu", true);
+ 
+      KServiceGroup::Ptr entry = g_bsgf->addNew("/", kdeMenu->directoryFile, KServiceGroup::Ptr(), false);
+      entry->setLayoutInfo(kdeMenu->layoutList);

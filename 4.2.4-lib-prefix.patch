@@ -1,0 +1,15 @@
+KDE4 plugins with the "lib" prefix should not use the "cyg" prefix on Cygwin,
+as the plugin name must exactly match the name of its init_ function.
+e.g. cygkhtmlpart.dll with init_libkhtmlpart() will crash when loaded.
+
+--- origsrc/kdelibs-4.2.4/cmake/modules/KDE4Macros.cmake	2009-06-02 20:11:06.920075100 -0500
++++ src/kdelibs-4.2.4/cmake/modules/KDE4Macros.cmake	2009-06-04 11:11:00.614135100 -0500
+@@ -567,6 +567,8 @@ macro (KDE4_ADD_PLUGIN _target_NAME _wit
+ 
+    if (_first_SRC)
+       set_target_properties(${_target_NAME} PROPERTIES PREFIX "")
++   else (_first_SRC)
++      set_target_properties(${_target_NAME} PROPERTIES PREFIX "lib")
+    endif (_first_SRC)
+ 
+    if (WIN32 OR CYGWIN)

@@ -28,25 +28,3 @@
      gettimeofday(&l_struct.ut_tv, 0);
  # else
      l_struct.ut_time = time(0);
-@@ -562,7 +562,7 @@ void KPty::logout()
- #else
-     Q_D(KPty);
- 
--    const char *str_ptr = d->ttyName.data();
-+    char *str_ptr = d->ttyName.data();
-     if (!memcmp(str_ptr, "/dev/", 5))
-         str_ptr += 5;
- # ifdef __GLIBC__
---- origsrc/kdelibs-4.1.4/kpty/kptydevice.cpp	2009-01-06 17:35:57.000000000 -0600
-+++ src/kdelibs-4.1.4/kpty/kptydevice.cpp	2009-01-15 17:29:32.510313900 -0600
-@@ -42,6 +42,10 @@
- # include <sys/time.h>
- #endif
- 
-+#ifdef __CYGWIN__
-+#define FIONREAD TIOCINQ
-+#endif
-+
- #define KMAXINT ((int)(~0U >> 1))
- 
- /////////////////////////////////////////////////////

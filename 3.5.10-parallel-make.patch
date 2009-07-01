@@ -1,3 +1,14 @@
+--- origsrc/kdelibs-3.5.10/admin/am_edit	2008-08-19 15:28:39.000000000 -0500
++++ src/kdelibs-3.5.10/admin/am_edit	2009-06-30 23:55:14.515818500 -0500
+@@ -968,7 +968,7 @@ sub tag_KDEINIT()
+ 
+                 $lines .= "${kdeinit}_LDFLAGS = \$(KDE_RPATH) -no-undefined \$(all_libraries)\n";
+                 $lines .= "${kdeinit}_LDADD = libkdeinit_${kdeinit}.la\n";
+-                $lines .= "${kdeinit}_DEPENDENCIES = libkdeinit_${kdeinit}.la\n";
++                $lines .= "${kdeinit}_DEPENDENCIES = libkdeinit_${kdeinit}.la ${kdeinit}.la\n";
+ 
+                 $target_adds{"${kdeinit}\$(EXEEXT)"} =
+                           "\$(${kdeinit}_OBJECTS) \$(${kdeinit}_DEPENDENCIES)\n" .
 --- origsrc/kdelibs-3.5.9/kdewidgets/Makefile.am	2005-10-10 10:05:44.000000000 -0500
 +++ src/kdelibs-3.5.9/kdewidgets/Makefile.am	2008-02-20 08:54:09.250000000 -0600
 @@ -33,7 +33,7 @@
