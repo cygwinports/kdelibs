@@ -1,7 +1,7 @@
 category: KDE
-requires: kdelibs4 kdelibs-data libarts-devel libart_lgpl_2-devel libICE-devel libidn-devel libjpeg-devel pcre-devel libqt3-devel libSM-devel libX11-devel libXext-devel libXrender-devel minires-devel zlib
+requires: libkdecore4 libarts-devel libart_lgpl_2-devel libICE-devel libidn-devel libjpeg-devel libpcre-devel libqt3-devel libSM-devel libX11-devel libXext-devel libXrender-devel zlib-devel
 external-source: kdelibs
-sdesc: "KDE libraries (development)"
+sdesc: "KDE3 libraries (development)"
 ldesc: "This package includes libraries that are central to the
 development and execution of a KDE program, as well as
 internationalization files for these libraries, misc HTML documentation,

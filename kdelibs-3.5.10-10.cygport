@@ -14,29 +14,29 @@ PATCH_URI="
 	mirror://portage/kde-base/${PN}/files/${P}-khtml.patch
 	3.5.9-no-undefined.patch
 	3.5.9-kded.patch
-	3.5.9-exeext.patch
+	3.5.10-parallel-make.patch
 	3.5.9-ltdl-dllexport.patch
 	3.5.9-openssl.patch
 "
 
-PKG_NAMES="${PN} kde-icons-crystalsvg libkdecore4 libkdecore-data libkdecore-devel"
+PKG_NAMES="${PN} kde-icons-crystalsvg libkdecore4 libkdecore4-devel"
 libkdecore4_CONTENTS="--exclude=checkXML --exclude=dcopidl* --exclude=kconfig_compiler.exe
                       --exclude=ksvgtopng.exe --exclude=kunittestmodrunner.exe
                       --exclude=makekdewidgets.exe --exclude=preparetips
                       --exclude=ktradertest.exe --exclude=*startupconfig.exe
                       etc/xdg/ usr/bin/ usr/lib/kde3/ usr/share/applications/
-                      usr/share/apps/ usr/share/config/ usr/share/mimelnk/
+                      usr/share/apps/ usr/share/autostart/ usr/share/config/
+                      usr/share/doc/Cygwin/ usr/share/emoticons/
+                      usr/share/icons/default.kde usr/share/mimelnk/
                       usr/share/services/ usr/share/servicetypes/"
 kde_icons_crystalsvg_CONTENTS="usr/share/icons/crystalsvg/"
-libkdecore_data_CONTENTS="etc/postinstall/ usr/share/autostart/ usr/share/doc/ usr/share/emoticons/
-                          usr/share/icons/default.kde usr/share/locale/"
-libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/dcopidl*
-                           usr/bin/kconfig_compiler.exe usr/bin/ksvgtopng.exe
-                           usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
-                           usr/bin/preparetips usr/include/ usr/lib/lib*
-                           usr/share/apps/dcopidlng/"
+libkdecore4_devel_CONTENTS="usr/bin/dcopidl* usr/bin/kconfig_compiler.exe
+                            usr/bin/makekdewidgets.exe
+                            usr/include/ usr/lib/lib* usr/share/apps/dcopidlng/"
 # conflicts with KDE4
-PKG_IGNORE="usr/bin/ktradertest.exe usr/bin/*startupconfig.exe"
+PKG_IGNORE="usr/bin/checkXML usr/bin/ktradertest.exe usr/bin/ksvgtopng.exe
+            usr/bin/kunittestmodrunner.exe usr/bin/*startupconfig.exe
+            usr/bin/preparetips usr/share/locale/all_languages"
 
 src_compile() {
 	local kded
@@ -88,4 +88,7 @@ src_install() {
 
 	# This is the exception, needed for LIB_KDED
 	sed -e 's/link=yes/link=no/' -i ${D}/usr/lib/libkdeinit_kded.la
+
+	# conflicts with KDE4
+	rm -fr ${D}/usr/share/doc/HTML/
 }

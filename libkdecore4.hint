@@ -1,0 +1,8 @@
+category: KDE
+requires: kde-icons-crystalsvg libarts1 libaspell15 libart_lgpl_2_2 libbz2_1 libfam0 libgcc1 libidn11 libilmbase6 libjasper1 libjpeg62 libopenexr6 libpcre0 libqt3 libstdc++6 libtiff5 libxml2 libxslt libX11_6 libXext6 libXrender1 openssl rgb zlib0
+external-source: kdelibs
+sdesc: "KDE3 libraries (runtime)"
+ldesc: "This package includes libraries that are central to the
+development and execution of a KDE program, as well as
+internationalization files for these libraries, misc HTML documentation,
+theme modules, and regression tests."

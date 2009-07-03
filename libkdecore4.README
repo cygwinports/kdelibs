@@ -6,7 +6,7 @@ these libraries, misc HTML documentation, theme modules, and regression
 tests.
 
 Runtime requirements:
-  cygwin-1.7.0-48
+  cygwin-1.7.0-50
   iceauth
   libart_lgpl_2_2-2.3.20-10
   libarts1-1.5.10-10
@@ -43,7 +43,7 @@ Build requirements:
   gawk-3.1.6-2
   gcc4-core-4.3.2-2
   gcc4-g++-4.3.2-2
-  libtool-2.2.7a-12
+  libtool-2.2.7a-13
   make-3.81-2
   perl-5.10.0-5
   sed-4.1.5-2
@@ -65,15 +65,15 @@ Build instructions:
 
 This will create:
   /usr/src/kdelibs-3.5.10-X-src.tar.bz2
-  /usr/src/kdelibs-data-3.5.10-X.tar.bz2
-  /usr/src/kdelibs-devel-3.5.10-X.tar.bz2
-  /usr/src/kdelibs4-3.5.10-X.tar.bz2
+  /usr/src/libkdecore4-3.5.10-X.tar.bz2
+  /usr/src/libkdecore4-devel-3.5.10-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the packages:
+Files included in the binary packages:
 
-(kdelibs4)
+(libkdecore4)
+  /etc/xdg/menus/kde-applications.menu
   /usr/bin/artsmessage.exe
   /usr/bin/cygDCOP-4.dll
   /usr/bin/cygartskde-1.dll
@@ -397,6 +397,7 @@ Files included in the packages:
   /usr/share/config/language.codes
   /usr/share/config/ui/kprintpreviewui.rc
   /usr/share/config/ui/ui_standards.rc
+  /usr/share/emoticons/Default/*
   /usr/share/icons/crystalsvg/*/*/*
   /usr/share/icons/default.kde
   /usr/share/mimelnk/*/*
@@ -505,26 +506,12 @@ Files included in the packages:
   /usr/share/servicetypes/renamedlgplugin.desktop
   /usr/share/servicetypes/scriptinterface.desktop
 
-(kdelibs-data)
-  /etc/xdg/menus/kde-applications.menu
-  /usr/share/locale/all_languages
-  /usr/share/doc/kdelibs/AUTHORS
-  /usr/share/doc/kdelibs/COPYING
-  /usr/share/doc/kdelibs/COPYING.LIB
-  /usr/share/doc/kdelibs/README
-  /usr/share/doc/kdelibs/TODO
-  /usr/share/emoticons/Default/*
-
-(kdelibs-devel)
-  /usr/bin/checkXML
+(libkdecore4-devel)
   /usr/bin/dcopidl.exe
   /usr/bin/dcopidl2cpp.exe
   /usr/bin/dcopidlng
   /usr/bin/kconfig_compiler.exe
-  /usr/bin/ksvgtopng.exe
-  /usr/bin/kunittestmodrunner.exe
   /usr/bin/makekdewidgets.exe
-  /usr/bin/preparetips
   /usr/include/kde/arts/artskde.h
   /usr/include/kde/arts/kartsdispatcher.h
   /usr/include/kde/arts/kartsfloatwatch.h

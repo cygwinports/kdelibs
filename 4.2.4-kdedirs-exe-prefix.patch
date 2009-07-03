@@ -1,0 +1,23 @@
+Uses readlink(/proc/self/exe, ...) to determine and add 
+executable's prefix to KDEDIRS.
+
+--- origsrc/kdelibs-4.2.4/kdecore/kernel/kstandarddirs.cpp	2009-01-06 11:27:48.000000000 -0600
++++ src/kdelibs-4.2.4/kdecore/kernel/kstandarddirs.cpp	2009-07-02 18:50:04.918922100 -0500
+@@ -1433,7 +1433,7 @@ static QString readEnvPath(const char *e
+     return QDir::fromNativeSeparators(QFile::decodeName(c_path));
+ }
+ 
+-#ifdef __linux__
++#if defined(__linux__) || defined(__CYGWIN__)
+ static QString executablePrefix()
+ {
+     char path_buffer[MAXPATHLEN + 1];
+@@ -1497,7 +1497,7 @@ void KStandardDirs::addKDEDefaults()
+     QString execPrefix(EXEC_INSTALL_PREFIX);
+     if (!execPrefix.isEmpty() && !kdedirList.contains(execPrefix))
+         kdedirList.append(execPrefix);
+-#ifdef __linux__
++#if defined(__linux__) || defined(__CYGWIN__)
+     const QString linuxExecPrefix = executablePrefix();
+     if ( !linuxExecPrefix.isEmpty() )
+         kdedirList.append( linuxExecPrefix );

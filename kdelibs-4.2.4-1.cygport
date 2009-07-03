@@ -3,15 +3,17 @@ inherit kde4
 PATCH_URI="
 	mirror://portage/kde-base/${PN}/files/4.2.4-fixPopupForPlasmaboard.patch
 	mirror://portage/kde-base/${PN}/files/4.2.4-CVE-2009-1690.patch
-	4.2.0-cmake.patch
+	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.2.4-1/11_default_kde4_xdg_menu_prefix.diff
+	4.2.4-cmake.patch
+	4.2.4-parallel-install.patch
 	4.0.99-klibloader.patch
-	4.2.4-lib-prefix.patch
 	4.0.99-openssl.patch
 	4.0.99-socklen_t.patch
 	4.2.0-misc.patch
 	4.2.4-getgrouplist.patch
 	4.2.4-klocale.patch
-	4.2.4-xdg-menu-prefix.patch
+	4.2.4-kdedirs-exe-prefix.patch
+	4.2.4-solid-no-hal.patch
 "
 
 PKG_NAMES="${PN} libkdecore5 libkdecore-data libkdecore-devel" # libkdecore-doc"
@@ -59,9 +61,12 @@ src_install() {
 	cd ${B}
 	kde4_install
 
-	# fix collisions with gnome-menus, kdelibs-3.x
-	# requires 4.2.4-xdg-menu-prefix.patch
-	mv ${D}/etc/xdg/menus/{,kde4-}applications.menu
+	# is there no way to do this within cmake?
+	# http://article.gmane.org/gmane.os.cygwin.ports.general/613
+	mv ${D}/usr/bin/kconfig_compiler{,4}.exe
+	mv ${D}/usr/bin/makekdewidgets{,4}.exe
+	mv ${D}/usr/share/man/man1/makekdewidgets{,4}.1
+	sed -i -e 's|\([^4]\)\.exe|\14.exe|g' ${D}/usr/share/kde4/apps/cmake/modules/KDELibs4ToolsTargets-release.cmake
 
 #	inform "Installing API documentation, may take some time..."
 #	dodir /usr/share/doc/HTML/en/
