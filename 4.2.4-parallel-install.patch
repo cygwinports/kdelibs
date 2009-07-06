@@ -9,7 +9,7 @@ kconfig_compiler and makekdewidgets SLOTing is done manually in the .cygport.
     # KDE4_LIB_INSTALL_DIR and KDE4_INCLUDE_INSTALL_DIR are set in KDELibsDependencies.cmake,
     # use them to set the KDE4_LIB_DIR and KDE4_INCLUDE_DIR "public interface" variables
 -   set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR} )
-+   set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR}/lib/kde4 )
++   set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR}/kde4/lib )
     set(KDE4_INCLUDE_DIR ${KDE4_INCLUDE_INSTALL_DIR} )
  
  
@@ -46,7 +46,7 @@ kconfig_compiler and makekdewidgets SLOTing is done manually in the .cygport.
  set(INSTALL_TARGETS_DEFAULT_ARGS  RUNTIME DESTINATION "${BIN_INSTALL_DIR}"
                                    LIBRARY DESTINATION "${LIB_INSTALL_DIR}"
 -                                  ARCHIVE DESTINATION "${LIB_INSTALL_DIR}" COMPONENT Devel )
-+                                  ARCHIVE DESTINATION "${LIB_INSTALL_DIR}/lib/kde4" COMPONENT Devel )
++                                  ARCHIVE DESTINATION "${LIB_INSTALL_DIR}/kde4/lib" COMPONENT Devel )
  
  
  # on the Mac support an extra install directory for application bundles starting with cmake 2.6

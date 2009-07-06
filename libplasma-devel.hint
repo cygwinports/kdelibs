@@ -1,0 +1,8 @@
+category: KDE
+requires: libplasma3 libkdecore5-devel libQtCore4-devel libQtGui4-devel libQtOpenGL4-devel
+external-source: kdelibs
+sdesc: "KDE4 Plasma libraries (development)"
+ldesc: "This package includes libraries that are central to the
+development and execution of a KDE program, as well as
+internationalization files for these libraries, misc HTML documentation,
+theme modules, and regression tests."

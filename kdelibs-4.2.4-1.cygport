@@ -16,19 +16,30 @@ PATCH_URI="
 	4.2.4-solid-no-hal.patch
 "
 
-PKG_NAMES="${PN} libkdecore5 libkdecore-data libkdecore-devel" # libkdecore-doc"
-libkdecore5_CONTENTS="--exclude=checkXML --exclude=kconfig_compiler.exe
-                      --exclude=kunittestmodrunner.exe --exclude=makekdewidgets.exe
-                      --exclude=preparetips etc/xdg/ usr/bin/ usr/lib/kde4/
-                      usr/share/dbus-1/ usr/share/kde4/ usr/share/man/man8/"
-libkdecore_data_CONTENTS="--exclude=kdelibs-apidocs
-                          etc/postinstall/ usr/share/doc/HTML/ usr/share/icons/
-                          usr/share/locale/ usr/share/man/man7/ usr/share/mime/"
-libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
-                           usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
-                           usr/bin/preparetips usr/include/ usr/lib/lib*
-                           usr/share/man/man1/"
-#libkdecore_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
+PKG_NAMES="${PN} libkdecore5 libkdecore5-devel libnepomuk4 libnepomuk4-devel
+           libplasma3 libplasma-devel"
+libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler4.exe
+                      --exclude=kunittestmodrunner.exe --exclude=makekdewidgets4*
+                      --exclude=preparetips --exclude=cmake --exclude=kdecmake.*
+                      --exclude=cygnepomuk* --exclude=nepomuk-rcgen* --exclude=cygplasma*
+                      --exclude=*.dll.a --exclude=interfaces
+                      etc/ usr/bin/ usr/lib/kde4/ usr/share/"
+libkdecore5_devel_CONTENTS="--exclude=?epomuk --exclude=libnepomuk.*
+                            --exclude=?lasma --exclude=libplasma.*
+                            usr/bin/checkXML usr/bin/kconfig_compiler4.exe
+                            usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets4.exe
+                            usr/bin/preparetips usr/include/ usr/lib/kde4/lib/
+                            usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
+                            usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
+                            usr/share/man/man1/makekdewidgets4.*"
+libnepomuk4_CONTENTS="usr/bin/cygnepomuk-4.dll"
+libnepomuk4_devel_CONTENTS="usr/bin/nepomuk-rcgen.exe usr/include/kde4/KDE/Nepomuk/
+                            usr/include/kde4/nepomuk/ usr/lib/kde4/lib/libnepomuk.dll.a"
+libplasma3_CONTENTS="usr/bin/cygplasma-3.dll"
+libplasma_devel_CONTENTS="usr/include/kde4/KDE/Plasma/ usr/include/kde4/plasma/
+                          usr/lib/kde4/lib/libplasma.*"
+#libkdecore5_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
+PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
 
 CYGCMAKE_ARGS="
 	-DKDE_DEFAULT_HOME=.kde4
