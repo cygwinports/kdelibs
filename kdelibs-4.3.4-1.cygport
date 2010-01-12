@@ -1,19 +1,16 @@
 inherit kde4
 
 PATCH_URI="
-	mirror://portage/kde-base/${PN}/files/4.2.4-fixPopupForPlasmaboard.patch
-	mirror://portage/kde-base/${PN}/files/4.2.4-CVE-2009-1690.patch
-	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.2.4-1/11_default_kde4_xdg_menu_prefix.diff
+	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.3.2-2/11_default_kde4_xdg_menu_prefix.diff
 	4.2.4-cmake.patch
-	4.2.4-parallel-install.patch
+	4.3.2-parallel-install.patch
 	4.0.99-klibloader.patch
 	4.0.99-openssl.patch
 	4.0.99-socklen_t.patch
 	4.2.0-misc.patch
-	4.2.4-getgrouplist.patch
 	4.2.4-klocale.patch
 	4.2.4-kdedirs-exe-prefix.patch
-	4.2.4-solid-no-hal.patch
+	4.3.2-solid-no-hal.patch
 "
 
 PKG_NAMES="${PN} libkdecore5 libkdecore5-devel libnepomuk4 libnepomuk4-devel
@@ -48,11 +45,11 @@ CYGCMAKE_ARGS="
 	-DWITH_BZip2=YES
 	-DWITH_ENCHANT=YES
 	-DWITH_FAM=YES
-	-DWITH_GSSAPI=NO
+	-DWITH_GSSAPI=YES
 	-DWITH_HSPELL=NO
 	-DWITH_Jasper=YES
 	-DWITH_Libintl=YES
-	-DWITH_OpenEXR=YES
+	-DWITH_OpenEXR=NO
 	-DWITH_OpenGL=YES
 	-DWITH_OpenSSL=YES
 	-DWITH_Soprano=YES
@@ -62,6 +59,7 @@ DIFF_EXCLUDES="CMakeCache.txt cmake.check_cache"
 
 src_compile() {
 	cd ${B}
+	export PATH="${B}/bin:${B}/lib:$PATH"
 	kde4_compile
 
 #	cd ${B}/doc

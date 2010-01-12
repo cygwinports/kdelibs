@@ -1,0 +1,42 @@
+--- origsrc/kdelibs-4.3.2/solid/solid/CMakeLists.txt	2009-06-23 06:16:25.000000000 -0500
++++ src/kdelibs-4.3.2/solid/solid/CMakeLists.txt	2009-10-23 00:51:46.274388200 -0500
+@@ -107,7 +107,7 @@ set(solid_LIB_SRCS
+    backends/fakehw/fakesmartcardreader.cpp
+ )
+ 
+-if(NOT WIN32 AND NOT APPLE)
++if(NOT WIN32 AND NOT APPLE AND NOT CYGWIN)
+    message(STATUS "-- Building Solid HAL backend." )
+    set(solid_LIB_SRCS ${solid_LIB_SRCS}
+ 
+@@ -136,7 +136,7 @@ if(NOT WIN32 AND NOT APPLE)
+    backends/hal/halsmartcardreader.cpp
+ 
+    )
+-endif(NOT WIN32 AND NOT APPLE)
++endif(NOT WIN32 AND NOT APPLE AND NOT CYGWIN)
+ 
+ if(APPLE)
+    find_package(IOKit REQUIRED)
+--- origsrc/kdelibs-4.3.2/solid/solid/managerbase.cpp	2009-03-10 07:26:04.000000000 -0500
++++ src/kdelibs-4.3.2/solid/solid/managerbase.cpp	2009-10-23 00:52:22.934452100 -0500
+@@ -23,7 +23,8 @@
+ 
+ #include "backends/fakehw/fakemanager.h"
+ 
+-#if defined (Q_OS_MAC)
++#if defined (Q_OS_CYGWIN)
++#elif defined (Q_OS_MAC)
+ #include "backends/iokit/iokitmanager.h"
+ #elif defined (Q_OS_UNIX)
+ #include "backends/hal/halmanager.h"
+@@ -48,7 +49,8 @@ void Solid::ManagerBasePrivate::loadBack
+     if (!solidFakeXml.isEmpty()) {
+         m_backend = new Solid::Backends::Fake::FakeManager(0, solidFakeXml);
+     } else {
+-#        if defined (Q_OS_MAC)
++#        if defined (Q_OS_CYGWIN)
++#        elif defined (Q_OS_MAC)
+             m_backend = new Solid::Backends::IOKit::IOKitManager(0);
+ #        elif defined (Q_OS_UNIX)
+             m_backend = new Solid::Backends::Hal::HalManager(0);
