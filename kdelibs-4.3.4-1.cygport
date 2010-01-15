@@ -1,7 +1,8 @@
 inherit kde4
 
 PATCH_URI="
-	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.3.2-2/11_default_kde4_xdg_menu_prefix.diff
+	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.3.4-1/00_1034808_4.4_backport_rtldglobal.diff
+	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.3.4-1/11_default_kde4_xdg_menu_prefix.diff
 	4.2.4-cmake.patch
 	4.3.2-parallel-install.patch
 	4.0.99-klibloader.patch
@@ -11,6 +12,7 @@ PATCH_URI="
 	4.2.4-klocale.patch
 	4.2.4-kdedirs-exe-prefix.patch
 	4.3.2-solid-no-hal.patch
+	4.3.4-nofork.patch
 "
 
 PKG_NAMES="${PN} libkdecore5 libkdecore5-devel libnepomuk4 libnepomuk4-devel
