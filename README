@@ -62,29 +62,32 @@ Canonical website:
   http://www.kde.org/
 
 Canonical download:
-  ftp://ftp.kde.org/pub/kde/stable/4.3.4/
+  ftp://ftp.kde.org/pub/kde/stable/
 
 -------------------------------------------
 
 Build instructions:
-  unpack kdelibs-4.3.4-X-src.tar.bz2
+  unpack kdelibs-4.3.5-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./kdelibs-4.3.4-X.cygport all
+  cygport ./kdelibs-4.3.5-X.cygport all
 
 This will create:
-  /usr/src/kdelibs-4.3.4-X-src.tar.bz2
-  /usr/src/libkdecore5-4.3.4-X.tar.bz2
-  /usr/src/libkdecore5-devel-4.3.4-X.tar.bz2
-  /usr/src/libnepomuk4-4.3.4-X.tar.bz2
-  /usr/src/libnepomuk4-devel-4.3.4-X.tar.bz2
-  /usr/src/libplasma3-4.3.4-X.tar.bz2
-  /usr/src/libplasma-devel-4.3.4-X.tar.bz2
+  /usr/src/kdelibs-4.3.5-X-src.tar.bz2
+  /usr/src/libkdecore5-4.3.5-X.tar.bz2
+  /usr/src/libkdecore5-devel-4.3.5-X.tar.bz2
+  /usr/src/libnepomuk4-4.3.5-X.tar.bz2
+  /usr/src/libnepomuk4-devel-4.3.5-X.tar.bz2
+  /usr/src/libplasma3-4.3.5-X.tar.bz2
+  /usr/src/libplasma-devel-4.3.5-X.tar.bz2
 
 -------------------------------------------
 
 Port Notes:
+
+----- version 4.3.5-1 -----
+Version bump.
 
 ----- version 4.3.4-1 -----
 Version bump for KDE 4.3.
