@@ -1,0 +1,11 @@
+--- origsrc/kdelibs-4.4.2/cmake/modules/KDE4Macros.cmake	2010-03-26 12:24:24.000000000 -0500
++++ src/kdelibs-4.4.2/cmake/modules/KDE4Macros.cmake	2010-04-28 18:54:35.447458700 -0500
+@@ -630,6 +630,8 @@ macro (KDE4_ADD_PLUGIN _target_NAME _wit
+ 
+    if (_first_SRC)
+       set_target_properties(${_target_NAME} PROPERTIES PREFIX "")
++   else (_first_SRC)
++      set_target_properties(${_target_NAME} PROPERTIES PREFIX "lib")
+    endif (_first_SRC)
+ 
+    # for shared libraries/plugins a -DMAKE_target_LIB is required

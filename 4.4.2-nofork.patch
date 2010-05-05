@@ -1,13 +1,13 @@
 fork() can cause all sorts of problems, so just don't.
 
---- origsrc/kdelibs-4.3.4/kdeui/kernel/kuniqueapplication.cpp	2009-07-21 10:16:13.000000000 -0500
-+++ src/kdelibs-4.3.4/kdeui/kernel/kuniqueapplication.cpp	2010-01-14 19:01:08.795403400 -0600
+--- origsrc/kdelibs-4.4.2/kdeui/kernel/kuniqueapplication.cpp
++++ src/kdelibs-4.4.2/kdeui/kernel/kuniqueapplication.cpp
 @@ -117,7 +117,7 @@ KUniqueApplication::start(StartFlags fla
    s_kuniqueapplication_startCalled = true;
  
    addCmdLineOptions(); // Make sure to add cmd line options
--#ifdef Q_WS_WIN
-+#if defined(Q_WS_WIN) || defined(Q_OS_CYGWIN)
+-#if defined(Q_WS_WIN) || defined(Q_WS_MACX)
++#if defined(Q_WS_WIN) || defined(Q_OS_CYGWIN) || defined(Q_WS_MACX)
    Private::s_nofork = true;
  #else
    KCmdLineArgs *args = KCmdLineArgs::parsedArgs("kuniqueapp");

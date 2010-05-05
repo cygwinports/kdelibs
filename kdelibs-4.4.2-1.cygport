@@ -1,18 +1,13 @@
 inherit kde4
 
 PATCH_URI="
-	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.3.4-1/00_1034808_4.4_backport_rtldglobal.diff
-	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.3.4-1/11_default_kde4_xdg_menu_prefix.diff
-	4.2.4-cmake.patch
+	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.4.2-1/11_default_kde4_xdg_menu_prefix.diff
 	4.3.2-parallel-install.patch
-	4.0.99-klibloader.patch
-	4.0.99-openssl.patch
-	4.0.99-socklen_t.patch
 	4.2.0-misc.patch
-	4.2.4-klocale.patch
 	4.2.4-kdedirs-exe-prefix.patch
 	4.3.2-solid-no-hal.patch
-	4.3.4-nofork.patch
+	4.4.2-nofork.patch
+	4.4.2-module-prefix.patch
 "
 
 PKG_NAMES="${PN} libkdecore5 libkdecore5-devel libnepomuk4 libnepomuk4-devel
@@ -21,17 +16,18 @@ libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler4.exe
                       --exclude=kunittestmodrunner.exe --exclude=makekdewidgets4*
                       --exclude=preparetips --exclude=cmake --exclude=kdecmake.*
                       --exclude=cygnepomuk* --exclude=nepomuk-rcgen* --exclude=cygplasma*
-                      --exclude=*.dll.a --exclude=interfaces
+                      --exclude=*.dll.a --exclude=interfaces --exclude=designer
                       etc/ usr/bin/ usr/lib/kde4/ usr/share/"
 libkdecore5_devel_CONTENTS="--exclude=?epomuk --exclude=libnepomuk.*
                             --exclude=?lasma --exclude=libplasma.*
                             usr/bin/checkXML usr/bin/kconfig_compiler4.exe
                             usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets4.exe
                             usr/bin/preparetips usr/include/ usr/lib/kde4/lib/
+                            usr/lib/kde4/plugins/designer/
                             usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
                             usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
                             usr/share/man/man1/makekdewidgets4.*"
-libnepomuk4_CONTENTS="usr/bin/cygnepomuk-4.dll"
+libnepomuk4_CONTENTS="usr/bin/cygnepomuk*-4.dll"
 libnepomuk4_devel_CONTENTS="usr/bin/nepomuk-rcgen.exe usr/include/kde4/KDE/Nepomuk/
                             usr/include/kde4/nepomuk/ usr/lib/kde4/lib/libnepomuk.dll.a"
 libplasma3_CONTENTS="usr/bin/cygplasma-3.dll"
