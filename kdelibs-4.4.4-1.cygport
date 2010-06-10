@@ -1,7 +1,8 @@
 inherit kde4
 
 PATCH_URI="
-	http://patch-tracking.debian.net/patch/series/dl/kde4libs/4:4.4.3-1/11_default_kde4_xdg_menu_prefix.diff
+	http://patch-tracker.debian.org/patch/series/dl/kde4libs/4:4.4.4-1/11_default_kde4_xdg_menu_prefix.diff
+	http://patch-tracker.debian.org/patch/series/dl/kde4libs/4:4.4.4-1/25_ld_exclude_libs_qtuitools.diff
 	4.3.2-parallel-install.patch
 	4.2.0-misc.patch
 	4.2.4-kdedirs-exe-prefix.patch
