@@ -1,0 +1,72 @@
+inherit kde4
+
+PATCH_URI="
+	4.5.3-parallel-install.patch
+	4.2.0-misc.patch
+	4.2.4-kdedirs-exe-prefix.patch
+	4.5.3-solid-no-hal.patch
+	4.4.2-nofork.patch
+	4.4.2-module-prefix.patch
+	4.5.3-exclude-libs-qtuitools.patch
+	4.5.3-xdg-menu-prefix.patch
+"
+
+PKG_NAMES="libkdecore5 libkdecore-devel libplasma3 libplasma-devel"
+libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
+                      --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
+                      --exclude=preparetips --exclude=cmake --exclude=kdecmake.*
+                      --exclude=nepomuk-rcgen* --exclude=cygplasma*
+                      --exclude=*.dll.a --exclude=interfaces --exclude=designer
+                      etc/ usr/bin/ usr/lib/kde4/ usr/share/"
+libkdecore_devel_CONTENTS="--exclude=?lasma --exclude=libplasma.*
+                           usr/bin/checkXML usr/bin/kconfig_compiler.exe
+                           usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
+                           usr/bin/nepomuk-rcgen.exe
+                           usr/bin/preparetips usr/include/ usr/lib/lib*
+                           usr/lib/kde4/plugins/designer/
+                           usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
+                           usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
+                           usr/share/man/man1/makekdewidgets.*"
+libplasma3_CONTENTS="usr/bin/cygplasma-3.dll"
+libplasma_devel_CONTENTS="usr/include/kde4/KDE/Plasma/ usr/include/kde4/plasma/
+                          usr/lib/libplasma.*"
+#libkdecore5_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
+PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
+
+CYGCMAKE_ARGS="
+	-DKDE_DEFAULT_HOME=.kde4
+	-DWITH_ACL=NO
+	-DWITH_ASPELL=YES
+	-DWITH_BZip2=YES
+	-DWITH_ENCHANT=YES
+	-DWITH_FAM=YES
+	-DWITH_GSSAPI=YES
+	-DWITH_HSPELL=NO
+	-DWITH_Jasper=YES
+	-DWITH_Libintl=YES
+	-DWITH_OpenEXR=NO
+	-DWITH_OpenGL=YES
+	-DWITH_OpenSSL=YES
+	-DWITH_Soprano=YES
+"
+
+DIFF_EXCLUDES="CMakeCache.txt cmake.check_cache"
+
+src_compile() {
+	cd ${B}
+	export PATH="${B}/bin:${B}/lib:$PATH"
+	kde4_compile
+
+#	cd ${B}/doc
+#	QTDOCDIR=${QT4_DATADIR}/doc/html ${S}/doc/api/doxygen.sh ${S}
+}
+
+src_install() {
+	cd ${B}
+	kde4_install
+
+#	inform "Installing API documentation, may take some time..."
+#	dodir /usr/share/doc/HTML/en/
+#	cp -r doc/kdelibs-${PV}-apidocs ${D}/usr/share/doc/HTML/en/kdelibs-apidocs
+#	inform "Done."
+}

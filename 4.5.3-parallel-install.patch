@@ -1,19 +1,6 @@
-Allow 4.x runtime, headers, and implibs to be installed in parallel to 3.5.
-
-kconfig_compiler and makekdewidgets SLOTing is done manually in the .cygport.
-
---- origsrc/kdelibs-4.1.4/cmake/modules/FindKDE4Internal.cmake	2009-01-06 17:32:45.000000000 -0600
-+++ src/kdelibs-4.1.4/cmake/modules/FindKDE4Internal.cmake	2009-01-14 21:29:09.796500000 -0600
-@@ -495,7 +495,7 @@ else (_kdeBootStrapping)
- 
-    # KDE4_LIB_INSTALL_DIR and KDE4_INCLUDE_INSTALL_DIR are set in KDELibsDependencies.cmake,
-    # use them to set the KDE4_LIB_DIR and KDE4_INCLUDE_DIR "public interface" variables
--   set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR} )
-+   set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR}/kde4/lib )
-    set(KDE4_INCLUDE_DIR ${KDE4_INCLUDE_INSTALL_DIR} )
- 
- 
-@@ -634,14 +634,14 @@ else (WIN32)
+--- origsrc/kdelibs-4.5.3/cmake/modules/FindKDE4Internal.cmake	2010-07-07 12:08:28.000000000 -0500
++++ src/kdelibs-4.5.3/cmake/modules/FindKDE4Internal.cmake	2010-11-04 14:10:02.111121300 -0500
+@@ -833,14 +833,14 @@ else (WIN32)
     _set_fancy(SBIN_INSTALL_DIR     "${EXEC_INSTALL_PREFIX}/sbin"             "The install dir for system executables (default ${EXEC_INSTALL_PREFIX}/sbin)")
     _set_fancy(LIB_INSTALL_DIR      "${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX}" "The subdirectory relative to the install prefix where libraries will be installed (default is ${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX})")
     _set_fancy(LIBEXEC_INSTALL_DIR  "${LIB_INSTALL_DIR}/kde4/libexec"         "The subdirectory relative to the install prefix where libraries will be installed (default is ${LIB_INSTALL_DIR}/kde4/libexec)")
@@ -32,26 +19,17 @@ kconfig_compiler and makekdewidgets SLOTing is done manually in the .cygport.
     _set_fancy(LOCALE_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/locale"         "The install dir for translations")
     _set_fancy(MIME_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/mimelnk"        "The install dir for the mimetype desktop files")
     _set_fancy(SERVICES_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/kde4/services"  "The install dir for service (desktop, protocol, ...) files")
-@@ -657,7 +657,7 @@ else (WIN32)
+@@ -856,7 +856,7 @@ else (WIN32)
     _set_fancy(XDG_DIRECTORY_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/desktop-directories"      "The XDG directory")
     _set_fancy(XDG_MIME_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/mime/packages"  "The install dir for the xdg mimetypes")
  
--   _set_fancy(SYSCONF_INSTALL_DIR      "${CMAKE_INSTALL_PREFIX}/etc"            "The kde sysconfig install dir (default ${CMAKE_INSTALL_PREFIX}/etc)")
-+   _set_fancy(SYSCONF_INSTALL_DIR      "/etc"                                   "The kde sysconfig install dir (default ${CMAKE_INSTALL_PREFIX}/etc)")
-    _set_fancy(MAN_INSTALL_DIR          "${SHARE_INSTALL_PREFIX}/man"            "The kde man install dir (default ${SHARE_INSTALL_PREFIX}/man/)")
-    _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The kde info install dir (default ${SHARE_INSTALL_PREFIX}/info)")
-    _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The kde dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")
-@@ -724,7 +724,7 @@ endif (WIN32)
- 
- set(INSTALL_TARGETS_DEFAULT_ARGS  RUNTIME DESTINATION "${BIN_INSTALL_DIR}"
-                                   LIBRARY DESTINATION "${LIB_INSTALL_DIR}"
--                                  ARCHIVE DESTINATION "${LIB_INSTALL_DIR}" COMPONENT Devel )
-+                                  ARCHIVE DESTINATION "${LIB_INSTALL_DIR}/kde4/lib" COMPONENT Devel )
- 
- 
- # on the Mac support an extra install directory for application bundles starting with cmake 2.6
---- origsrc/kdelibs-4.2.4/cmake/modules/FindPyKDE4.cmake	2009-01-06 11:27:37.000000000 -0600
-+++ src/kdelibs-4.2.4/cmake/modules/FindPyKDE4.cmake	2009-07-02 16:19:01.741265100 -0500
+-   _set_fancy(SYSCONF_INSTALL_DIR      "${CMAKE_INSTALL_PREFIX}/etc"            "The sysconfig install dir (default ${CMAKE_INSTALL_PREFIX}/etc)")
++   _set_fancy(SYSCONF_INSTALL_DIR      "/etc"                                   "The sysconfig install dir (default ${CMAKE_INSTALL_PREFIX}/etc)")
+    _set_fancy(MAN_INSTALL_DIR          "${SHARE_INSTALL_PREFIX}/man"            "The man install dir (default ${SHARE_INSTALL_PREFIX}/man/)")
+    _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The info install dir (default ${SHARE_INSTALL_PREFIX}/info)")
+    _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")
+--- origsrc/kdelibs-4.5.3/cmake/modules/FindPyKDE4.cmake	2009-06-17 15:08:14.000000000 -0500
++++ src/kdelibs-4.5.3/cmake/modules/FindPyKDE4.cmake	2010-11-04 14:11:27.895670800 -0500
 @@ -68,11 +68,11 @@ IF(PYTHONINTERP_FOUND)
      endif (WIN32)
  
@@ -79,26 +57,4 @@ kconfig_compiler and makekdewidgets SLOTing is done manually in the .cygport.
 +    _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The kde info install dir (default ${CMAKE_INSTALL_PREFIX}/info)")
      _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The kde dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")
      _set_fancy(DBUS_SERVICES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/services"     "The kde dbus services install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/services)")
- 
---- origsrc/kdelibs-4.3.2/cmake/modules/FindLibKonq.cmake	2009-05-27 14:54:40.000000000 -0500
-+++ src/kdelibs-4.3.2/cmake/modules/FindLibKonq.cmake	2009-10-23 00:57:35.090996400 -0500
-@@ -14,7 +14,7 @@
- 
- find_path(LIBKONQ_INCLUDE_DIR konq_popupmenuplugin.h )
- 
--find_library(LIBKONQ_LIBRARY konq)
-+find_library(LIBKONQ_LIBRARY konq PATHS ${KDE4_LIB_DIR})
- 
- include(FindPackageHandleStandardArgs)
- find_package_handle_standard_args(LIBKONQ  DEFAULT_MSG  LIBKONQ_INCLUDE_DIR LIBKONQ_LIBRARY )
---- origsrc/kdelibs-4.3.2/cmake/modules/FindPhonon.cmake	2009-06-03 06:54:39.000000000 -0500
-+++ src/kdelibs-4.3.2/cmake/modules/FindPhonon.cmake	2009-10-23 00:58:44.387317200 -0500
-@@ -31,7 +31,7 @@ else(PHONON_FOUND)
-    endif(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
- 
-    # As discussed on kde-buildsystem: first look at CMAKE_PREFIX_PATH, then at the suggested PATHS (kde4 install dir)
--   find_library(PHONON_LIBRARY NAMES phonon PATHS ${KDE4_LIB_INSTALL_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
-+   find_library(PHONON_LIBRARY NAMES phonon PATHS ${KDE4_LIB_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
-    # then at the default system locations (CMAKE_SYSTEM_PREFIX_PATH, i.e. /usr etc.)
-    find_library(PHONON_LIBRARY NAMES phonon)
  

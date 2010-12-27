@@ -1,5 +1,5 @@
 category: KDE
-requires: kdebase-runtime-data libaspell15 libattica0 libbz2_1 libenchant1 libfam0 libgcc1 libgif4 libgssapi2 libICE6 libintl8 libjasper1 libjpeg7 liblzma1 libpcre0 libphonon4 libpng12 libQt3Support4 libQtCore4 libQtDBus4 libQtDesigner4 libQtGui4 libQtNetwork4 libQtScript4 libQtSvg4 libQtXml4 libSM6 libstdc++6 libstreamanalyzer0 libxml2 libxslt libX11_6 libXcursor1 libXfixes3 libXrender1 libXtst6 libopenssl098 oxygen-icons shared-mime-info zlib0
+requires: kdebase-runtime-data libaspell15 libattica0 libbz2_1 libenchant1 libfam0 libgcc1 libgif4 libgssapi2 libICE6 libintl8 libjasper1 libjpeg8 liblzma1 libpcre0 libphonon4 libpng14 libQt3Support4 libQtCore4 libQtDBus4 libQtGui4 libQtNetwork4 libQtScript4 libQtSvg4 libQtXml4 libSM6 libsoprano4 libstdc++6 libstreamanalyzer0 libxml2 libxslt libX11_6 libXcursor1 libXfixes3 libXrender1 libXss1 libXtst6 libopenssl098 oxygen-icons shared-desktop-ontologies shared-mime-info zlib0
 external-source: kdelibs
 sdesc: "KDE4 libraries (runtime)"
 ldesc: "This package includes libraries that are central to the

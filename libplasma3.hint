@@ -1,5 +1,5 @@
 category: KDE
-requires: libgcc1 libGL1 libkdecore5 libqca2 libQtCore4 libQtGui4 libQtOpenGL4 libQtSVG4 libQtWebKit4 libstdc++6 libX11_6
+requires: libgcc1 libGL1 libkdecore5 libphonon4 libqca2 libQtCore4 libQtGui4 libQtNetwork4 libQtOpenGL4 libQtSVG4 libQtWebKit4 libQtXml4 libstdc++6 libX11_6
 external-source: kdelibs
 sdesc: "KDE4 Plasma libraries (runtime)"
 ldesc: "This package includes libraries that are central to the
