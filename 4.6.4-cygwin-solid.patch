@@ -1,0 +1,50 @@
+--- origsrc/kdelibs-4.6.4/solid/solid/CMakeLists.txt	2011-04-01 08:56:18.000000000 -0500
++++ src/kdelibs-4.6.4/solid/solid/CMakeLists.txt	2011-06-12 13:37:08.621760800 -0500
+@@ -148,7 +148,7 @@ set(solid_LIB_SRCS
+ #  endif( HUPNP_FOUND )
+ #endif(NOT APPLE)
+ 
+-if(NOT WIN32 AND NOT APPLE)
++if(NOT WIN32 AND NOT CYGWIN AND NOT APPLE)
+ #   message(STATUS "Building Solid KUPnP backend." )
+ #   set(solid_LIB_SRCS ${solid_LIB_SRCS}
+ 
+@@ -258,7 +258,7 @@ if(NOT WIN32 AND NOT APPLE)
+    backends/fstab/fstabwatcher.cpp
+    )
+ 
+-endif(NOT WIN32 AND NOT APPLE)
++endif(NOT WIN32 AND NOT CYGWIN AND NOT APPLE)
+ 
+ if(APPLE)
+    find_package(IOKit REQUIRED)
+--- origsrc/kdelibs-4.6.4/solid/solid/managerbase.cpp	2011-04-01 08:55:51.000000000 -0500
++++ src/kdelibs-4.6.4/solid/solid/managerbase.cpp	2011-06-12 18:07:39.462430000 -0500
+@@ -21,7 +21,7 @@
+ #include "managerbase_p.h"
+ 
+ #include <stdlib.h>
+-#if !defined (Q_WS_WIN) && !defined (Q_OS_MAC)
++#if !defined (Q_WS_WIN) && !defined (Q_OS_MAC) && !defined(Q_OS_CYGWIN)
+ #include <config-solid.h>
+ #endif
+ 
+@@ -29,7 +29,7 @@
+ 
+ #if defined (Q_OS_MAC)
+ #include "backends/iokit/iokitmanager.h"
+-#elif defined (Q_OS_UNIX)
++#elif defined (Q_OS_UNIX) && !defined (Q_OS_CYGWIN)
+ #include "backends/hal/halmanager.h"
+ #include "backends/udisks/udisksmanager.h"
+ #include "backends/upower/upowermanager.h"
+@@ -71,7 +71,7 @@ void Solid::ManagerBasePrivate::loadBack
+ #        elif defined(Q_WS_WIN) && defined(HAVE_WBEM) && !defined(_WIN32_WCE)
+             m_backends << new Solid::Backends::Wmi::WmiManager(0);
+ 
+-#        elif defined(Q_OS_UNIX) && !defined(Q_OS_LINUX)
++#        elif defined(Q_OS_UNIX) && !defined(Q_OS_LINUX) && !defined(Q_OS_CYGWIN)
+             m_backends << new Solid::Backends::Hal::HalManager(0);
+ 
+ #        elif defined(Q_OS_LINUX)
+

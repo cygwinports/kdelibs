@@ -1,0 +1,21 @@
+--- origsrc/kdelibs-4.6.4/kdecore/kernel/kstandarddirs.cpp	2011-04-01 08:55:50.000000000 -0500
++++ src/kdelibs-4.6.4/kdecore/kernel/kstandarddirs.cpp	2011-06-12 13:17:43.356130900 -0500
+@@ -1647,7 +1647,7 @@ static QString readEnvPath(const char *e
+     return QDir::fromNativeSeparators(QFile::decodeName(c_path));
+ }
+ 
+-#ifdef __linux__
++#if defined __linux__ || defined __CYGWIN__
+ static QString executablePrefix()
+ {
+     char path_buffer[MAXPATHLEN + 1];
+@@ -1711,7 +1711,7 @@ void KStandardDirs::addKDEDefaults()
+     QString execPrefix(QFile::decodeName(EXEC_INSTALL_PREFIX));
+     if (!execPrefix.isEmpty() && !kdedirList.contains(execPrefix))
+         kdedirList.append(execPrefix);
+-#ifdef __linux__
++#if defined __linux__ || defined __CYGWIN__
+     const QString linuxExecPrefix = executablePrefix();
+     if ( !linuxExecPrefix.isEmpty() )
+         kdedirList.append( linuxExecPrefix );
+

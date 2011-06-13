@@ -1,14 +1,13 @@
 inherit kde4
 
 PATCH_URI="
-	4.5.3-parallel-install.patch
-	4.2.0-misc.patch
-	4.2.4-kdedirs-exe-prefix.patch
-	4.5.3-solid-no-hal.patch
-	4.4.2-nofork.patch
-	4.4.2-module-prefix.patch
-	4.5.3-exclude-libs-qtuitools.patch
-	4.5.3-xdg-menu-prefix.patch
+	4.6.4-install-dirs.patch
+	4.6.4-cygwin-misc.patch
+	4.6.4-cygwin-solid.patch
+	4.6.4-exec-prefix.patch
+	4.6.4-module-prefix.patch
+	4.6.4-exclude-libs-qtuitools.patch
+	4.6.4-xdg-menu-prefix.patch
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel libplasma3 libplasma-devel"

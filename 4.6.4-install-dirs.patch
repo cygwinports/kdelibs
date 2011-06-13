@@ -1,6 +1,6 @@
---- origsrc/kdelibs-4.5.3/cmake/modules/FindKDE4Internal.cmake	2010-07-07 12:08:28.000000000 -0500
-+++ src/kdelibs-4.5.3/cmake/modules/FindKDE4Internal.cmake	2010-11-04 14:10:02.111121300 -0500
-@@ -833,14 +833,14 @@ else (WIN32)
+--- origsrc/kdelibs-4.6.4/cmake/modules/FindKDE4Internal.cmake	2011-04-28 08:15:09.000000000 -0500
++++ src/kdelibs-4.6.4/cmake/modules/FindKDE4Internal.cmake	2011-06-12 13:32:26.493269800 -0500
+@@ -867,15 +867,15 @@ else (WIN32)
     _set_fancy(SBIN_INSTALL_DIR     "${EXEC_INSTALL_PREFIX}/sbin"             "The install dir for system executables (default ${EXEC_INSTALL_PREFIX}/sbin)")
     _set_fancy(LIB_INSTALL_DIR      "${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX}" "The subdirectory relative to the install prefix where libraries will be installed (default is ${EXEC_INSTALL_PREFIX}/lib${LIB_SUFFIX})")
     _set_fancy(LIBEXEC_INSTALL_DIR  "${LIB_INSTALL_DIR}/kde4/libexec"         "The subdirectory relative to the install prefix where libraries will be installed (default is ${LIB_INSTALL_DIR}/kde4/libexec)")
@@ -8,6 +8,7 @@
 +   _set_fancy(INCLUDE_INSTALL_DIR  "${CMAKE_INSTALL_PREFIX}/include/kde4"    "The subdirectory to the header prefix")
  
     _set_fancy(PLUGIN_INSTALL_DIR       "${LIB_INSTALL_DIR}/kde4"                "The subdirectory relative to the install prefix where plugins will be installed (default is ${LIB_INSTALL_DIR}/kde4)")
+    _set_fancy(IMPORTS_INSTALL_DIR       "${PLUGIN_INSTALL_DIR}/imports"                "The subdirectory relative to the install prefix where imports will be installed")
 -   _set_fancy(CONFIG_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/config"         "The config file install dir")
 -   _set_fancy(DATA_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/apps"           "The parent directory where applications can install their data")
 +   _set_fancy(CONFIG_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/kde4/config"    "The config file install dir")
@@ -15,11 +16,11 @@
     _set_fancy(HTML_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/doc/HTML"       "The HTML install dir for documentation")
     _set_fancy(ICON_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/icons"          "The icon install dir (default ${SHARE_INSTALL_PREFIX}/share/icons/)")
 -   _set_fancy(KCFG_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/config.kcfg"    "The install dir for kconfig files")
-+   _set_fancy(KCFG_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/kde4/config.kcfg" "The install dir for kconfig files")
++   _set_fancy(KCFG_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/kde4/config.kcfg"  "The install dir for kconfig files")
     _set_fancy(LOCALE_INSTALL_DIR       "${SHARE_INSTALL_PREFIX}/locale"         "The install dir for translations")
     _set_fancy(MIME_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/mimelnk"        "The install dir for the mimetype desktop files")
     _set_fancy(SERVICES_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/kde4/services"  "The install dir for service (desktop, protocol, ...) files")
-@@ -856,7 +856,7 @@ else (WIN32)
+@@ -891,7 +891,7 @@ else (WIN32)
     _set_fancy(XDG_DIRECTORY_INSTALL_DIR "${SHARE_INSTALL_PREFIX}/desktop-directories"      "The XDG directory")
     _set_fancy(XDG_MIME_INSTALL_DIR     "${SHARE_INSTALL_PREFIX}/mime/packages"  "The install dir for the xdg mimetypes")
  
@@ -28,8 +29,8 @@
     _set_fancy(MAN_INSTALL_DIR          "${SHARE_INSTALL_PREFIX}/man"            "The man install dir (default ${SHARE_INSTALL_PREFIX}/man/)")
     _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The info install dir (default ${SHARE_INSTALL_PREFIX}/info)")
     _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")
---- origsrc/kdelibs-4.5.3/cmake/modules/FindPyKDE4.cmake	2009-06-17 15:08:14.000000000 -0500
-+++ src/kdelibs-4.5.3/cmake/modules/FindPyKDE4.cmake	2010-11-04 14:11:27.895670800 -0500
+--- origsrc/kdelibs-4.6.4/cmake/modules/FindPyKDE4.cmake	2011-04-01 08:55:50.000000000 -0500
++++ src/kdelibs-4.6.4/cmake/modules/FindPyKDE4.cmake	2011-06-12 13:33:59.176231000 -0500
 @@ -68,11 +68,11 @@ IF(PYTHONINTERP_FOUND)
      endif (WIN32)
  
@@ -52,7 +53,7 @@
 -    _set_fancy(SYSCONF_INSTALL_DIR      "${CMAKE_INSTALL_PREFIX}/etc"            "The kde sysconfig install dir (default /etc)")
 -    _set_fancy(MAN_INSTALL_DIR          "${CMAKE_INSTALL_PREFIX}/man"            "The kde man install dir (default ${CMAKE_INSTALL_PREFIX}/man/)")
 -    _set_fancy(INFO_INSTALL_DIR         "${CMAKE_INSTALL_PREFIX}/info"           "The kde info install dir (default ${CMAKE_INSTALL_PREFIX}/info)")
-+    _set_fancy(SYSCONF_INSTALL_DIR      "/etc"            "The kde sysconfig install dir (default /etc)")
++    _set_fancy(SYSCONF_INSTALL_DIR      "/etc"                                   "The kde sysconfig install dir (default /etc)")
 +    _set_fancy(MAN_INSTALL_DIR          "${SHARE_INSTALL_PREFIX}/man"            "The kde man install dir (default ${CMAKE_INSTALL_PREFIX}/man/)")
 +    _set_fancy(INFO_INSTALL_DIR         "${SHARE_INSTALL_PREFIX}/info"           "The kde info install dir (default ${CMAKE_INSTALL_PREFIX}/info)")
      _set_fancy(DBUS_INTERFACES_INSTALL_DIR      "${SHARE_INSTALL_PREFIX}/dbus-1/interfaces" "The kde dbus interfaces install dir (default  ${SHARE_INSTALL_PREFIX}/dbus-1/interfaces)")

@@ -1,0 +1,12 @@
+--- origsrc/kdelibs-4.6.4/cmake/modules/KDE4Macros.cmake	2011-04-01 08:55:50.000000000 -0500
++++ src/kdelibs-4.6.4/cmake/modules/KDE4Macros.cmake	2011-06-12 13:41:48.761848600 -0500
+@@ -682,6 +682,8 @@ macro (KDE4_ADD_PLUGIN _target_NAME )
+ 
+    if (NOT _with_pre)
+       set_target_properties(${_target_NAME} PROPERTIES PREFIX "")
++   else (NOT _with_pre)
++      set_target_properties(${_target_NAME} PROPERTIES PREFIX "lib")
+    endif (NOT _with_pre)
+ 
+    # for shared libraries/plugins a -DMAKE_target_LIB is required
+
