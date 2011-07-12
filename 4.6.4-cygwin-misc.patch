@@ -10,17 +10,6 @@
          }
          else {
              tempLock = QSharedPointer<KSDCLock>(new semaphoreLock(tempSemaphore));
---- origsrc/kdelibs-4.6.4/kdeui/kernel/kuniqueapplication.cpp	2011-04-01 08:55:50.000000000 -0500
-+++ src/kdelibs-4.6.4/kdeui/kernel/kuniqueapplication.cpp	2011-06-12 13:30:58.603917700 -0500
-@@ -117,7 +117,7 @@ KUniqueApplication::start(StartFlags fla
-   s_kuniqueapplication_startCalled = true;
- 
-   addCmdLineOptions(); // Make sure to add cmd line options
--#if defined(Q_WS_WIN) || defined(Q_WS_MACX)
-+#if defined(Q_WS_WIN) || defined(Q_WS_MACX) || defined(Q_OS_CYGWIN)
-   Private::s_nofork = true;
- #else
-   KCmdLineArgs *args = KCmdLineArgs::parsedArgs("kuniqueapp");
 --- origsrc/kdelibs-4.6.4/kio/kio/slaveinterface_p.h	2011-04-01 08:55:51.000000000 -0500
 +++ src/kdelibs-4.6.4/kio/kio/slaveinterface_p.h	2011-06-12 20:02:23.034393300 -0500
 @@ -21,6 +21,7 @@

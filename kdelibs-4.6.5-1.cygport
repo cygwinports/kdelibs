@@ -10,15 +10,14 @@ PATCH_URI="
 	4.6.4-xdg-menu-prefix.patch
 "
 
-PKG_NAMES="libkdecore5 libkdecore-devel libplasma3 libplasma-devel"
+PKG_NAMES="libkdecore5 libkdecore-devel libplasma3"
 libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
                       --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
                       --exclude=preparetips --exclude=cmake --exclude=kdecmake.*
                       --exclude=nepomuk-rcgen* --exclude=cygplasma*
                       --exclude=*.dll.a --exclude=interfaces --exclude=designer
                       etc/ usr/bin/ usr/lib/kde4/ usr/share/"
-libkdecore_devel_CONTENTS="--exclude=?lasma --exclude=libplasma.*
-                           usr/bin/checkXML usr/bin/kconfig_compiler.exe
+libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
                            usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
                            usr/bin/nepomuk-rcgen.exe
                            usr/bin/preparetips usr/include/ usr/lib/lib*
@@ -27,25 +26,29 @@ libkdecore_devel_CONTENTS="--exclude=?lasma --exclude=libplasma.*
                            usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
                            usr/share/man/man1/makekdewidgets.*"
 libplasma3_CONTENTS="usr/bin/cygplasma-3.dll"
-libplasma_devel_CONTENTS="usr/include/kde4/KDE/Plasma/ usr/include/kde4/plasma/
-                          usr/lib/libplasma.*"
 #libkdecore5_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
 PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
 
+# Avahi: use DNSSD directly instead
 CYGCMAKE_ARGS="
 	-DKDE_DEFAULT_HOME=.kde4
 	-DWITH_ACL=NO
 	-DWITH_ASPELL=YES
+	-DWITH_Avahi=NO
 	-DWITH_BZip2=YES
+	-DWITH_DNSSD=YES
 	-DWITH_ENCHANT=YES
 	-DWITH_FAM=YES
 	-DWITH_GSSAPI=YES
 	-DWITH_HSPELL=NO
 	-DWITH_Jasper=YES
 	-DWITH_Libintl=YES
-	-DWITH_OpenEXR=NO
+	-DWITH_LibLZMA=YES
+	-DWITH_OpenEXR=YES
 	-DWITH_OpenGL=YES
 	-DWITH_OpenSSL=YES
+	-DWITH_QCA2=YES
+	-DWITH_SharedDesktopOntologies=YES
 	-DWITH_Soprano=YES
 "
 
@@ -63,6 +66,10 @@ src_compile() {
 src_install() {
 	cd ${B}
 	kde4_install
+
+	# use system ca-certifcates
+	rm -f ${D}/usr/share/kde4/apps/kssl/ca-bundle.crt
+	dosym /usr/ssl/certs/ca-bundle.crt /usr/share/kde4/apps/kssl/ca-bundle.crt
 
 #	inform "Installing API documentation, may take some time..."
 #	dodir /usr/share/doc/HTML/en/

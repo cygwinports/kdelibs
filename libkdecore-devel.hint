@@ -1,5 +1,5 @@
 category: KDE
-requires: libkdecore5 libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libsoprano-devel libstreamanalyzer-devel libX11-devel
+requires: libkdecore5 libplasma3 libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtOpenGL4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libsoprano-devel libstreamanalyzer-devel libX11-devel
 external-source: kdelibs
 sdesc: "KDE4 libraries (development)"
 ldesc: "This package includes libraries that are central to the
