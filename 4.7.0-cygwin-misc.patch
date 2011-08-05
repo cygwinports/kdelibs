@@ -1,3 +1,14 @@
+--- origsrc/kdelibs-4.7.0/kdecore/io/kfilesystemtype_p.cpp	2011-06-23 09:49:05.000000000 -0500
++++ src/kdelibs-4.7.0/kdecore/io/kfilesystemtype_p.cpp	2011-07-29 04:03:51.916638800 -0500
+@@ -47,7 +47,7 @@ KFileSystemType::Type determineFileSyste
+     return kde_typeFromName(buf.f_fstypename);
+ }
+ 
+-#elif defined(Q_OS_LINUX) || defined(Q_OS_HURD)
++#elif defined(Q_OS_LINUX) || defined(Q_OS_HURD) || defined(Q_OS_CYGWIN)
+ # include <sys/vfs.h>
+ # ifdef QT_LINUXBASE
+    // LSB 3.2 has statfs in sys/statfs.h, sys/vfs.h is just an empty dummy header
 --- origsrc/kdelibs-4.6.4/kdecore/util/kshareddatacache_p.h	2011-04-01 08:56:18.000000000 -0500
 +++ src/kdelibs-4.6.4/kdecore/util/kshareddatacache_p.h	2011-06-12 17:58:27.220795800 -0500
 @@ -311,7 +311,9 @@ static SharedLockId findBestSharedLock()

@@ -1,0 +1,50 @@
+--- origsrc/kdelibs-4.7.0/solid/solid/CMakeLists.txt	2011-08-05 02:18:50.641613700 -0500
++++ src/kdelibs-4.7.0/solid/solid/CMakeLists.txt	2011-08-05 02:22:15.771346400 -0500
+@@ -199,6 +199,7 @@ if(NOT WIN32 AND NOT APPLE)
+    endif( UDEV_FOUND )
+ 
+ 
++   if (NOT CYGWIN)
+    message(STATUS "Building Solid HAL backend." )
+    set(solid_LIB_SRCS ${solid_LIB_SRCS}
+    backends/hal/halacadapter.cpp
+@@ -235,6 +236,7 @@ if(NOT WIN32 AND NOT APPLE)
+    backends/upower/upowerdeviceinterface.cpp
+    backends/upower/upowergenericinterface.cpp
+    )
++   endif (NOT CYGWIN)
+ 
+    # FIXME: this should work on more Unix systems
+    if (CMAKE_SYSTEM_NAME MATCHES Linux)
+--- origsrc/kdelibs-4.7.0/solid/solid/managerbase.cpp	2011-08-05 02:18:50.667615200 -0500
++++ src/kdelibs-4.7.0/solid/solid/managerbase.cpp	2011-08-05 02:18:26.683243300 -0500
+@@ -68,6 +68,9 @@ void Solid::ManagerBasePrivate::loadBack
+ #        if defined(Q_OS_MAC)
+             m_backends << new Solid::Backends::IOKit::IOKitManager(0);
+ 
++#        elif defined(Q_OS_CYGWIN)
++            m_backends << new Solid::Backends::Fstab::FstabManager(0);
++
+ #        elif defined(Q_WS_WIN) && defined(HAVE_WBEM) && !defined(_WIN32_WCE)
+             m_backends << new Solid::Backends::Wmi::WmiManager(0);
+ 
+--- origsrc/kdelibs-4.7.0/solid/tests/CMakeLists.txt	2011-05-20 15:24:54.000000000 -0500
++++ src/kdelibs-4.7.0/solid/tests/CMakeLists.txt	2011-08-05 02:23:21.575110200 -0500
+@@ -18,7 +18,7 @@ add_definitions(-DTEST_DATA="\\"${CMAKE_
+ 
+ ########### halbasictest ###############
+ 
+-if(NOT WIN32 AND NOT APPLE)
++if(NOT WIN32 AND NOT CYGWIN AND NOT APPLE)
+ set(halbasictest_SRCS halbasictest.cpp )
+ 
+ kde4_add_executable(halbasictest ${halbasictest_SRCS})
+@@ -28,7 +28,7 @@ if(WIN32)
+ endif(WIN32)
+ 
+ target_link_libraries(halbasictest solid_static ${KDEWIN_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTDBUS_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTTEST_LIBRARY} )
+-endif(NOT WIN32 AND NOT APPLE)
++endif(NOT WIN32 AND NOT CYGWIN AND NOT APPLE)
+ 
+ ########### solidhwtest ###############
+ 

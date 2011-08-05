@@ -2,8 +2,8 @@ inherit kde4
 
 PATCH_URI="
 	4.6.4-install-dirs.patch
-	4.6.4-cygwin-misc.patch
-	4.6.4-cygwin-solid.patch
+	4.7.0-cygwin-misc.patch
+	4.7.0-cygwin-solid.patch
 	4.6.4-exec-prefix.patch
 	4.6.4-module-prefix.patch
 	4.6.4-exclude-libs-qtuitools.patch
