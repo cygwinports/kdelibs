@@ -8,6 +8,7 @@ PATCH_URI="
 	4.6.4-module-prefix.patch
 	4.6.4-exclude-libs-qtuitools.patch
 	4.6.4-xdg-menu-prefix.patch
+	4.7.4-openssl100.patch
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel libplasma3"

@@ -1,0 +1,18 @@
+--- origsrc/kdelibs-4.7.4/kio/kssl/kopenssl.cpp	2011-05-20 15:24:54.000000000 -0500
++++ src/kdelibs-4.7.4/kio/kssl/kopenssl.cpp	2012-03-18 00:36:16.362647600 -0500
+@@ -317,11 +317,13 @@ KOpenSSLProxy::KOpenSSLProxy()
+    libpaths << "/usr/bin/"
+    		<< "";
+ 
+-   libnamess << "cygssl-0.9.8.dll"
++   libnamess << "cygssl-" SHLIB_VERSION_NUMBER ".dll"
++		 << "cygssl-0.9.8.dll"
+ 		 << "cygssl-0.9.7.dll"
+ 		 << "";
+ 
+-   libnamesc << "cygcrypto-0.9.8.dll"
++   libnamesc << "cygcrypto-" SHLIB_VERSION_NUMBER ".dll"
++		 << "cygcrypto-0.9.8.dll"
+ 		 << "cygcrypto-0.9.7.dll"
+ 		 << "";
+ #else

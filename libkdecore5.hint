@@ -1,5 +1,5 @@
 category: KDE
-requires: ca-certificates kdebase-runtime-data libaspell15 libattica0 libbz2_1 libdbusmenu-qt2 libdns_sd1 libenchant1 libfam0 libgcc1 libgif4 libgssapi3 libICE6 libilmbase6 libIlmImf6 libintl8 libjasper1 libjpeg8 liblzma5 libpcre0 libphonon4 libpng14 libQt3Support4 libQtCore4 libQtDBus4 libQtDeclarative4 libQtGui4 libQtNetwork4 libQtScript4 libQtSvg4 libQtXml4 libSM6 libsoprano4 libstdc++6 libstreamanalyzer0 libxml2 libxslt libX11_6 libXcursor1 libXfixes3 libXrender1 libXss1 libXtst6 libopenssl098 oxygen-icons shared-desktop-ontologies shared-mime-info zlib0
+requires: ca-certificates kdebase-runtime-data libaspell15 libattica0 libbz2_1 libdbusmenu-qt2 libdns_sd1 libenchant1 libfam0 libgcc1 libgif4 libgssapi3 libICE6 libilmbase6 libIlmImf6 libintl8 libjasper1 libjpeg8 liblzma5 libpcre0 libphonon4 libpng14 libQt3Support4 libQtCore4 libQtDBus4 libQtDeclarative4 libQtGui4 libQtNetwork4 libQtScript4 libQtSvg4 libQtXml4 libSM6 libsoprano4 libstdc++6 libstreamanalyzer0 libxml2 libxslt libX11_6 libXcursor1 libXfixes3 libXrender1 libXss1 libXtst6 libopenssl100 oxygen-icons shared-desktop-ontologies shared-mime-info zlib0
 external-source: kdelibs
 sdesc: "KDE4 libraries (runtime)"
 ldesc: "This package includes libraries that are central to the
