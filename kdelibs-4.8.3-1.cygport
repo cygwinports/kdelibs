@@ -21,8 +21,8 @@ libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
 libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
                            usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
                            usr/bin/nepomuk-rcgen.exe
-                           usr/bin/preparetips usr/include/ usr/lib/lib*
-                           usr/lib/kde4/plugins/designer/
+                           usr/bin/preparetips usr/include/ usr/lib/cmake
+                           usr/lib/lib* usr/lib/kde4/plugins/designer/
                            usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
                            usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
                            usr/share/man/man1/makekdewidgets.*"
