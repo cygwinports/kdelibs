@@ -1,5 +1,14 @@
 inherit kde4
 
+NAME="kdelibs"
+VERSION=4.8.5
+RELEASE=1
+CATEGORY="KDE"
+SUMMARY="KDE4 application framework"
+DESCRIPTION="This package includes libraries that are central to the development
+and execution of a KDE program, as well as internationalization files for these
+libraries, misc HTML documentation, theme modules, and regression tests."
+
 PATCH_URI="
 	4.6.4-install-dirs.patch
 	4.7.0-cygwin-misc.patch
@@ -13,12 +22,16 @@ PATCH_URI="
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel libplasma3"
+libkdecore5_SUMMARY="${SUMMARY} (runtime)"
+libkdecore5_REQUIRES="ca-certificates kdebase-runtime-data oxygen-icons shared-desktop-ontologies"
 libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
                       --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
                       --exclude=preparetips --exclude=cmake --exclude=kdecmake.*
                       --exclude=nepomuk-rcgen* --exclude=cygplasma*
                       --exclude=*.dll.a --exclude=interfaces --exclude=designer
                       etc/ usr/bin/ usr/lib/kde4/ usr/share/"
+libkdecore_devel_SUMMARY="${SUMMARY} (runtime)"
+libkdecore_devel_REQUIRES="libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtOpenGL4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libsoprano-devel libstreamanalyzer-devel libX11-devel"
 libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
                            usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
                            usr/bin/nepomuk-rcgen.exe
@@ -27,6 +40,7 @@ libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
                            usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
                            usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
                            usr/share/man/man1/makekdewidgets.*"
+libplasma3_SUMMARY="KDE4 Plasma widget library (runtime)"
 libplasma3_CONTENTS="usr/bin/cygplasma-3.dll"
 #libkdecore5_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
 PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
