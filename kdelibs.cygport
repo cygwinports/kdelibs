@@ -1,9 +1,9 @@
 inherit kde4
 
 NAME="kdelibs"
-VERSION=4.8.5
+VERSION=4.10.5
 RELEASE=1
-CATEGORY="KDE"
+CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
 and execution of a KDE program, as well as internationalization files for these
@@ -18,16 +18,17 @@ PATCH_URI="
 	4.6.4-exclude-libs-qtuitools.patch
 	4.6.4-xdg-menu-prefix.patch
 	4.7.4-openssl100.patch
-	4.8.3-cmake-python32.patch
+	4.9.5-ansi.patch
 "
 
-PKG_NAMES="libkdecore5 libkdecore-devel libplasma3"
+PKG_NAMES="libkdecore5 libkdecore-devel"
 libkdecore5_SUMMARY="${SUMMARY} (runtime)"
 libkdecore5_REQUIRES="ca-certificates kdebase-runtime-data oxygen-icons shared-desktop-ontologies"
+libkdecore5_OBSOLETES="libplasma3"
 libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
                       --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
                       --exclude=preparetips --exclude=cmake --exclude=kdecmake.*
-                      --exclude=nepomuk-rcgen* --exclude=cygplasma*
+                      --exclude=nepomuk-rcgen*
                       --exclude=*.dll.a --exclude=interfaces --exclude=designer
                       etc/ usr/bin/ usr/lib/kde4/ usr/share/"
 libkdecore_devel_SUMMARY="${SUMMARY} (runtime)"
@@ -40,8 +41,6 @@ libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
                            usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
                            usr/share/man/man1/checkXML.* usr/share/man/man1/kdecmake.*
                            usr/share/man/man1/makekdewidgets.*"
-libplasma3_SUMMARY="KDE4 Plasma widget library (runtime)"
-libplasma3_CONTENTS="usr/bin/cygplasma-3.dll"
 #libkdecore5_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
 PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
 
@@ -66,6 +65,7 @@ CYGCMAKE_ARGS="
 	-DWITH_QCA2=YES
 	-DWITH_SharedDesktopOntologies=YES
 	-DWITH_Soprano=YES
+	-DHAVE_FUNC_ISINF=YES -DHAVE_FUNC_ISNAN=YES
 "
 
 DIFF_EXCLUDES="CMakeCache.txt cmake.check_cache"
