@@ -25,7 +25,7 @@
 +#        elif defined(Q_OS_CYGWIN)
 +            m_backends << new Solid::Backends::Fstab::FstabManager(0);
 +
- #        elif defined(Q_WS_WIN) && defined(HAVE_WBEM) && !defined(_WIN32_WCE)
+ #        elif defined(Q_WS_WIN) && defined(WITH_SOLID_WMI) && !defined(_WIN32_WCE)
              m_backends << new Solid::Backends::Wmi::WmiManager(0);
  
 --- origsrc/kdelibs-4.7.0/solid/tests/CMakeLists.txt	2011-05-20 15:24:54.000000000 -0500
