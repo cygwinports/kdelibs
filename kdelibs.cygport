@@ -2,7 +2,7 @@ inherit kde4
 
 NAME="kdelibs"
 VERSION=4.12.5
-RELEASE=3
+RELEASE=4
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
@@ -19,6 +19,7 @@ PATCH_URI="
 	4.6.4-xdg-menu-prefix.patch
 	4.7.4-openssl100.patch
 	4.9.5-ansi.patch
+	4.13.2-CVE-2014-3494.patch
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel"
