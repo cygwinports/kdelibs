@@ -8,14 +8,14 @@
     message(STATUS "Building Solid HAL backend." )
     set(solid_LIB_SRCS ${solid_LIB_SRCS}
     backends/hal/halacadapter.cpp
-@@ -235,6 +236,7 @@ if(NOT WIN32 AND NOT APPLE)
-    backends/upower/upowerdeviceinterface.cpp
-    backends/upower/upowergenericinterface.cpp
+@@ -277,6 +277,7 @@ if(NOT WIN32 AND NOT APPLE)
+    backends/hal/halvolume.cpp
+    backends/hal/halsmartcardreader.cpp
     )
 +   endif (NOT CYGWIN)
  
-    # FIXME: this should work on more Unix systems
-    if (CMAKE_SYSTEM_NAME MATCHES Linux)
+    message(STATUS "Building Solid UPower backend." )
+    set(solid_LIB_SRCS ${solid_LIB_SRCS}
 --- origsrc/kdelibs-4.7.0/solid/solid/managerbase.cpp	2011-08-05 02:18:50.667615200 -0500
 +++ src/kdelibs-4.7.0/solid/solid/managerbase.cpp	2011-08-05 02:18:26.683243300 -0500
 @@ -68,6 +68,9 @@ void Solid::ManagerBasePrivate::loadBack
