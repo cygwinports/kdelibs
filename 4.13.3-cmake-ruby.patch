@@ -1,0 +1,31 @@
+--- origsrc/kdelibs-4.13.3/cmake/modules/FindRUBY.cmake	2014-07-11 01:42:13.000000000 -0500
++++ src/kdelibs-4.13.3/cmake/modules/FindRUBY.cmake	2014-09-21 22:42:39.774603900 -0500
+@@ -28,22 +28,22 @@ endif (RUBY_LIBRARY AND RUBY_INCLUDE_PAT
+ FIND_PROGRAM(RUBY_EXECUTABLE NAMES ruby ruby1.8 ruby18 ruby1.9 ruby19)
+ 
+ IF(RUBY_EXECUTABLE)
+-	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['archdir'] || Config::CONFIG['rubyincludedir']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['archdir'] || RbConfig::CONFIG['rubyincludedir']"
+    		OUTPUT_VARIABLE RUBY_ARCH_DIR)
+ 
+-	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['libdir']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['libdir']"
+    		OUTPUT_VARIABLE RUBY_POSSIBLE_LIB_PATH)
+ 
+-	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['rubylibdir']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['rubylibdir']"
+    		OUTPUT_VARIABLE RUBY_RUBY_LIB_PATH)
+ 
+-	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['ruby_version']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['ruby_version']"
+    		OUTPUT_VARIABLE RUBY_VERSION)
+ 
+-	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['sitelibdir']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['sitelibdir']"
+ 		OUTPUT_VARIABLE RUBY_SITE_LIB_DIR)
+ 
+-	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['sitearchdir']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['sitearchdir']"
+ 		OUTPUT_VARIABLE RUBY_SITE_ARCH_DIR)
+ 
+ 	# remove the new lines from the output by replacing them with empty strings
