@@ -1,5 +1,5 @@
---- origsrc/kdelibs-4.13.3/cmake/modules/FindRUBY.cmake	2014-07-11 01:42:13.000000000 -0500
-+++ src/kdelibs-4.13.3/cmake/modules/FindRUBY.cmake	2014-09-21 22:42:39.774603900 -0500
+--- origsrc/kdelibs-4.13.3/cmake/modules/FindRUBY.cmake	2014-09-28 12:55:35.550556700 -0500
++++ src/kdelibs-4.13.3/cmake/modules/FindRUBY.cmake	2014-09-28 12:55:25.165738000 -0500
 @@ -28,22 +28,22 @@ endif (RUBY_LIBRARY AND RUBY_INCLUDE_PAT
  FIND_PROGRAM(RUBY_EXECUTABLE NAMES ruby ruby1.8 ruby18 ruby1.9 ruby19)
  
@@ -17,7 +17,7 @@
     		OUTPUT_VARIABLE RUBY_RUBY_LIB_PATH)
  
 -	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['ruby_version']"
-+	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts RbConfig::CONFIG['ruby_version']"
++	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -e "puts RUBY_VERSION"
     		OUTPUT_VARIABLE RUBY_VERSION)
  
 -	EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "puts Config::CONFIG['sitelibdir']"
