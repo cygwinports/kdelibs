@@ -1,8 +1,8 @@
 inherit kde4
 
 NAME="kdelibs"
-VERSION=4.13.3
-RELEASE=2
+VERSION=4.14.3
+RELEASE=1
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
@@ -20,6 +20,7 @@ PATCH_URI="
 	4.7.4-openssl100.patch
 	4.9.5-ansi.patch
 	4.13.3-cmake-ruby.patch
+	4.14.3-cygwin-kded.patch
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel"
@@ -84,7 +85,7 @@ src_install() {
 
 	# use system ca-certifcates
 	rm -f ${D}/usr/share/kde4/apps/kssl/ca-bundle.crt
-	dosym /usr/ssl/certs/ca-bundle.crt /usr/share/kde4/apps/kssl/ca-bundle.crt
+	dosym /etc/pki/tls/certs/ca-bundle.crt /usr/share/kde4/apps/kssl/ca-bundle.crt
 
 	cd ${S}
 	dodoc kconf_update/README.* kdecore/doc/README.* kded/README.kded kinit/README.*

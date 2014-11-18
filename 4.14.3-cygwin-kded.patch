@@ -1,0 +1,15 @@
+kconf_update is always run regardless when kded starts; this only controls
+monitoring of new .upd files while running.  This takes a lot of CPU for very
+little gain, so disable it.
+
+--- origsrc/kdelibs-4.14.3/kded/kded.cpp	2014-11-06 16:33:50.000000000 -0600
++++ src/kdelibs-4.14.3/kded/kded.cpp	2014-11-18 14:12:32.598868800 -0600
+@@ -916,7 +916,7 @@ extern "C" KDE_EXPORT int kdemain(int ar
+ 
+      HostnamePollInterval = cg.readEntry("HostnamePollInterval", 5000);
+      bCheckSycoca = cg.readEntry("CheckSycoca", true);
+-     bCheckUpdates = cg.readEntry("CheckUpdates", true);
++     bCheckUpdates = cg.readEntry("CheckUpdates", false);
+      bCheckHostname = cg.readEntry("CheckHostname", true);
+      checkStamps = cg.readEntry("CheckFileStamps", true);
+      delayedCheck = cg.readEntry("DelayedCheck", false);
