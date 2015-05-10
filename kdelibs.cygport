@@ -2,7 +2,7 @@ inherit kde4
 
 NAME="kdelibs"
 VERSION=4.14.7
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
@@ -15,7 +15,7 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.9.3-kcm_ssl.patch
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.13.2-invokeTerminal.patch
 	4.6.4-install-dirs.patch
-	4.7.0-cygwin-misc.patch
+	4.14.7-cygwin-misc.patch
 	4.7.0-cygwin-solid.patch
 	4.6.4-exec-prefix.patch
 	4.6.4-module-prefix.patch
@@ -25,6 +25,7 @@ PATCH_URI="
 	4.9.5-ansi.patch
 	4.13.3-cmake-ruby.patch
 	4.14.3-cygwin-kded.patch
+	4.14.7-cygwin-kpty.patch
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel"
