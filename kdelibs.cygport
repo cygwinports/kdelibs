@@ -30,7 +30,7 @@ PATCH_URI="
 
 PKG_NAMES="libkdecore5 libkdecore-devel"
 libkdecore5_SUMMARY="${SUMMARY} (runtime)"
-libkdecore5_REQUIRES="ca-certificates kdebase-runtime-data libopenssl100 oxygen-icons"
+libkdecore5_REQUIRES="ca-certificates libopenssl100 oxygen-icons"
 libkdecore5_OBSOLETES="libplasma3"
 libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
                       --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
