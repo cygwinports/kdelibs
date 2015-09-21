@@ -1,14 +1,14 @@
 inherit kde4
 
 NAME="kdelibs"
-VERSION=4.14.10
+VERSION=4.14.12
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
 and execution of a KDE program, as well as internationalization files for these
 libraries, misc HTML documentation, theme modules, and regression tests."
-SRC_URI="mirror://kde/stable/applications/15.04.3/src/kdelibs-${VERSION}.tar.xz"
+SRC_URI="mirror://kde/stable/applications/15.08.1/src/kdelibs-${VERSION}.tar.xz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.14.4-unknown_mimetype_spam.patch
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-solid_qt_no_debug_output.patch
@@ -54,9 +54,9 @@ CYGCMAKE_ARGS="
 	-DKDE_DEFAULT_HOME=.kde4
 	-DWITH_ACL=NO
 	-DWITH_ASPELL=YES
-	-DWITH_Avahi=NO
+	-DWITH_Avahi=YES
 	-DWITH_BZip2=YES
-	-DWITH_DNSSD=YES
+	-DWITH_DNSSD=NO
 	-DWITH_ENCHANT=YES
 	-DWITH_FAM=YES
 	-DWITH_GSSAPI=YES
