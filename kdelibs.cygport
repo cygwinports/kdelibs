@@ -1,14 +1,14 @@
 inherit kde4
 
 NAME="kdelibs"
-VERSION=4.14.13
+VERSION=4.14.19
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
 and execution of a KDE program, as well as internationalization files for these
 libraries, misc HTML documentation, theme modules, and regression tests."
-SRC_URI="mirror://kde/stable/applications/15.08.2/src/kdelibs-${VERSION}.tar.xz"
+SRC_URI="mirror://kde/stable/applications/16.04.0/src/kdelibs-${VERSION}.tar.xz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-solid_qt_no_debug_output.patch
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.14.9-myspell_paths.patch
@@ -26,11 +26,12 @@ PATCH_URI="
 	4.13.3-cmake-ruby.patch
 	4.14.3-cygwin-kded.patch
 	4.14.7-cygwin-kpty.patch
+	4.14.19-cygwin-ftm.patch
 "
 
 PKG_NAMES="libkdecore5 libkdecore-devel"
 libkdecore5_SUMMARY="${SUMMARY} (runtime)"
-libkdecore5_REQUIRES="ca-certificates libopenssl100 oxygen-icons"
+libkdecore5_REQUIRES="ca-certificates libopenssl100 oxygen-icons shared-mime-info"
 libkdecore5_OBSOLETES="libplasma3"
 libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
                       --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
@@ -52,8 +53,8 @@ PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
 # Avahi: use DNSSD directly instead
 CYGCMAKE_ARGS="
 	-DKDE_DEFAULT_HOME=.kde4
-	-DWITH_ACL=NO
-	-DWITH_ASPELL=YES
+	-DWITH_ACL=YES
+	-DWITH_ASPELL=NO
 	-DWITH_Avahi=YES
 	-DWITH_BZip2=YES
 	-DWITH_DNSSD=NO
