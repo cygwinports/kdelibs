@@ -1,14 +1,14 @@
 inherit kde4
 
 NAME="kdelibs"
-VERSION=4.14.22
+VERSION=4.14.26
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
 and execution of a KDE program, as well as internationalization files for these
 libraries, misc HTML documentation, theme modules, and regression tests."
-SRC_URI="mirror://kde/stable/applications/16.04.3/src/kdelibs-${VERSION}.tar.xz"
+SRC_URI="mirror://kde/stable/applications/16.08.3/src/kdelibs-${VERSION}.tar.xz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-solid_qt_no_debug_output.patch
 	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.14.9-myspell_paths.patch
@@ -39,7 +39,7 @@ libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
                       --exclude=*.dll.a --exclude=interfaces --exclude=designer
                       etc/ usr/bin/ usr/lib/kde4/ usr/share/"
 libkdecore_devel_SUMMARY="${SUMMARY} (runtime)"
-libkdecore_devel_REQUIRES="libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtOpenGL4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libstreamanalyzer-devel libX11-devel"
+libkdecore_devel_REQUIRES="libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtOpenGL4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libX11-devel"
 libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
                            usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
                            usr/bin/preparetips usr/include/ usr/lib/cmake
@@ -71,6 +71,7 @@ CYGCMAKE_ARGS="
 	-DWITH_QCA2=YES
 	-DWITH_SharedDesktopOntologies=NO
 	-DWITH_Soprano=NO
+	-DWITH_Strigi=NO
 	-DHAVE_FUNC_ISINF=YES -DHAVE_FUNC_ISNAN=YES
 "
 
