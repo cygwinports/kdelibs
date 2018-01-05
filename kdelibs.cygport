@@ -2,7 +2,7 @@ inherit kde4
 
 NAME="kdelibs"
 VERSION=4.14.38
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
@@ -10,10 +10,27 @@ and execution of a KDE program, as well as internationalization files for these
 libraries, misc HTML documentation, theme modules, and regression tests."
 SRC_URI="mirror://kde/stable/applications/17.08.3/src/kdelibs-${VERSION}.tar.xz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-solid_qt_no_debug_output.patch
-	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.14.9-myspell_paths.patch
-	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.9.3-kcm_ssl.patch
-	http://pkgs.fedoraproject.org/cgit/kdelibs.git/plain/kdelibs-4.13.2-invokeTerminal.patch
+	fedora/kdelibs-4.9.95-parallel_devel.patch
+	fedora/kdelibs-no_fake_mimetypes.patch
+	fedora/kdelibs-4.10.0-kde149705.patch
+	fedora/kdelibs-4.14.25-plasma_drkonqi.patch
+	fedora/kdelibs-4.3.90-install_all_css.patch
+	fedora/kdelibs-4.10.0-xdg-menu.patch
+	fedora/kdelibs-4.11.3-libexecdir.patch
+	fedora/kdelibs-4.11.97-kstandarddirs.patch
+	fedora/kdelibs-4.10.0-cmake.patch
+	fedora/kdelibs-4.10.0-no_rpath.patch
+	fedora/kdelibs-4.14-14-vfolder_spam.patch
+	fedora/kdelibs-solid_qt_no_debug_output.patch
+	fedora/kdelibs-4.7.0-knewstuff2_gpg2.patch
+	fedora/kdelibs-4.14.9-myspell_paths.patch
+	fedora/kdelibs-4.10.0-SOLID_UPNP.patch
+	fedora/kdelibs-4.8.4-kjs-locale.patch
+	fedora/Drop-Nepomuk-from-KParts-LINK_INTERFACE_LIBRARIES.patch
+	fedora/kdelibs-kdebug288410.patch
+	fedora/kdelibs-4.9.3-kcm_ssl.patch
+	fedora/kdelibs-4.13.2-invokeTerminal.patch
+	fedora/kdelibs-4.14.17-gcc6_narrowing_hack.patch
 	4.6.4-install-dirs.patch
 	4.14.7-cygwin-misc.patch
 	4.7.0-cygwin-solid.patch
@@ -29,24 +46,53 @@ PATCH_URI="
 	4.14.19-cygwin-ftm.patch
 "
 
-PKG_NAMES="libkdecore5 libkdecore-devel"
-libkdecore5_SUMMARY="${SUMMARY} (runtime)"
-libkdecore5_REQUIRES="ca-certificates libopenssl100 oxygen-icons shared-mime-info"
+PKG_NAMES="libkdecore5 libkdecore5-devel libkdecore-common"
+libkdecore5_REQUIRES="ca-certificates libkdecore-common libopenssl100 oxygen-icons shared-mime-info"
 libkdecore5_OBSOLETES="libplasma3"
-libkdecore5_CONTENTS="--exclude=checkXML* --exclude=kconfig_compiler.exe
-                      --exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
-                      --exclude=preparetips --exclude=cmake --exclude=nepomuk-rcgen*
-                      --exclude=*.dll.a --exclude=interfaces --exclude=designer
-                      etc/ usr/bin/ usr/lib/kde4/ usr/share/"
-libkdecore_devel_SUMMARY="${SUMMARY} (runtime)"
-libkdecore_devel_REQUIRES="libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtOpenGL4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libX11-devel"
-libkdecore_devel_CONTENTS="usr/bin/checkXML usr/bin/kconfig_compiler.exe
-                           usr/bin/kunittestmodrunner.exe usr/bin/makekdewidgets.exe
-                           usr/bin/preparetips usr/include/ usr/lib/cmake
-                           usr/lib/lib* usr/lib/kde4/plugins/designer/
-                           usr/share/dbus-1/interfaces/ usr/share/kde4/apps/cmake/
-                           usr/share/man/man1/checkXML.*
-                           usr/share/man/man1/makekdewidgets.*"
+libkdecore5_CONTENTS="
+	--exclude=checkXML* --exclude=kconfig_compiler*
+	--exclude=kunittestmodrunner.exe --exclude=makekdewidgets*
+	--exclude=preparetips --exclude=cmake --exclude=designer
+	--exclude=*.dll.a
+	etc/dbus-1/
+	etc/postinstall/${NAME}.sh
+	etc/xdg/menus/kde4-applications.menu
+	usr/bin/*
+	usr/libexec/kde4/
+	usr/lib/kde4/*.dll
+	usr/lib/kde4/plugins/
+	usr/share/applications/kde4/
+	usr/share/doc/HTML/en/kioslave/
+	usr/share/doc/HTML/en/sonnet/
+	usr/share/doc/${NAME}
+	usr/share/icons/hicolor/*/*/*
+	usr/share/kde4/
+	usr/share/man/*/*
+	usr/share/mime/packages/kde.xml
+"
+libkdecore_common_CONTENTS="
+	usr/bin/preparetips
+	usr/share/doc/HTML/en/common/
+	usr/share/locale/all_languages
+	usr/share/locale/en_US/entry.desktop
+"
+libkdecore5_devel_OBSOLETES="libkdecore-devel"
+libkdecore5_devel_REQUIRES="libphonon-devel libQt3Support4-devel libQtCore4-devel libQtDBus4-devel libQtDesigner4 libQtGui4-devel libQtNetwork4-devel libQtOpenGL4-devel libQtScript4-devel libQtSvg4-devel libQtXml4-devel libX11-devel"
+libkdecore5_devel_CONTENTS="
+	usr/bin/checkXML
+	usr/bin/kconfig_compiler4.exe
+	usr/bin/kunittestmodrunner.exe
+	usr/bin/makekdewidgets4.exe
+	usr/include/kde4/
+	usr/lib/cmake/KDeclarative/
+	usr/lib/kde4/devel/
+	usr/lib/kde4/plugins/designer/
+	usr/share/dbus-1/interfaces/
+	usr/share/kde4/apps/cmake/
+	usr/share/man/man1/checkXML.*
+	usr/share/man/man1/kconfig_compiler4.1*
+	usr/share/man/man1/makekdewidgets4.1*
+"
 #libkdecore5_doc_CONTENTS="usr/share/doc/HTML/en/kdelibs-apidocs/"
 PKG_IGNORE="usr/lib/kde4/plugins/script/libkrossqtsplugin.dll.a"
 
@@ -91,6 +137,19 @@ src_compile() {
 src_install() {
 	cd ${B}
 	kde4_install
+
+	# parallel devel
+	dodir /usr/lib/kde4/devel
+	mv ${D}/usr/lib/*.dll.a ${D}/usr/lib/kde4/devel/
+	sed -i -e 's|lib/lib|lib/kde4/devel/lib|g' \
+		${D}/usr/lib/cmake/KDeclarative/KDeclarativeLibraryTargets*.cmake \
+		${D}/usr/share/kde4/apps/cmake/modules/KDELibs4LibraryTargets*.cmake
+	# but not phonon
+	sed -i -e 's|lib/kde4/devel/libphonon|lib/libphonon|g' \
+		${D}/usr/lib/cmake/KDeclarative/KDeclarativeLibraryTargets*.cmake \
+		${D}/usr/share/kde4/apps/cmake/modules/KDELibs4LibraryTargets*.cmake
+	mv ${D}/usr/share/man/man1/kconfig_compiler{,4}.1
+	mv ${D}/usr/share/man/man1/makekdewidgets{,4}.1
 
 	# use system ca-certifcates
 	rm -f ${D}/usr/share/kde4/apps/kssl/ca-bundle.crt

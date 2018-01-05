@@ -5,14 +5,14 @@
     		<< "";
  
 -   libnamess << "cygssl-0.9.8.dll"
+-		 << "cygssl-0.9.7.dll"
 +   libnamess << "cygssl-" SHLIB_VERSION_NUMBER ".dll"
-+		 << "cygssl-0.9.8.dll"
- 		 << "cygssl-0.9.7.dll"
++		 << "cygssl-1.0.0.dll"
  		 << "";
  
 -   libnamesc << "cygcrypto-0.9.8.dll"
+-		 << "cygcrypto-0.9.7.dll"
 +   libnamesc << "cygcrypto-" SHLIB_VERSION_NUMBER ".dll"
-+		 << "cygcrypto-0.9.8.dll"
- 		 << "cygcrypto-0.9.7.dll"
++		 << "cygcrypto-1.0.0.dll"
  		 << "";
  #else
