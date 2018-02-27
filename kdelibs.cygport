@@ -2,7 +2,7 @@ inherit kde4
 
 NAME="kdelibs"
 VERSION=4.14.38
-RELEASE=2
+RELEASE=3
 CATEGORY="Libs"
 SUMMARY="KDE4 application framework"
 DESCRIPTION="This package includes libraries that are central to the development
